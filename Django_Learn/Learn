@@ -1,14 +1,14 @@
 # to make new djanggo project
 1)open terminal and go to project path
 2)command [virtualenv projectName]  => it will create folder
-3)command [.\projectName\Scripts\activate]  when you are on project folder
+3)command [.\venv_Name\Scripts\activate]  when you are on project folder
 4)command [pip install django] 
 5)command [django-admin startproject ontherProjectName .] => it will make a folder(ontherProjectName) and file(manage.py) 
 6)command [python manage.py runserver]
 
 #######################################################################################
 # to open a project you you have been made
-1)command [.\projectName\Scripts\activate]  when you are on project folder
+1)command [.\venv_Name\Scripts\activate]  when you are on project folder
 2)command [python manage.py runserver]
 
 #######################################################################################
