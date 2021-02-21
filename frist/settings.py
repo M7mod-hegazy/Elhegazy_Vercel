@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
+import dj_database_url
 import django_heroku
 import os
 from pathlib import Path
@@ -153,5 +154,9 @@ STATICFILE_FINDERS = (
 
     'django_collectstatic_bower.staticfiles.finders.BowerComponentFinder',
 )
+
+# Heroku: Update database configuration from $DATABASE_URL.
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
 
 django_heroku.settings(locals())
