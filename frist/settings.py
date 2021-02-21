@@ -149,4 +149,9 @@ LOGOUT_REDIRECT_URL = 'index'
 LOGIN_REDIRECT_URL = 'index'
 LOGIN_URL = 'signin'
 
+STATICFILE_FINDERS = (
+
+    'django_collectstatic_bower.staticfiles.finders.BowerComponentFinder',
+)
+
 django_heroku.settings(locals())
