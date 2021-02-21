@@ -8,9 +8,9 @@ from datetime import datetime
 class Slider(models.Model):
     name = models.CharField(max_length=200)
     link = models.CharField(max_length=200)
-    link_number = models.PositiveIntegerField(max_length=3, default='5')
+    link_number = models.PositiveIntegerField(default='5')
     URL = models.URLField(max_length=5000)
-    slider_number = models.PositiveIntegerField(max_length=3, default='5')
+    slider_number = models.PositiveIntegerField(default='5')
     is_active = models.BooleanField(default=True)
     publish_date = models.DateTimeField(default=datetime.now)
 
