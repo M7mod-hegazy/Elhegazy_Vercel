@@ -1,0 +1,50 @@
+{% load static %}
+     <!-- start footer -->
+     <footer class="mt-2" id="contactUs">
+      <div class="row mainFooter">
+      <div class="col-6">
+        <div class="underNavTittle">منتجاتنا</div>
+        <nav class="navProduct">
+         <ul class="ulProduct">
+
+         {% for pro in products %}
+
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'pro_child' pro_id=pro.id %}" id="dropDown1x">{{ pro.name }}</a>
+          </li>
+         
+         {% endfor %}
+
+         </ul>
+        </nav>
+      </div>
+        <div class="col-6">
+          <div class="comunication mr-3">
+            <div class="mb-2 comunicationTittle" id="comunication-Tittle">تواصل معنا</div>
+            <span>01025109080</span><i class="fas fa-phone ml-2"></i>
+            <br>
+            <span>01009663365</span><i class="fas fa-phone ml-2"></i>
+          </div>
+          <div class="social-media mb-2">مواقع التواصل الاجنماعي</div>
+          <div class="social-media-links">
+            <a class="linkColor" target="_blank" href="https://www.facebook.com/elhegazi"><span class="facebook">facebook.com/elhegazi</span><i class="fab fa-facebook-square ml-2"></i></a>
+            <br>
+            <span>01025109080</span><i class="fab fa-whatsapp ml-2"></i>
+            <br>
+            <span>01009663365</span><i class="fab fa-whatsapp ml-2"></i>
+            
+          </div>
+        </div>
+      </div>
+      <div class="row copyright ">
+        <div class="col-12 col-lg-6">
+          <div class="myCopyRight">Copyright &#9400; 2021 Elhegazy.All Rights Reserved</div>
+        </div>
+        <div class="col-12 col-lg-6 mySign">
+          By Mahmoud Hegazy <a class="linkColor" target="_blank" href="https://www.facebook.com/medo.hagaze/"><span class="facebook"></span><i class="fab fa-facebook-square ml-2"></i></a>
+        </div>
+      </div>
+    </footer>
+      <!-- end footer  -->
+     
+        

@@ -1,0 +1,43 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+
+
+
+
+{% block title %}-بحث{% endblock %}
+    <!-- start signup -->
+
+    <div class="container">
+        <div class="row sign "> 
+          <h2 class="locationTitile">بحث متقدم</h2>
+          <div class="col-12">
+            
+                <section class="serching">
+                  <form action="{% url 'search_result' %}" method="POST">
+                      {% csrf_token %}
+                      <div class="SA">: اسم المنتج يحتوي على</div>
+                      <input name="searchname" type="text" placeholder="اسم المنتج" class="adress">
+                      <br>
+                      <div class="SA">: الكود الخاص بالمنتج</div>
+                      <input name="searchcode" type="text" placeholder="كود المنتج" class="adress">
+                      <br>
+                      <div class="SA">: سعر المنتج بين</div>
+                      <input name="searchpriceto" type="number" placeholder="الى"><input name="searchpricefrom" type="number" placeholder="من">
+                      <br>
+                      <input type="submit" value="بحث متقدم " class="myBtn">
+                  </form>
+                  
+                </section>       
+              
+          </div>
+     
+        </div>
+     </div>
+      <!-- end signup -->
+  
+      </section> 
+      </div>
+
+
+{% endblock %}

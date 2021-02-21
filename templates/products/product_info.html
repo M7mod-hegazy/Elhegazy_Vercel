@@ -1,0 +1,128 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+
+    <!-- start product_info -->
+    {% block title %}-{{ pchild.name }}{% endblock %}
+
+  
+    <div class="container">
+        <div class="row about product-info NewInfo"> 
+
+          <div class="col-12 col-lg-6 P_IMG">
+
+            <a href="{% url 'pro_child' pro_id=pchild.product_id %}" class="proInfo_arrow"><i class="fas fa-arrow-left"></i></a>
+
+ <!-- start carousel -->
+            <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+
+                {% if pchild.photo2 %}
+                <li data-target="#carouselExampleCaptions" data-slide-to="1" ></li>
+                {%else%}  
+
+                {%endif%}
+
+                {% if pchild.photo3 %}
+                <li data-target="#carouselExampleCaptions" data-slide-to="2" ></li>
+                {%else%}  
+
+                {%endif%}
+
+                {% if pchild.photo4 %}
+                <li data-target="#carouselExampleCaptions" data-slide-to="3" ></li>
+                {%else%}  
+
+                {%endif%}
+
+                {% if pchild.photo5 %}
+                <li data-target="#carouselExampleCaptions" data-slide-to="4" ></li>
+                {%else%}  
+
+                {%endif%}
+
+               
+
+
+          
+                
+                </ol>
+                <div class="carousel-inner NEWcarousel">
+
+                <div class="carousel-item active data-interval="500">
+                    <img src="{{ pchild.photo.url }}" class="d-block w-100" alt="...">
+                    
+                </div>
+
+                {% if pchild.photo2 %}
+                  <div class="carousel-item data-interval="500">
+                    <img src="{{ pchild.photo2.url }}" class="d-block w-100" alt="...">
+                  </div>
+                {%else%}  
+
+                {%endif%}
+
+                {% if pchild.photo3 %}
+                <div class="carousel-item data-interval="500">
+                  <img src="{{ pchild.photo3.url }}" class="d-block w-100" alt="...">
+                </div>
+                {%else%}  
+
+                {%endif%}
+
+                {% if pchild.photo4 %}
+                <div class="carousel-item data-interval="500">
+                  <img src="{{ pchild.photo4.url }}" class="d-block w-100" alt="...">
+                </div>
+                {%else%}  
+
+                {%endif%}
+
+                {% if pchild.photo5 %}
+                <div class="carousel-item data-interval="500">
+                  <img src="{{ pchild.photo5.url }}" class="d-block w-100" alt="...">
+                </div>
+                {%else%}  
+
+                {%endif%}
+
+                
+            
+            
+            
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div> 
+ <!-- end carousel -->
+              
+              
+      
+          <div class="col-12 col-lg-6 P_IN">
+            <h5 class="locationTitile infoTittle">{{ pchild.name }}</h5>
+
+            <p class="infoDetails"><span class="">{{ pchild.details }}</span></p>
+
+              <div class="infoCircle ">الكود: <span class="">{{ pchild.code }}</span></div>
+               
+              <div class="infoCircle2">السعر: <span class="productPrice">{{ pchild.price }} جم</span></div>
+  
+            
+       
+          </div> 
+           
+      
+
+     </div>
+    </div>
+      <!-- end product_info -->
+
+{% endblock %}

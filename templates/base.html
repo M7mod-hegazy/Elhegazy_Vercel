@@ -1,0 +1,46 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Lemonada&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/normalize.css'%}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css'%}">
+    <link rel="stylesheet" href="{% static 'css/all.css'%}">
+    <link rel="shortcut icon" href="{% static 'img/iconPng.png'%}">
+    <link rel="stylesheet" href="{% static 'css/main.css'%}">
+    <title>الحجازي {% block title %}لتجهيز المحلات{% endblock %}</title>
+  </head>
+  <body>
+
+<!-- start navbar -->
+{% include 'partials/_navbar.html'%}
+<!-- end navbar -->
+    {% block content %}    
+  
+    {% endblock %} 
+    
+    <!-- start footer -->
+{% include 'partials/_footer.html'%}
+      
+      <!-- srart arrow -->
+      <a href="#nav" ><div class="arrow-bg" ><i class="fas fa-arrow-up "></i></div></a>
+
+      <!-- end arrow -->
+
+    <!-- Optional JavaScript -->
+    <!-- Popper.js first, then Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="{% static 'js/bootstrap.js'%}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
+    <script src="{% static 'js/jquery.min.js'%}"></script>
+    <script src="{% static 'js/partial.js'%}"></script>
+    <script src="{% static 'js/anime.min.js'%}"></script>
+
+  </body>  
+</html>

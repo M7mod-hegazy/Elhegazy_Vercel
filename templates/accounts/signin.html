@@ -1,0 +1,40 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{% block content %}
+{% block title %}-تسجيل دخول{% endblock %}
+  <!-- start signup -->
+
+  <div class="container">
+    <div class="row sign "> 
+      <h2 class="locationTitile">تسجيل دخول</h2>
+      <div class="col-12">
+        
+            <section class="signing_up">
+              <form method="POST" novalidate>
+                {% csrf_token %}
+
+                {% include 'includes/form.html' %}
+
+                   <button type="submit" class="btn btn-primary btn-block mt-3 mb-3">تسجيل دخول</button>
+
+              </form>
+              
+              <div class="input_details">
+                
+                 
+                <a href="{% url 'signup' %}">انشاء حساب</a><span> لا تملك حساب؟</span>
+               </div>
+            </section>       
+          
+      </div>
+ 
+    </div>
+ </div>
+</section> 
+</div> 
+  <!-- end signup -->
+
+
+  <!-- end signin -->
+  {% endblock %}

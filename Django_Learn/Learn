@@ -1,0 +1,234 @@
+# to make new djanggo project
+1)open terminal and go to project path
+2)command [virtualenv projectName]  => it will create folder
+3)command [.\projectName\Scripts\activate]  when you are on project folder
+4)command [pip install django] 
+5)command [django-admin startproject ontherProjectName .] => it will make a folder(ontherProjectName) and file(manage.py) 
+6)command [python manage.py runserver]
+
+#######################################################################################
+# to open a project you you have been made
+1)command [.\projectName\Scripts\activate]  when you are on project folder
+2)command [python manage.py runserver]
+
+#######################################################################################
+# to make new app
+1)command [python manage.py startapp {appname}]
+2)go to the {projectFile} ,open setting.py 
+3)go to INSTALLED_APPS = ['{appname}.apps.{Appname}Config'] => make sure that in the second app name feild put the frist letter in capital
+
+#######################################################################################
+# to make new URL
+1) open the app folder ,and make new file called urls.py
+2) go to views.py and write > from django.http import HttpResponse
+3) write new view on views.py > def {ViewName}(request):
+                                    return HttpResponse('<h1>come from django</h1>')  
+
+4)go to urls.py which on the app and write >  from django.urls.resolvers import URLPattern
+                                              from . import views                   
+
+5)write a list on urls.py and leave the frist colum if its default> urlpatterns = [
+                                                                       path( '' , views.{ViewName}, name= '{anyName}'),
+                                                                    ]
+
+6) go to urls which on the project and write > from django.urls import include 
+
+7) on urls whivh on project add an element to list  like this > urlpatterns = [
+                                                                                 path('', include('{appname}.urls')),
+                                                                                 path('admin/', admin.site.urls),
+                                                                              ]
+
+8) to make more urls we will just deal with (views.py and urls.py)->which on app
+
+######################################################################################################################
+# to make a template contain [html] pages
+
+0) make template folder and make pages folder on it
+
+1) go to setting.py on project folder and go to TEMPLATES list and put => 'DIRS': [BASE_DIR / 'templates'],
+
+2) put the base html file next to pages folder, and put the pages like index.html or about.html inside pages folder
+
+3)put   {% block content %}    => on index.html or about.html inside pages folder
+        base.html content
+        {% endblock %}
+
+4) put  {% extends 'base.html'%}          =>  on base.html outside pages folder
+        {% block content %}
+        index.html or about.html content
+        {% endblock %}
+
+########################################################################################################################
+# to collect [css, js, img, fonts] files
+
+1) make folder called static inside the project file (which made by python through command i wrote)
+
+2) put my files[css, js, img, fonts] inside that file
+
+3)go to setting.py last line and write =>STATIC_ROOT = BASE_DIR / 'static'
+
+                                         STATIC_URL = '/static/'
+
+                                         STATICFILES_DIRS = [
+                                         BASE_DIR / 'frist/static'
+                                         ]
+
+4) write command [python manage.py collectstatic] 
+
+#########################################################################################################################
+# update [ css, js ] files
+
+1) fristly should update the filles which on static on the the project i made (not the one with admin folder)
+
+2)then command [python manage.py collectstatic]
+
+3)maybe clear browser cache
+
+#########################################################################################################################
+# to content [html] pages
+
+1) go to _navbar.html and ubdate navs href
+
+2) put in href {% url 'location'%}  => write it without  .html
+
+
+#########################################################################################################################
+# to the nav hover by itself when im on the path (should be a not button)
+
+1) go to _navbar.html and update navs class
+
+2)        <a
+              {% if '/' == request.path %}
+                class="nav-link ACT" 
+              {% else %}  
+                class="nav-link"
+              {% endif %}   
+
+               aria-current="page" href="{% url 'index' %}">
+                
+                الصفحه الرئيسية
+          </a>
+
+#########################################################################################################################
+# how to connect postgres Database to django 
+
+1) SAVE my password and prot
+
+2) go to inside Database folder and click right on any Database and choose query tool 
+
+3) write i query => [create database elhegazedb owner postgres] => elhegazedb is example
+
+4) go to Database i made and right click and choose Properties
+
+5) choose security and make new privileges 
+
+6) Grantee => postgres , privileges => all , and SAVE
+
+7) command [pip install psycopg2 ] and [pip install psycopg2-binary ]
+
+8) go to setting.py and write => DATABASES = {
+                                        'default': {
+                                                'ENGINE': 'django.db.backends.postgresql_psycopg2',
+                                                'NAME': 'elhegazedb',
+                                                'USER': 'postgres',
+                                                'PASSWORD': '275757',
+                                                'HOST': 'localhost',
+                                                'PORT': '5432',
+                                           }
+                                        }
+
+9) command [python manage.py migrate] => to make server work
+
+##########################################################################################################################
+# connect Database to html
+
+1) opeen project folder which i made by command and go to setting.py
+
+2) write => # media folder
+
+            MEDIA_ROOT = BASE_DIR / 'media'
+
+            MEDIA_URL = '/media/'
+
+
+3) go to urls.py on project and write => import pages
+                                        from django import urls
+                                        from django.contrib import admin
+                                        from django.urls import path, include
+                                        from django.conf import settings
+                                        from django.conf.urls.static import static
+
+                                        urlpatterns = [
+                                                path('', include('pages.urls')),
+                                                path('accounts/', include('accounts.urls')),
+                                                path('products/', include('products.urls')),
+                                                path('admin/', admin.site.urls),
+                                                ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)   
+
+4) all apove just happend one time
+
+5) go to models.py on app and write =>  from os import name
+                                        from django.db import models
+                                        from datetime import datetime
+
+                                        # Create your models here.
+
+
+                                        class Product(models.Model):
+                                                myid = models.CharField(max_length=200)
+                                                name = models.CharField(max_length=200)
+                                                code = models.CharField(max_length=200)
+                                                price = models.CharField(max_length=200)
+                                                photo = models.ImageField(upload_to='photos/%Y/%m/%d/')
+                                                is_active = models.BooleanField(default=True)
+                                                publish_date = models.DateTimeField(default=datetime.now)
+
+                                                def __str__(self):
+                                                        return self.code
+
+
+6) go to views.py on app and write =>   from django.shortcuts import render
+                                        from datetime import datetime
+                                        from .models import Product
+
+                                        # Create your views here.
+
+
+                                        def products(request):
+                                        context = {
+                                                'products':Product.objects.all()
+                                           }
+                                        return render(request, 'products/products.html',context)                                               
+
+
+7) go to admin.py on app and write => from django.contrib import admin
+                                      from .models import Product
+                                      # Register your models here.
+
+                                      admin.site.register(Product)
+
+
+8) and command [ python manage.py makemigrations ] and [ python manage.py migrate ]
+
+9) go html file aand write => {% for sli in sliders %}
+   
+                                  <li data-target="#carouselExampleCaptions" data-slide-to="{{ sli.myid }}"></li>
+
+                               {% endfor %}
+
+
+10) go to admin path on browser and put username and password and made new product
+
+11) to make htlm page show newst added to database , go to models.py and add class inside the main class =>  class Meta:
+                                                                                                                ordering = ['-publish_date']
+
+12) عشان احدد اقصى عدد يتاخد من الداتا بيز : {% for sli in sliders|slice:':6' %}
+                                                
+                                                <li data-target="#carouselExampleCaptions" data-slide-to="{{ sli.myid }}"></li>
+
+                                                {% endfor %}
+
+
+
+
+

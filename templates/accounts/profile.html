@@ -1,0 +1,49 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+  <!-- start profile -->
+
+  <div class="container">
+    <div class="row sign "> 
+      <h2 class="locationTitile">تعديل الملف الشخصي</h2>
+      <div class="col-12">
+        
+            <section class="profile">
+              <form action="">
+                  
+                  <input type="text" placeholder="الأسم الثاني"><input type="text" placeholder="الأسم الأول">
+                  <br>
+                  <input type="text" placeholder="العنوان" class="adress">
+                  <br>
+
+                    <div class="signup_adress">
+                     <input type="text" placeholder="المحافظه" class=""><input type="text" placeholder="المدينه" class=""><input type="tel" placeholder="رقم التلفون" class="">
+                    </div>
+
+                  <br>
+                  <input disabled type="email" placeholder="البريد الإلكتروني" class="adress">
+                  <br>
+                  <input disabled type="text" placeholder="اسم المستخدم"><input type="password" placeholder="كلمة السر">
+                  <br>
+                  <div class="remember"><input type="checkbox" name="remember" checked="checked"><span>أوافق على شروط الاستخدام وسياسة الخصوصية</span>  </div>
+                  <br>
+                  <input type="submit" value="حفظ التغييرات " class="myBtn">
+              </form>
+              
+              <div class="input_details">
+                
+                 
+                   
+              </div>
+            </section>       
+          
+      </div>
+ 
+    </div>
+ </div>
+  <!-- end profile -->
+
+  </section> 
+  </div>
+  <!-- end signin -->
+  {% endblock %}

@@ -1,0 +1,121 @@
+{% load static%}
+<!-- start navbar -->
+   <div id="nav"> 
+    <nav class="navbar navbar-expand-lg navbar-light navStats" id="myNavPar">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'index' %}"><img id="myNav" style="height: 10%;" src="{% static 'img/iconPng.png'%}" alt="https://scontent.fcai19-3.fna.fbcdn.net/v/t1.0-9/90920033_2946051038954751_1350012425629335552_n.jpg?_nc_cat=100&_nc_sid=85a577&_nc_ohc=JN4VbDodgoUAX_ZRgcF&_nc_oc=AQl0tMJ-2zuo78tLT2ZID2ZA-OfVrvRzdZxI9I-KRvVVD6ouFUR4p2azbQUxqvMeNc0&_nc_ht=scontent.fcai19-3.fna&oh=d7e632b737a30b5ffe57ae640e412c31&oe=5F888927"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse " id="navbarNavDropdown">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a
+              {% if '/' == request.path %}
+                class="nav-link ACT" 
+              {% else %}  
+                class="nav-link"
+              {% endif %}   
+
+               aria-current="page" href="{% url 'index' %}">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                الصفحه الرئيسية
+              </a>
+            </li>
+            <li class="nav-item dropdown">
+              <a 
+              {% if 'products' in request.path or 'search' in request.path %}
+                 class="nav-link dropdown-toggle ACT" 
+              {% else %}
+                 class="nav-link dropdown-toggle"    
+              {% endif %}
+              
+              href="" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false">
+                منتجاتنا
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+              </a>
+             
+              <ul class="dropdown-menu list" aria-labelledby="navbarDropdownMenuLink">
+                <li><a class="dropdown-item" id="dropDown1" href="{% url 'products' %}"><span></span>جميع المنتجات</a></li>
+                <div class="dropdown-divider"></div>
+
+
+                {% for pro in products %}
+
+                <li><a class="dropdown-item" id="dropDown1" href="{% url 'pro_child' pro_id=pro.id %}"><span></span>{{ pro.name }}</a></li>
+                
+                {% endfor %}
+
+              </ul>
+             
+            </li>
+            <li class="nav-item">
+              <a
+               {% if 'location' in request.path %}
+                 class="nav-link ACT" 
+               {% else %}
+                 class="nav-link"   
+               {% endif %}
+               
+               href="{% url 'location' %}">فروعنا
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+              </a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+              {% if 'signin' in request.path or 'signup' in request.path or 'profile' in request.path%}
+                class="nav-link dropdown-toggle ACT maxDD" 
+              {% else %}
+               class="nav-link dropdown-toggle maxDD" 
+              {% endif %} 
+               
+               href="" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false">
+               {%if user.is_authenticated%}
+               <i class="fas fa-user-circle fa-lg"></i>     
+               {%else%}
+                 تسجيل   
+               {%endif%}
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+              </a>
+              <ul class="dropdown-menu list" aria-labelledby="navbarDropdownMenuLink">
+             {%if user.is_authenticated%}
+    
+
+                      <li><a class="dropdown-item"  href="">حسابي<span></span></a></li>
+                      <li><a class="dropdown-item"  href="{% url 'change_password'%}">تغيير كلمة السر<span></span></a></li>
+                      <div class="dropdown-divider"></div>
+                      <li><a class="dropdown-item"  href="{% url 'logout' %}">تسجيل خروج<span></span></a></li>
+
+                
+             {%else%}
+                <li><a class="dropdown-item" id="dropDown8" href="{% url 'signin' %}">تسجيل الدخول<span></span></a></li>
+                <li><a class="dropdown-item" id="dropDown9" href="{% url 'signup' %}">إنشاء حساب<span></span></a></li>
+             {%endif%}
+              </ul>
+            </li>
+          </ul>
+          <form class="d-flex" action="{% url 'search_result' %}" id="my_form">
+            <input  name="searchname" class="form-control me-2" type="search" placeholder="ابحث هنا" aria-label="Search">
+            <a class="btn" href="javascript:{}" onclick="document.getElementById('my_form').submit(); return false;"><i class='fas fa-search'></i></a>
+            <a href="https://www.facebook.com/elhegazi" target="_blank" class="btn btn2" type="submit"><i class="fab fa-facebook-f"></i></a>
+          </form>
+           
+        </div>
+        
+      </div>
+    </nav>
+   </div>
+    
+<!-- end navbar -->
