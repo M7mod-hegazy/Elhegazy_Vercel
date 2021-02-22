@@ -1225,7 +1225,7 @@ margin-bottom: -25px !important;
     display: none;
     animation-delay: 0.5s;
     border-radius: 5px;
-    border: solid 1px #1779ff;
+    border: solid 1px #fff;
     color: #1779ff;
   }
 }
@@ -1315,9 +1315,9 @@ margin-bottom: -25px !important;
   .searchR .card  a {
     position: absolute;
     left: 20%;
-    bottom: 10%;
     font-size: 29%;
     right: 20%;
+    border: solid 1px #fff;
     top: -90px;
   }
   .card .CT1 {
@@ -1382,6 +1382,9 @@ margin-bottom: -25px !important;
   .tab-pane .card {
     height: 30rem;
   }
+}
+a.NEWbtn:hover {
+  border: solid 1px #1779ff;
 }
 //end products.html
 

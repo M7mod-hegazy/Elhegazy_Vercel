@@ -1439,7 +1439,7 @@ p.infoDetails {
   -webkit-animation-delay: 0.5s;
           animation-delay: 0.5s;
   border-radius: 5px;
-  border: solid 1px #1779ff;
+  border: solid 1px #fff;
   color: #1779ff;
 }
 
@@ -1534,9 +1534,9 @@ p.infoDetails {
   .searchR .card a {
     position: absolute;
     left: 20%;
-    bottom: 10%;
     font-size: 29%;
     right: 20%;
+    border: solid 1px #fff;
     top: -90px;
   }
   .card .CT1 {
@@ -1601,6 +1601,10 @@ p.infoDetails {
   .tab-pane .card {
     height: 30rem;
   }
+}
+
+a.NEWbtn:hover {
+  border: solid 1px #1779ff;
 }
 
 .sign {
