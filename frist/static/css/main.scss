@@ -1216,13 +1216,22 @@ margin-bottom: -25px !important;
   }
   a {
     position: absolute;
-    right: 30%;
-    left: 30%;
-    bottom: 2%;
-    font-size: 50%;
-    background-color: $myButton;
+    /* right: 8%; */
+    left: 25%;
+    /* bottom: 2%; */
+    width: 100px;
+    transition: all 0.5s;
+    top: -110px;
+    font-size: 70%;
+    /* background-color: #070af6; */
+    display: none;
+    animation-delay: 0.5s;
     border-radius: 5px;
   }
+}
+
+.searchR .card:hover a {
+  display: block;
 }
 
 .CT1 {

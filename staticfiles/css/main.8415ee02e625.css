@@ -1429,23 +1429,12 @@ p.infoDetails {
 
 .searchR .card a {
   position: absolute;
-  /* right: 8%; */
-  left: 25%;
-  /* bottom: 2%; */
-  width: 100px;
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
-  top: -110px;
-  font-size: 70%;
-  /* background-color: #070af6; */
-  display: none;
-  -webkit-animation-delay: 0.5s;
-          animation-delay: 0.5s;
+  right: 30%;
+  left: 30%;
+  bottom: 2%;
+  font-size: 50%;
+  background-color: #070af6;
   border-radius: 5px;
-}
-
-.searchR .card:hover a {
-  display: block;
 }
 
 .CT1 {
@@ -3952,4 +3941,4 @@ body[data-route-option="prev-section"] .c-header-home_controls, body[data-route-
 .linkColor:hover {
   color: white !important;
 }
-/*# sourceMappingURL=main.css.map */
+/*# sourceMappingURL=main.8415ee02e625.css.map */
