@@ -1429,23 +1429,23 @@ p.infoDetails {
 
 .searchR .card a {
   position: absolute;
-  /* right: 8%; */
+  right: 25%;
   left: 25%;
-  /* bottom: 2%; */
-  width: 100px;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
   top: -110px;
   font-size: 70%;
-  /* background-color: #070af6; */
   display: none;
   -webkit-animation-delay: 0.5s;
           animation-delay: 0.5s;
   border-radius: 5px;
+  border: solid 1px #1779ff;
+  color: #1779ff;
 }
 
 .searchR .card:hover a {
   display: block;
+  color: white;
 }
 
 .CT1 {
@@ -1482,8 +1482,8 @@ p.infoDetails {
 }
 
 .card:hover img {
-  -webkit-filter: brightness(0.8);
-          filter: brightness(0.8);
+  -webkit-filter: brightness(0.5);
+          filter: brightness(0.5);
 }
 
 @media (max-width: 576px) {
