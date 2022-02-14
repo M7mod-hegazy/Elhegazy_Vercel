@@ -373,8 +373,10 @@ button.btn {
 .list li .dropdown-item:hover {
   background-color: #004ab4 !important;
   color: white !important;
-  -webkit-box-shadow: 2px 5px 50px #104a9d, -2px 5px 50px #104a9d;
-          box-shadow: 2px 5px 50px #104a9d, -2px 5px 50px #104a9d;
+  -webkit-box-shadow: 2px 5px 50px #104a9d,
+ -2px 5px 50px #104a9d;
+          box-shadow: 2px 5px 50px #104a9d,
+ -2px 5px 50px #104a9d;
 }
 
 .navProduct ul li {
@@ -1589,7 +1591,7 @@ p.infoDetails {
 
 .sign {
   padding: 10px;
-  margin-top: 135px;
+  margin-top: 50px;
   margin-bottom: 50px;
   border-radius: 5px;
   background-image: radial-gradient(circle at 17% 77%, rgba(17, 17, 17, 0.04) 0%, rgba(17, 17, 17, 0.04) 50%, rgba(197, 197, 197, 0.04) 50%, rgba(197, 197, 197, 0.04) 100%), radial-gradient(circle at 26% 17%, rgba(64, 64, 64, 0.04) 0%, rgba(64, 64, 64, 0.04) 50%, rgba(244, 244, 244, 0.04) 50%, rgba(244, 244, 244, 0.04) 100%), radial-gradient(circle at 44% 60%, rgba(177, 177, 177, 0.04) 0%, rgba(177, 177, 177, 0.04) 50%, rgba(187, 187, 187, 0.04) 50%, rgba(187, 187, 187, 0.04) 100%), linear-gradient(19deg, #1c75fa, #22029f);
@@ -1679,7 +1681,7 @@ p.infoDetails {
 
 .sign {
   padding: 10px;
-  margin-top: 135px;
+  margin-top: 50px;
   margin-bottom: 50px;
   border-radius: 5px;
   background-image: radial-gradient(circle at 17% 77%, rgba(17, 17, 17, 0.04) 0%, rgba(17, 17, 17, 0.04) 50%, rgba(197, 197, 197, 0.04) 50%, rgba(197, 197, 197, 0.04) 100%), radial-gradient(circle at 26% 17%, rgba(64, 64, 64, 0.04) 0%, rgba(64, 64, 64, 0.04) 50%, rgba(244, 244, 244, 0.04) 50%, rgba(244, 244, 244, 0.04) 100%), radial-gradient(circle at 44% 60%, rgba(177, 177, 177, 0.04) 0%, rgba(177, 177, 177, 0.04) 50%, rgba(187, 187, 187, 0.04) 50%, rgba(187, 187, 187, 0.04) 100%), linear-gradient(19deg, #1c75fa, #22029f);
@@ -1838,8 +1840,14 @@ p.infoDetails {
   background: #1779ff;
   color: #fff;
   border-radius: 5px;
-  -webkit-box-shadow: 0 0 5px #1779ff, 0 0 25px #1779ff, 0 0 50px #1779ff, 0 0 100px #1779ff;
-          box-shadow: 0 0 5px #1779ff, 0 0 25px #1779ff, 0 0 50px #1779ff, 0 0 100px #1779ff;
+  -webkit-box-shadow: 0 0 5px #1779ff,
+ 0 0 25px #1779ff,
+ 0 0 50px #1779ff,
+ 0 0 100px #1779ff;
+          box-shadow: 0 0 5px #1779ff,
+ 0 0 25px #1779ff,
+ 0 0 50px #1779ff,
+ 0 0 100px #1779ff;
 }
 
 .NEWbtn span {

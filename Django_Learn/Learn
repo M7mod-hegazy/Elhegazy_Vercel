@@ -17,6 +17,12 @@
 2)go to the {projectFile} ,open setting.py 
 3)go to INSTALLED_APPS = ['{appname}.apps.{Appname}Config'] => make sure that in the second app name feild put the frist letter in capital
 
+4)go to urls.py in the main project and add the app like this 
+                                                                urlpatterns = [
+                                                                                path('', include('{appname}.urls')), =>do it like this if its index page
+                                                                                path('{appname}/', inclppname}.urls')), => or like this
+                                                                              ]   
+  
 #######################################################################################
 # to make new URL
 1) open the app folder ,and make new file called urls.py

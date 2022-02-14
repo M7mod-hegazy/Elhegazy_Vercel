@@ -1,30 +1,48 @@
 {% extends 'base.html'%}
 {% load static %}
-
-{% block content %}
 {% block title %}-تسجيل دخول{% endblock %}
+{% block content %}
+
   <!-- start signup -->
 
   <div class="container">
     <div class="row sign "> 
       <h2 class="locationTitile">تسجيل دخول</h2>
       <div class="col-12">
-        
             <section class="signing_up">
+      {% if request.user.is_authenticated %}   
+      <h4 class="alert alert-primary">
+        لقد قمت بتسجيل الدخول بنجاح {{request.user.username}},<bdi>اهلا</bdi> ,
+        <a class="text-dark" href="{% url 'logout' %}">تسجيل الخروج</a>     
+      </h4>  
+      {% else %}  
               <form method="POST" novalidate>
-                {% csrf_token %}
-
-                {% include 'includes/form.html' %}
-
-                   <button type="submit" class="btn btn-primary btn-block mt-3 mb-3">تسجيل دخول</button>
-
-              </form>
-              
-              <div class="input_details">
+               {% csrf_token %}
+               {% include 'includes/_alerts.html'%} 
+               
+             
+            <div class="form-group">
+                <i class="fa fa-envelope"></i><input class="form-control fc" type="text" placeholder="الاسم"  name="username">
+            </div>
+            <div class="form-group">
+                <i class="fa fa-lock"></i><input class="form-control pp" type="password" placeholder="كلمة السر" name="password1">
+            </div>
+            <div class="form-terms">
+                  <span>تذكرني </span>
+                  <input type="checkbox" checked name="rememberme">
+                  
+            </div>
+               
+                   <button name="btnlogin" type="submit" class="btn btn-primary btn-block mt-3 mb-3">تسجيل دخول</button>
+               <div class="input_details">
                 
                  
-                <a href="{% url 'signup' %}">انشاء حساب</a><span> لا تملك حساب؟</span>
+                    <a href="{% url 'signup' %}">انشاء حساب</a><span> لا تملك حساب؟</span>
                </div>
+              </form>
+
+      {% endif %}      
+              
             </section>       
           
       </div>

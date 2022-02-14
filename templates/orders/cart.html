@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}-سلة المشتريات{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row about product-info NewInfo cartrow">
+        <h2 class="hr hrcart">سلة المشتريات</h2>
+{% if not request.user.is_authenticated or request.user.is_anonymous %}
+<div class="wrongcart">
+    <a href="{% url 'signin' %}" class="text-light">تسجيل الدخول</a><h3 class="mt-3"> يجب</h3>
+</div>
+{% elif order %}
+
+        <div class="ssss">
+            <div class="panel">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-7  text-right btn-cart">
+                            <div class="btn_group txal">
+                                <a href="{% url 'payment' %}" class="btn btn-sm btn-warninig"><i class="fas fa-cash-register mrpay"></i>
+                                    دفع
+                                </a>
+                                <a href="{% url 'products' %}" class="btn btn-sm btn-primary"><i class="fas fa-cart-plus mrpay"></i>
+                                     استكمال التسوق
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col col-5">
+                            <h4 class="title ">{{order.user.first_name|add:' '|add:order.user.last_name}}  <bdi> :العميل</bdi></h4>
+                        </div>
+                      
+                        <div class="col-12">
+                            <hr class="carthr">
+                          <h5 class="carttotal"><bdi><span class="price border border-primary rounded p-1"><bdi>جم</bdi>{{total}}</span><bdi> :بمبلغ</bdi></bdi>  ,  <bdi><span class=" border border-primary rounded p-1">{{order.id}}</span><bdi> :طلب رقم</bdi></bdi></h5>
+                        </div>
+
+                        <div class="col-12">
+                        <hr class="carthr">
+                        <h5 class="carttotal"><bdi>منتج </bdi><span class="border border-primary rounded p-1">{{prototal}}</span><bdi> :بمجموع</bdi> , <bdi> صنف </bdi><span class="border border-primary rounded p-1">{{orderdetails.count}}</span><bdi> :لعدد</bdi></h5>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="panel-body table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                        
+
+                            <tr>
+                                <th>#</th>
+                                <th>صوره</th>
+                                <th>اسم المنتج</th>
+                                <th>العدد</th>
+                                <th>السعر</th>
+                                <th>المجموع</th>
+                                <th>الكود</th>
+                                <th>مسح</th>
+                            </tr>
+                         
+                        </thead>
+                        <tbody>
+                            {% for line in orderdetails %}
+                            <tr>
+                                <td>{{forloop.counter}}</td>
+                                <td>
+                                    <div class="user_icon">
+                                        <img src="{{line.product.photo.url}}" alt="">
+                                    </div> 
+                                </td>
+                                <td>{{line.product.name}}</td>
+                                <td>
+                                    <a href="{% url 'sub_qty' orderdetails_id=line.id %}" class="btn btn-outline-primary btn-qty">-</a>
+                                    {{line.quantity}}
+                                    <a href="{% url 'add_qty' orderdetails_id=line.id %}" class="btn btn-outline-primary btn-qty">+</a>
+
+                                </td>
+                                <td><bdi>جم</bdi>{{line.price}}</td>
+                                <td><bdi>جم</bdi>{% widthratio line.price 1 line.quantity %}</td>
+                                <td>{{line.product.code}}</td>
+                                <td>
+                                    <ul class="action-list">
+                                        <li><a href="{% url 'remove_from_cart' orderdetails_id=line.id %}" class="delete" data-tip="مسح"><i class="fa fa-times-circle"></i></a></li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            {% empty %}
+                            <div class="wrongcart">
+                                <a href="{% url 'products' %}">جميع المنتجات</a><h3 class="mt-3">لم يوجد طلبات </h3>
+                            </div>
+                            {% endfor %}
+                            
+                        </tbody>
+                    </table>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div> 
+</div>
+{%else%}
+<div class="wrongcart">
+    <a class="linkc" href="{% url 'products' %}">جميع المنتجات</a><h3 class="mt-3">لم يوجد طلبات </h3>
+</div>
+{%endif%}        
+</div>
+</div>            
+{% endblock %}

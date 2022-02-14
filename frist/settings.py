@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
+from django.contrib.messages import constants as messages
 import dj_database_url
 import django_heroku
 import os
@@ -33,9 +34,11 @@ ALLOWED_HOSTS = ["https://elhegazy.herokuapp.com/"]
 # Application definition
 
 INSTALLED_APPS = [
-    'pages.apps.PagesConfig',
+    'mypages.apps.MypagesConfig',
     'accounts.apps.AccountsConfig',
     'products.apps.ProductsConfig',
+    'more.apps.MoreConfig',
+    'orders.apps.OrdersConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -115,7 +118,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
-LANGUAGE_CODE = 'ar'
+LANGUAGE_CODE = 'en'
 
 TIME_ZONE = 'UTC'
 
@@ -160,3 +163,9 @@ db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
 django_heroku.settings(locals())
+
+# Custom massages
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger'
+
+}

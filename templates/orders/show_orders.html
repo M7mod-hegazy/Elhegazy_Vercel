@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}-الطلبات السابقه{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row about product-info NewInfo cartrow">
+        <h2 class="hr hrcart">الطلبات السابقه</h2>
+{% if not request.user.is_authenticated or request.user.is_anonymous %}
+<div class="wrongcart">
+    <a href="{% url 'signin' %}" class="text-light">تسجيل الدخول</a><h3 class="mt-3"> يجب</h3>
+</div>
+{% elif all_orders %}
+
+        <div class="ssss">
+            <div class="panel">
+                <div class="panel-heading">
+                    <h5 class="alert alert-primary p-1 "><bdi> طلبات </bdi>{{all_orders.count}}<bdi> : تم العثور على</bdi></h5>
+
+                </div>
+                <div class="panel-body table-responsive">
+                    <table class="table table-hover ordertable">
+                        <thead>
+                        
+
+                            <tr>
+                                <th>رقم اللفاتوره</th>
+                                <th>التاريخ</th>
+                                <th>عدد الأصناف</th>
+                                <th>المجموع</th>
+                                <th>تم التوصيل</th>
+                            </tr>
+                         
+                        </thead>
+                        <tbody>
+                            {% for line in all_orders %}
+                            <tr>
+                                <td>{{line.id}}</td>
+                                <td>{{line.order_date}}</td>
+                                <td>{{line.items_count}}</td>
+                                <td>{{line.total}}</td>
+                                <td>
+                                  {% if line.is_finished == True %}
+                                  نعم
+                                  {%else%}
+                                  لا
+                                  {%endif%}
+                                </td>
+                                    
+                               
+                            </tr>
+                            {% empty %}
+                            <div class="wrongcart">
+                                <a href="{% url 'products' %}">جميع المنتجات</a><h3 class="mt-3">لم يوجد طلبات </h3>
+                            </div>
+                            {% endfor %}
+                            
+                        </tbody>
+                    </table>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div> 
+{%else%}
+<div class="wrongcart">
+    <a href="{% url 'products' %}">جميع المنتجات</a><h3 class="mt-3">لم يوجد طلبات </h3>
+</div>
+{%endif%}        
+</div>
+</div>            
+{% endblock %}

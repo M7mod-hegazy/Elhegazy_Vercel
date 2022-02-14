@@ -55,24 +55,37 @@
               </ul>
              
             </li>
-            <li class="nav-item">
-              <a
-               {% if 'location' in request.path %}
-                 class="nav-link ACT" 
-               {% else %}
-                 class="nav-link"   
-               {% endif %}
-               
-               href="{% url 'location' %}">فروعنا
+            <li class="nav-item dropdown">
+              <a 
+              {% if 'location' in request.path or 'works' in request.path%}
+                 class="nav-link dropdown-toggle ACT" 
+              {% else %}
+                 class="nav-link dropdown-toggle"    
+              {% endif %}
+              
+              href="" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false">
+                المزيد
                 <span></span>
                 <span></span>
                 <span></span>
                 <span></span>
               </a>
+             
+              <ul class="dropdown-menu list" aria-labelledby="navbarDropdownMenuLink">
+
+             
+
+                <li><a class="dropdown-item" id="dropDown1" href="{% url 'location' %}"><span></span>فروعنا</a></li>
+                <li><a class="dropdown-item" id="dropDown1" href="{% url 'works' %}"><span></span>اعمال سابقه</a></li>
+                
+                
+
+              </ul>
+             
             </li>
             <li class="nav-item dropdown">
               <a
-              {% if 'signin' in request.path or 'signup' in request.path or 'profile' in request.path%}
+              {% if 'signin' in request.path or 'signup' in request.path or 'profile' in request.path or 'show_product_favorite' in request.path or 'cart' in request.path or 'show_orders' in request.path %}
                 class="nav-link dropdown-toggle ACT maxDD" 
               {% else %}
                class="nav-link dropdown-toggle maxDD" 
@@ -93,8 +106,10 @@
              {%if user.is_authenticated%}
     
 
-                      <li><a class="dropdown-item"  href="">حسابي<span></span></a></li>
-                      <li><a class="dropdown-item"  href="{% url 'change_password'%}">تغيير كلمة السر<span></span></a></li>
+                      <li><a class="dropdown-item"  href="{% url 'profile' %}">الملف الشخصي<span></span></a></li>
+                      <li><a class="dropdown-item"  href="{% url 'show_product_favorite'%}">قائمة المفضله<span></span></a></li>
+                      <li><a class="dropdown-item"  href="{% url 'cart'%}">سلة المشتريات<span></span></a></li>
+                      <li><a class="dropdown-item"  href="{% url 'show_orders'%}">طلبات سابقه<span></span></a></li>
                       <div class="dropdown-divider"></div>
                       <li><a class="dropdown-item"  href="{% url 'logout' %}">تسجيل خروج<span></span></a></li>
 
@@ -102,14 +117,15 @@
              {%else%}
                 <li><a class="dropdown-item" id="dropDown8" href="{% url 'signin' %}">تسجيل الدخول<span></span></a></li>
                 <li><a class="dropdown-item" id="dropDown9" href="{% url 'signup' %}">إنشاء حساب<span></span></a></li>
+                
              {%endif%}
               </ul>
             </li>
           </ul>
           <form class="d-flex" action="{% url 'search_result' %}" id="my_form">
-            <input  name="searchname" class="form-control me-2" type="search" placeholder="ابحث هنا" aria-label="Search">
+            <input  name="searchname" class="form-control me-2" type="search" placeholder="ابحث عن منتج هنا" aria-label="Search">
             <a class="btn" href="javascript:{}" onclick="document.getElementById('my_form').submit(); return false;"><i class='fas fa-search'></i></a>
-            <a href="https://www.facebook.com/elhegazi" target="_blank" class="btn btn2" type="submit"><i class="fab fa-facebook-f"></i></a>
+            <a href="{% url 'cart'%}" class="btn btn2" type="submit"><i class="fas fa-shopping-cart"></i></a>
           </form>
            
         </div>

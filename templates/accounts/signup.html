@@ -1,30 +1,64 @@
 {% extends 'base.html'%}
 {% load static %}
-
-{% block content %}
 {% block title %}-إنشاء حساب{% endblock %}
+{% block content %}
+
   <!-- start signup -->
 
   <div class="container">
     <div class="row sign "> 
       <h2 class="locationTitile">إنشاء حساب</h2>
       <div class="col-12">
-        
             <section class="signing_up">
-              <form method="POST" novalidate>
+              {% include 'includes/_alerts.html'%} 
+              
+              {% if is_added == True %}
+              <form method="POST" style='display:none;'>
+              {% else %}
+              <form method="POST">
+              {% endif %}
                 {% csrf_token %}
 
-                {% include 'includes/form.html' %}
-
-                   <button type="submit" class="btn btn-primary btn-block mt-3 mb-3">تسجيل</button>
-
-              </form>
-              
-              <div class="input_details">
+                
+                <div class="form-group fc2">
+                  <i class="fas fa-user"></i><input class="form-control fc" type="text" placeholder="الاسم الثاني" name="lname" value="{{lname}}">
+                </div>
+                <div class="form-group fc2">
+                  <i class="fas fa-user"></i><input class="form-control fc" type="text" placeholder="الاسم الأول" name="fname" value="{{fname}}">
+                </div>
+                
+                <div class="form-group">
+                  <i class="fa fa-envelope"></i><input class="form-control fc" type="email" placeholder="البريد الالكتروني" name="email" value="{{email}}">
+                </div>
+                <div class="form-group">
+                  <i class="fas fa-user-circle"></i><input class="form-control fc" type="text" placeholder="الاسم" name="username" value="{{username}}">
+                </div>
+                <div class="form-group fc2">
+                  <i class="fa fa-lock"></i><input class="form-control fc" type="password" placeholder="تأكيد كلمة السر" name="password2" value="{{password2}}">
+                </div>
+                <div class="form-group fc2">
+                  <i class="fa fa-lock"></i><input class="form-control fc" type="password" placeholder="كلمة السر" name="password1" value="{{password1}}">
+                </div>
+                <div class="form-group">
+                  <i class="fas fa-map-marker-alt"></i><input class="form-control fc" type="text" placeholder="العنوان" name="address" value="{{address}}">
+                </div>
+                <div class="form-group">
+                  <i class="fas fa-mobile"></i><input class="form-control fc" type="tel" placeholder="رقم التلفون" name="phone" value="{{phone}}">
+                </div>
+              <div class="form-terms">
+                    <span>أوافق على شروط الاستخدام وسياسة الخصوصية</span>
+                    <input name="terms" type="checkbox">
+      
+              </div>
+                   <button name="btnsignup" type="submit" class="btn btn-primary btn-block mt-3 mb-3">تسجيل</button>
+               <div class="input_details">
                 
                  
-                   <a href="{% url 'signin' %}">تسجيل دخول</a><span> تملك حساب بالفعل؟</span>
-              </div>
+                    <a href="{% url 'signin' %}">تسجيل دخول</a><span> تملك حساب بالفعل؟</span>
+               </div>
+              </form>
+              
+            
             </section>       
           
       </div>

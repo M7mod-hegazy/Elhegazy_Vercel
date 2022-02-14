@@ -1324,3 +1324,8 @@ window.addEventListener("scroll", function () {
 // document.getElementById("wood-calc-Button").onclick = function () {
 // document.getElementById("wood-result").value = (parseInt(document.getElementById("wood-width").value) *  parseInt(document.getElementById("wood-height").value)) / 3;
 // }
+window.addEventListener('scroll', () => {
+    const arr = document.querySelector('.arrow-bg');
+    arr.classList.toggle('arrow-show', window.scrollY > 20)
+    });
+

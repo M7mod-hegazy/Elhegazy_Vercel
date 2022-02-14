@@ -1,8 +1,9 @@
 {% extends 'base.html'%}
 {% load static %}
+{% block title %}-{{ pchild.name }}{% endblock %}
 {% block content %}
 
-{% block title %}-{{ pchild.name }}{% endblock %}
+
 <!-- start search_result -->
 
 <div class="container-fluid">
@@ -10,22 +11,32 @@
     <div class="row about product-info searchR"> 
      <h2 class="locationTitile">{{ pchild.name }}</h2>
 
-    {% if pchild.childs.all %}
+    {% if prol %}
 
-     {% for child in pchild.childs.all %}
+     {% for child in prol %}
 
       <div class="col-4 col-md-3 col-lg-2 searchM">
         
           <div class="card" style="width: 18rem;">
               <img src="{{ child.photo.url }}" class="card-img-top" alt="...">
+              {% if child.oldPrice %}
+              <span class="sale">sale!</span>
+              {% endif %}
               <div class="card-body">
                 <h5 class="card-title">{{ child.name }}</h5>
-                <p class="card-text CT2"><span class="price"><bdi>جم </bdi>{{ child.price }}</span></p>
+                <p class="card-text CT2"> <span class="latestPrice2">
+                  {% if child.oldPrice %}
+                  جم{{ child.oldPrice}}
+                  {% endif %}</span><span class="price"><bdi>جم </bdi>{{ child.price }}</span></p>
                 <p class="card-text CT1">code: <span>{{ child.code }}</span></p>
                 <a href="{% url 'product_info' chi_id=child.id pro_id=pchild.id%}" class="NEWbtn">
-            
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
                   تفاصيل
                 </a>
+               
               </div>
             </div>      
           
@@ -46,7 +57,26 @@
   
  </div>
   <!-- end search_result -->
+  <nav aria-label="Page navigation ">
+    <ul class="pagination justify-content-center P">
+          
+      {% if prol.has_previous %}
+        <li class="page-item"><a class="page-link" href="?page=1">&#11164&#11164</a></li>
+        <li class="page-item"><a class="page-link" href="?page={{ prol.previous_page_number }}">&#11164</a></li>
+      {% endif %}
+      
+      <li class="page-item disabled"><a href="#" class="page-link">صفحه {{ prol.number }} من {{ prol.paginator.num_pages }}</a></li>
 
+      
+      
+      {% if prol.has_next %}
+        <li class="page-item"><a class="page-link" href="?page={{ prol.next_page_number }}">&#11166</a></li>
+        <li class="page-item"><a class="page-link" href="?page={{ prol.paginator.num_pages }}">&#11166&#11166</a></li>
+        
+      {% endif %}
+  
+   </ul>
+  </nav>
 
 
 {% endblock %}

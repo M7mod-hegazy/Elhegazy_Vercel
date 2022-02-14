@@ -8,34 +8,37 @@
                 
 
 
-  {% for slide in sliders %}  
-    <div class="slideshow__slide js-slider-home-slide is-prev" data-slide="{{ slide.slider_number }}">
-      <div class="slideshow__slide-background-parallax background-absolute js-parallax" data-speed="-1" data-position="top" data-target="#js-header">
-        <div class="slideshow__slide-background-load-wrap background-absolute">
-          <div class="slideshow__slide-background-load background-absolute">
-            <div class="slideshow__slide-background-wrap background-absolute">
-              <div class="slideshow__slide-background background-absolute">
-                <div class="slideshow__slide-image-wrap background-absolute">
-                  <div class="slideshow__slide-image background-absolute" style="background-image: url('{{ slide.URL }}');"></div>
+      {% for slide in mysliders %}  
+      <div class="slideshow__slide js-slider-home-slide is-prev" data-slide="{{ slide.slider_number }}">
+        <div class="slideshow__slide-background-parallax background-absolute js-parallax" data-speed="-1" data-position="top" data-target="#js-header">
+          <div class="slideshow__slide-background-load-wrap background-absolute">
+            <div class="slideshow__slide-background-load background-absolute">
+              <div class="slideshow__slide-background-wrap background-absolute">
+                <div class="slideshow__slide-background background-absolute">
+                  <div class="slideshow__slide-image-wrap background-absolute">
+                    <div class="slideshow__slide-image background-absolute">
+                    <img src="{{ slide.photo.url }}" style="width: 100%; height: 100%">
+
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="slideshow__slide-caption">
-        <div class="slideshow__slide-caption-text">
-          <div class="container js-parallax" data-speed="1" data-position="top" data-target="#js-header">
-            <h1 class="slideshow__slide-caption-title">{{ slide.name }}</h1>
-            <a class="slideshow__slide-caption-subtitle -load o-hsub -link" href="{% url 'pro_child' pro_id=slide.link_number %}">
-              <span class="slideshow__slide-caption-subtitle-label">{{ slide.link }}</span>
-            </a>
+        <div class="slideshow__slide-caption">
+          <div class="slideshow__slide-caption-text">
+            <div class="container js-parallax" data-speed="1" data-position="top" data-target="#js-header">
+              <h1 class="slideshow__slide-caption-title">{{ slide.name }}</h1>
+              <a class="slideshow__slide-caption-subtitle -load o-hsub -link" href="{% url 'pro_child' pro_id=slide.product.id %}">
+                <span class="slideshow__slide-caption-subtitle-label">لمزيد من المعلومات</span>
+              </a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-
-{% endfor %}      
+  
+  {% endfor %}     
       <div class="c-header-home_footer">
       <div class="o-container">
         <div class="c-header-home_controls -nomobile o-button-group">
@@ -75,18 +78,21 @@
 
 <!-- start about -->
 
-<div class="container-fluid">
-  <div class="row about aboutUs"> 
-    <h2 class="locationTitile">من نحن</h2>
+
+
+<div class="container-fluid IstContainer">
+  <div class="row aboutUs"> 
+    <h4 class="hr" ><span>:من نحن</span></h4>
+
     <div class="col-12 col-lg-6">
       
-          <img src="{% static 'img/icon.jpg'%}" class="image" alt="...">       
+          <img  src="{% static 'img/icon.jpg'%}" class="image image1" alt="...">       
         
     </div>
     <div class="col-12 col-lg-6">
      
       
-        <p class="text">الحججازي للتجهيز جميع انظمة عرض لكافة المحلات <br><br>
+        <p data-center-center="opacity:1;right:0;"  data-0-bottom="opacity:0;right:-100px;" class="text">الحججازي للتجهيز جميع انظمة عرض لكافة المحلات <br><br>
           للاستفسار: <br>
           ☎️0932716232 <br>
           وليد حجازي📱01025109080 <br>
@@ -100,8 +106,92 @@
     </div> 
 </div>
 </div>
-<!-- end about -->
+<h4 class="hr"><span>:خدماتنا</span></h4>
 
+<!-- end about -->
+<div class="container-fluid">
+  <div class="row aboutUs Nserve">
+      <div class="col-md-3 col-sm-6">
+          <div class="serviceBox">
+              <div class="service-icon">
+                <i class="fas fa-shopping-cart"></i>
+              </div>
+              <h3 class="title">منتجات متنوعه</h3>
+              <p class="description">
+                 لدينا جميع الإحتيتجات لكل محل
+              </p>
+              <a href="{% url 'products' %}" class="read">اذهب</a>
+          </div>
+      </div>
+
+      <div class="col-md-3 col-sm-6">
+          <div class="serviceBox">
+              <div class="service-icon">
+                <i class="fas fa-store"></i>
+              </div>
+              <h3 class="title">اعمال سابقه</h3>
+              <p class="description">
+                 هذه بعض النماذج لمحلات جهزنها بالكامل  
+              </p>
+              <a href="{% url 'works' %}" class="read">اذهب</a>
+          </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="serviceBox">
+            <div class="service-icon">
+              <i class="fas fa-user-circle"></i>
+            </div>
+            <h3 class="title">إنشاء حساب</h3>
+            <p class="description">
+               يمكنك الإنضمام إلينا للتمتع بمزيد من المزايه
+            </p>
+            <a href="{% url 'signup' %}" class="read">اذهب</a>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+      <div class="serviceBox">
+          <div class="service-icon">
+            <i class="fas fa-map-marked-alt"></i>
+          </div>
+          <h3 class="title">فروعنا</h3>
+          <p class="description">
+             اذهب للفرع الاقرب لك
+          </p>
+          <a href="{% url 'location' %}" class="read">اذهب</a>
+      </div>
+  </div>
+  </div>
+</div>
+
+<!-- start new about-->
+
+<h4 class="hr"><span>:انظمة العرض</span></h4>
+{% for sec in mysections %}
+<div class="container-fluid SecContainer">
+  <div class="row about"> 
+        <div class="col-12">
+            <div class="box3">
+                <img src="{{ sec.photo.url }}">
+                <div class="box-heading3">
+                    <h3 class="title3">{{ sec.name }}</h3>
+                    <span class="post3">{{ sec.secName}}</span>
+                </div>
+                <div class="boxContent3">
+                    <p class="description3">
+                      {{ sec.details }}
+                    </p>
+                    <a href="{% url 'pro_child' pro_id=sec.product.id %}" class="read3">المزيد <i class="fa fa-angle-right"></i></a>
+                </div>
+            </div>
+        </div>
+  </div>
+</div>
+{% endfor %}
+
+
+
+
+<!-- end new about -->
 
 
 {% endblock %}

@@ -1,49 +1,69 @@
 {% extends 'base.html'%}
 {% load static %}
+{% block title %}-الملف الشخصي{% endblock %}
 {% block content %}
-  <!-- start profile -->
+
+  <!-- start signup -->
 
   <div class="container">
     <div class="row sign "> 
-      <h2 class="locationTitile">تعديل الملف الشخصي</h2>
+      <h2 class="locationTitile">إنشاء حساب</h2>
       <div class="col-12">
-        
-            <section class="profile">
-              <form action="">
-                  
-                  <input type="text" placeholder="الأسم الثاني"><input type="text" placeholder="الأسم الأول">
-                  <br>
-                  <input type="text" placeholder="العنوان" class="adress">
-                  <br>
+            <section class="signing_up">
+{% if request.user.is_authenticated %}
+<form method="POST" novalidate>
+  {% csrf_token %}
 
-                    <div class="signup_adress">
-                     <input type="text" placeholder="المحافظه" class=""><input type="text" placeholder="المدينه" class=""><input type="tel" placeholder="رقم التلفون" class="">
-                    </div>
+  {% include 'includes/_alerts.html'%} 
+  <div class="form-group fc2">
+    <i class="fas fa-user"></i><input class="form-control fc" type="text" placeholder="الاسم الثاني" name="lname" value="{{fname}}">
+  </div>
+  <div class="form-group fc2">
+    <i class="fas fa-user"></i><input class="form-control fc" type="text" placeholder="الاسم الأول" name="fname" value="{{lname}}">
+  </div>
+  
+  <div class="form-group">
+    <i class="fa fa-envelope text-secondary"></i><input class="form-control border border-secondary text-secondary rounded fc" type="email" placeholder="البريد الالكتروني" name="email"  readonly value="{{email}}">
+  </div>
+  <div class="form-group">
+    <i class="fas fa-user-circle text-secondary"></i><input class="form-control border border-secondary text-secondary rounded fc" type="text" placeholder="الاسم" name="username" disabled readonly value="{{username}}">
+  </div>
+  <div class="form-group fc2">
+    <i class="fa fa-lock"></i><input class="form-control fc" type="password" placeholder="تأكيد كلمة السر" name="password2">
+  </div>
+  <div class="form-group fc2">
+    <i class="fa fa-lock"></i><input class="form-control fc" type="password" placeholder="كلمة السر" name="password1">
+  </div>
+  <div class="form-group">
+    <i class="fas fa-map-marker-alt"></i><input class="form-control fc" type="text" placeholder="العنوان" name="address"value="{{address}}">
+  </div>
+  <div class="form-group">
+    <i class="fas fa-mobile"></i><input class="form-control fc" type="tel" placeholder="رقم التلفون" name="phone" value="{{phone}}">
+  </div>
 
-                  <br>
-                  <input disabled type="email" placeholder="البريد الإلكتروني" class="adress">
-                  <br>
-                  <input disabled type="text" placeholder="اسم المستخدم"><input type="password" placeholder="كلمة السر">
-                  <br>
-                  <div class="remember"><input type="checkbox" name="remember" checked="checked"><span>أوافق على شروط الاستخدام وسياسة الخصوصية</span>  </div>
-                  <br>
-                  <input type="submit" value="حفظ التغييرات " class="myBtn">
-              </form>
+     <button name="btnsave" type="submit" class="btn btn-primary btn-block mt-3 mb-3">حفظ التغييرات</button>
+     <div class="input_details">
+  
+   
+      <a href="{% url 'signin' %}">تسجيل دخول</a><span> تملك حساب بالفعل؟</span>
+ </div>
+</form>
+{% else %}
+<h4 class="alert alert danger"><a class="text-dark" href="{% url 'signin' %}">تسجل الدخول</a> <bdi>يجب ان</bdi></h4>
+{% endif %}              
+             
               
-              <div class="input_details">
-                
-                 
-                   
-              </div>
+              
             </section>       
           
       </div>
  
     </div>
  </div>
-  <!-- end profile -->
+</section> 
+</div> 
+  <!-- end signup -->
 
-  </section> 
-  </div>
+
   <!-- end signin -->
   {% endblock %}

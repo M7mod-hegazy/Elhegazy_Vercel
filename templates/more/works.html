@@ -1,0 +1,102 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block title %}-أعمالنا السابقه{% endblock %}
+{% block content %}
+
+
+<!-- start search_result -->
+
+     
+
+    {% if work.all %}
+
+     {% for child in workl %}
+<div class="container">
+  <div class="row about product-info searchR works"> 
+    
+          <div class="col-12 p-0 mt-5">
+            <span class="WorksName">{{ child.name }}</span>
+            <p class="WorksDetails">{{ child.details }}</p>
+            <div class="WorksDate mr-4">{{ child.publish_date }}</div>
+            <hr>
+              <div class="box2">
+                  <img src="{{ child.photo.url }}">
+                  <div class="box-content2">
+                      <h3 class="title2">إشتري الأن</h3>
+                      <ul class="icon2">
+                          <li><a href="{% url 'search_result' %}" class="fa fa-search"></a></li>
+                          <li><a href="#contactUs" class="fas fa-phone-alt"></a></li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+          <div class="col-4 p-0">
+            <div class="box">
+                <div class="pic">
+                    <img src="{{ child.photo2.url }}">
+                </div>
+            </div>
+          </div>
+          <div class="col-4 p-0">
+            <div class="box">
+                <div class="pic">
+                    <img src="{{ child.photo3.url }}">
+                </div>
+            </div>
+          </div>
+          <div class="col-4 p-0 ">
+            <div class="box">
+                <div class="pic">
+                    <img src="{{ child.photo4.url }}">
+                </div>
+            </div>
+          </div>
+   
+          
+     
+  
+  
+
+   
+  </div>
+</div>   
+     {% endfor %}
+
+
+
+     
+
+     {% else %}
+
+     <h3 class="mt-5 mb-5">لا يوجد نتائج</h3>
+
+     {% endif %}
+
+
+  
+  <!-- end search_result -->
+
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center P">
+          
+      {% if workl.has_previous %}
+        <li class="page-item"><a class="page-link" href="?page=1">&#11164&#11164</a></li>
+        <li class="page-item"><a class="page-link" href="?page={{ workl.previous_page_number }}">&#11164</a></li>
+        
+      {% endif %}
+      
+      <li class="page-item disabled"><a href="#" class="page-link">صفحه {{ workl.number }} من {{ workl.paginator.num_pages }}</a></li>
+
+      
+      
+      {% if workl.has_next %}
+        <li class="page-item"><a class="page-link" href="?page={{ workl.next_page_number }}">&#11166</a></li>
+        <li class="page-item"><a class="page-link" href="?page={{ workl.paginator.num_pages }}">&#11166&#11166</a></li>
+      {% endif %}
+  
+   </ul>
+  </nav>
+  
+  
+
+{% endblock %}
