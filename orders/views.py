@@ -4,6 +4,7 @@ from django.contrib import messages
 from products.models import Product, Child
 from .models import Order, OrderDetails, Payment
 from django.utils import timezone
+import re
 
 # Create your views here.
 
@@ -102,57 +103,86 @@ def sub_qty(request, orderdetails_id):
             if orderdetails.order.user.id == request.user.id:
                 orderdetails.quantity -= 1
                 orderdetails.save()
+        elif orderdetails.quantity == 1:
+                orderdetails.delete()
 
     return redirect('cart')
 
 
 def payment(request):
     context = {'products': Product.objects.all()}
-    ship_address = None
-    ship_phone = None
-    card_number = None
-    card_name = None
-    expire = None
-    security_code = None
-    is_added = None
+    
 
-    if request.method == 'POST' and 'btnpayment' in request.POST and 'ship_address' in request.POST and 'ship_phone' in request.POST and 'card_number' in request.POST and 'card_name' in request.POST and 'expire' in request.POST and 'security_code' in request.POST:
-
+    if request.method == 'POST' and 'payBtn' in request.POST:
+  
         # هنا عملية الدفع بعد الضغط على الزر
-        ship_address = request.POST['ship_address']
-        ship_phone = request.POST['ship_phone']
-        card_number = request.POST['card_number']
-        card_name = request.POST['card_name']
-        expire = request.POST['expire']
-        security_code = request.POST['security_code']
+        ship_address = None
+        ship_phone = None
+        is_added = None
+        if 'ship_address' in request.POST:
+             ship_address = request.POST['ship_address']
+        else:
+            messages.error(request, 'خطأ في عنوان التوصيل')
+        if 'ship_phone' in request.POST:
+             ship_phone = request.POST['ship_phone']
+        else:
+            messages.error(request, 'خطأ في رقم التلفون')    
+        print(request.POST)
+        if ship_phone and ship_address:
+                if request.user.is_authenticated and not request.user.is_anonymous :
+                    patt = "^01[0-2]\d{1,8}$"
+                    if re.match(patt, ship_phone):
+                        if Order.objects.all().filter(user=request.user, is_finished=False):
+                            order = Order.objects.get(user=request.user, is_finished=False)
+                            payment = Payment(order=order, shipment_address=ship_address, shipment_phone=ship_phone)
+                            payment.save()
+                            order.is_finished = True
+                            order.save()
+                            is_added = True
+                            messages.success(request, 'تم تنفيز طلبك بنجاح')
+
+                            context = {
+                                'ship_address': ship_address,
+                                'ship_phone': ship_phone,
+                                'is_added': is_added,
+                                'order': order,
+                                'is_finished': True,
+                                'products': Product.objects.all()
+                            }
+                    else:
+                        messages.error(request, 'تحقق من رقم التلفون')
+                        
+            
+        else:   
+            messages.error(request, 'تحقق من الحقول الفارغه')
+        
 
         if request.user.is_authenticated and not request.user.is_anonymous:
             if Order.objects.all().filter(user=request.user, is_finished=False):
                 order = Order.objects.get(user=request.user, is_finished=False)
-                payment = Payment(order=order, shipment_address=ship_address, shipment_phone=ship_phone,
-                                  card_number=card_number, card_name=card_name, expire=expire, security_code=security_code)
-                payment.save()
-                order.is_finished = True
-                order.save()
-                is_added = True
-                messages.success(request, 'تم تنفيز طلبك بنجاح')
+                orderdetails = OrderDetails.objects.all().filter(order=order)
+                order.is_finished = False
+                prototal = 0
+                for prosup in orderdetails:
+                    prototal += prosup.quantity
+                context = {
+                    'is_finished': False,
+                    'is_added': False,
+                    'order': order,
+                    'orderdetails': orderdetails,
+                    'prototal': prototal,
+                    'products': Product.objects.all(),
+                }    
+                return render(request, 'orders/payment.html', context)   
+                           
 
-            context = {
-                'ship_address': ship_address,
-                'ship_phone': ship_phone,
-                'card_number': card_number,
-                'card_name': card_name,
-                'expire': expire,
-                'security_code': security_code,
-                'is_added': is_added,
-                'products': Product.objects.all()
-            }
     else:
         # هنا العرض قبل الضغط على الدفع
         if request.user.is_authenticated and not request.user.is_anonymous:
             if Order.objects.all().filter(user=request.user, is_finished=False):
                 order = Order.objects.get(user=request.user, is_finished=False)
                 orderdetails = OrderDetails.objects.all().filter(order=order)
+                
                 total = 0
                 prototal = 0
                 for sup in orderdetails:
@@ -162,10 +192,9 @@ def payment(request):
                 context = {
                     'order': order,
                     'orderdetails': orderdetails,
-                    'total': total,
                     'prototal': prototal,
+                    'total': total,
                     'products': Product.objects.all(),
-
                 }
 
     return render(request, 'orders/payment.html', context)
@@ -186,8 +215,15 @@ def show_orders(request):
                     total += sup.price * sup.quantity
                 x.total = total
                 x.items_count = orderdetails.count
-
+        if Order.objects.all().filter(user=request.user, is_finished=False):
+            order = Order.objects.get(user=request.user, is_finished=False)
+            orderdetails = OrderDetails.objects.all().filter(order=order)
+            prototal = 0
+            for prosup in orderdetails:
+                prototal += prosup.quantity
     context = {
+        'order': order,
+        'prototal': prototal,
         'all_orders': all_orders,
         'products': Product.objects.all(),
         'total': total

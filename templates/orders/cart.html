@@ -4,7 +4,9 @@
 {% block title %}-سلة المشتريات{% endblock %}
 
 {% block content %}
-<div class="container">
+<div class="container cart_container">
+    <a href="{% url 'index' %}" class="pro_arrow"><i class="fas fa-home"></i></a>
+
     <div class="row about product-info NewInfo cartrow">
         <h2 class="hr hrcart">سلة المشتريات</h2>
 {% if not request.user.is_authenticated or request.user.is_anonymous %}
@@ -17,28 +19,29 @@
             <div class="panel">
                 <div class="panel-heading">
                     <div class="row">
-                        <div class="col-7  text-right btn-cart">
-                            <div class="btn_group txal">
-                                <a href="{% url 'payment' %}" class="btn btn-sm btn-warninig"><i class="fas fa-cash-register mrpay"></i>
-                                    دفع
-                                </a>
-                                <a href="{% url 'products' %}" class="btn btn-sm btn-primary"><i class="fas fa-cart-plus mrpay"></i>
-                                     استكمال التسوق
-                                </a>
+                        <div class="first_row">
+                            <div class="text-right btn-cart">
+                                <div class="btn_group txal">
+                                    <a href="{% url 'payment' %}" class="btn btn-sm btn-warninig"><i class="fas fa-cash-register mrpay"></i>
+                            تأكيد الطلب
+                                    </a>
+                                    <a href="{% url 'products' %}" class="btn btn-sm btn-primary"><i class="fas fa-cart-plus mrpay"></i>
+                                        استكمال التسوق
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col col-5">
-                            <h4 class="title ">{{order.user.first_name|add:' '|add:order.user.last_name}}  <bdi> :العميل</bdi></h4>
-                        </div>
-                      
+                            <div class="">
+                                <h4 class="title ">{{order.user.first_name|add:' '|add:order.user.last_name}}  <bdi> العميل :</bdi></h4>
+                            </div>
+                          </div>
                         <div class="col-12">
                             <hr class="carthr">
-                          <h5 class="carttotal"><bdi><span class="price border border-primary rounded p-1"><bdi>جم</bdi>{{total}}</span><bdi> :بمبلغ</bdi></bdi>  ,  <bdi><span class=" border border-primary rounded p-1">{{order.id}}</span><bdi> :طلب رقم</bdi></bdi></h5>
+                          <h5 class="carttotal"><bdi><span class="price border border-primary rounded p-1 cart_margin"><bdi>جم</bdi>{{total}}</span><bdi> بمبلغ كلي :</bdi></bdi>  ,  <bdi><span class=" border border-primary rounded p-1 cart_margin">{{order.id}}</span><bdi> طلب رقم :</bdi></bdi></h5>
                         </div>
 
                         <div class="col-12">
                         <hr class="carthr">
-                        <h5 class="carttotal"><bdi>منتج </bdi><span class="border border-primary rounded p-1">{{prototal}}</span><bdi> :بمجموع</bdi> , <bdi> صنف </bdi><span class="border border-primary rounded p-1">{{orderdetails.count}}</span><bdi> :لعدد</bdi></h5>
+                        <h5 class="carttotal"><bdi>منتج </bdi><span class="border border-primary rounded p-1 cart_margin">{{prototal}}</span>: <bdi> بمجموع</bdi> , <bdi> صنف </bdi><span class="border border-primary rounded p-1 cart_margin">{{orderdetails.count}}</span>: <bdi> لعدد</bdi></h5>
                         </div>
 
                     </div>

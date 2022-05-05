@@ -1,64 +1,157 @@
 {% load static %}
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
 
-    <link href="https://fonts.googleapis.com/css2?family=Lemonada&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/normalize.css'%}">
-    <link rel="stylesheet" href="{% static 'css/all.css'%}">
-    <link rel="shortcut icon" href="{% static 'img/iconPng.png'%}">
-    <link rel="stylesheet" href="{% static 'css/main.css'%}">
- 
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lemonada&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.1/dist/css/splide.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link rel="stylesheet" href="{% static 'css/normalize.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/all.css'%}" />
+    <link rel="shortcut icon" href="{% static 'img/iconPng.png'%}" />
+    <link rel="stylesheet" href="{% static 'css/main.css'%}" />
+
     <title>الحجازي {% block title %}لتجهيز المحلات{% endblock %}</title>
   </head>
   <body>
+    <!-- start navbar -->
+    {% include 'partials/_navbar.html'%}
+    <!-- end navbar -->
+    {% block content %} {% endblock %}
 
-<!-- start navbar -->
-{% include 'partials/_navbar.html'%}
-<!-- end navbar -->
-    {% block content %}    
-  
-    {% endblock %} 
-    
     <!-- start footer -->
-{% include 'partials/_footer.html'%}
-      
-      <!-- srart arrow -->
-      <a href="#nav" ><div class="arrow-bg" ><i class="fas fa-arrow-up "></i></div></a>
+    {% include 'partials/_footer.html'%}
 
-      <!-- end arrow -->
+    <!-- srart arrow -->
+    <a href="#nav"
+      ><div class="arrow-bg"><i class="fas fa-arrow-up"></i></div
+    ></a>
+
+    <!-- end arrow -->
 
     <!-- Optional JavaScript -->
     <!-- Popper.js first, then Bootstrap JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
 
     <script src="{% static 'js/bootstrap.min.js'%}"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js"
+      integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D"
+      crossorigin="anonymous"
+      async
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.3/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.3/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.1/dist/js/splide.min.js"></script>
     <script src="{% static 'js/partial.js'%}"></script>
     <script src="{% static 'js/anime.min.js'%}"></script>
 
     <script>
-      $(document).ready(function(){
-        $("#exampleModal").on('shown.bs.modal', function(){
-          $(this).find('#inputQty').focus();
-          $(this).find('#inputQty').select();
-        });
-      });
-      window.addEventListener('scroll', () => {
-        const arr = document.querySelector('.arrow-bg');
-        arr.classList.toggle('arrow-show', window.scrollY > 20)
-        });
-    </script>
+            $(document).ready(function () {
+              $("#exampleModal").on("shown.bs.modal", function () {
+                $(this).find("#inputQty").focus();
+                $(this).find("#inputQty").select();
+              });
+            });
+            window.addEventListener("scroll", () => {
+              const arr = document.querySelector(".arrow-bg");
+              arr.classList.toggle("arrow-show", window.scrollY > 20);
+            });
 
-  </body>  
+            gsap.registerPlugin(ScrollTrigger);
+            gsap.from(".navbar-brand", { opacity: 0, duration: 1, x: 20 });
+            gsap.from(".navbar-toggler", {
+              opacity: 0,
+              duration: 0.5,
+              delay: 0.6,
+              x: -10,
+            });
+            gsap.from(".d-flex .form-control", {
+              opacity: 0,
+              duration: 1,
+              delay: 0.5,
+              x: -20,
+            });
+            gsap.from(".d-flex .searchBtn", {
+              opacity: 0,
+              duration: 1.2,
+              delay: 0.5,
+              x: -40,
+            });
+            gsap.from(".d-flex .cartBtn", {
+              opacity: 0,
+              duration: 1.4,
+              delay: 0.5,
+              x: -60,
+            });
+            gsap.from(".mob-cartBtn", {
+              opacity: 0,
+              duration: 0.4,
+              delay: 0.5,
+              x: -10,
+            });
+            gsap.from(".arrow-bg", { opacity: 0, duration: 1.4, delay: 0.5, y: 60 });
+            gsap.from(".navbar-nav .nav-item", {
+              opacity: 0,
+              duration: 1,
+              delay: 0.5,
+              y: 30,
+              stagger: 0.2,
+            });
+
+            {% comment %} new product carousel {% endcomment %}
+      var splide = new Splide( '.splide.spi1', {
+        type   : 'loop',
+        perPage: 4,
+        focus  : 'center',
+        autoplay: true,
+      } );
+
+      splide.mount();
+      var splide = new Splide( '.splide.spi2', {
+        type   : 'loop',
+        perPage: 4,
+        focus  : 'center',
+        autoplay: true,
+      } );
+
+      splide.mount();
+    </script>
+  </body>
 </html>

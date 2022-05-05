@@ -5,9 +5,9 @@
 
 <!-- start search_result -->
 
-<div class="container-fluid">
+<div class="container">
 
-  <a href="{% url 'index' %}" class="pro_arrow PROO_arrow"><i class="fas fa-home"></i></a>
+  <a href="{% url 'index' %}" class="pro_arrow"><i class="fas fa-home"></i></a>
 
     <div class="row about product-info searchR"> 
      <h2 class="locationTitile">قائمة المفضله </h2>
@@ -17,34 +17,42 @@
          <a href="{% url 'signin' %}">تسجيل الدخول</a><h3 class="mt-3"> يجب</h3>
      </div>
      {%else%}
-     {% for pro in prol %}
+     {% for child in prol %}
 
-      <div class="col-4 col-md-3 col-lg-2 searchM">
+     <div class="col-6 col-md-3 col-lg-3 searchM">
         
-          <div class="card" style="width: 18rem;">
-            {% if pro.oldPrice %}
-            <span class="sale">sale!</span>
-            {% endif %}
-              <img src="{{ pro.photo.url }}" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">{{ pro.name }}</h5>
-                <p class="card-text CT2"><span class="latestPrice2">
-                  {% if pro.oldPrice %}
-                  جم{{ pro.oldPrice}}
-                  {% endif %}</span><span class="price"><bdi>جم </bdi>{{ pro.price }}</span></p>
-                <p class="card-text CT1">code: <span>{{ pro.code }}</span></p>
-               
-                <a href="{% url 'product_info' chi_id=pro.id pro_id=pro.product_id%}" class="NEWbtn">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  تفاصيل</a>
+      <div class="card" style="width: 18rem;">
+          <img src="{{ child.photo.url }}" class="card-img-top" alt="...">
+          {% if child.oldPrice %}
+          <span class="sale">sale!</span>
+          {% endif %}
+          <div class="card-body">
+            <h5 class="card-title">{{ child.name }}</h5>
+            <div class="card-hover">
+              <div class="card-text CT2"> <span class="price"><span class="price">{{ child.price }} جم</span><span class="latestPrice2">
+                {% if child.oldPrice %}
+                {{ child.oldPrice}}جم
+                {% endif %}
+             </span>
               </div>
-            </div>      
-          
-      </div>
+                
+              <div class="card-text CT1">code: <span>{{ child.code }}</span></div>
+            </div>
+            
+            <a href="{% url 'product_info' chi_id=child.id pro_id=child.product_id%}" class="NEWbtn">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              تفاصيل
+            </a>
+           
+          </div>
+        </div>      
+      
+  </div>
      {% empty %}
+
 
   <div class="wrongcart">
       <a class="linkc" href="{% url 'products' %}">جميع المنتجات</a><h3 class="mt-3">لم تضيف منتجات للمفضله</h3>

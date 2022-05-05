@@ -1,4 +1,4 @@
-# to make new djanggo project
+# to make new django project 
 1)open terminal and go to project path
 2)command [virtualenv projectName]  => it will create folder
 3)command [.\venv_Name\Scripts\activate]  when you are on project folder

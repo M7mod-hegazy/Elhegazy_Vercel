@@ -122,15 +122,44 @@
               </ul>
             </li>
           </ul>
-          <form class="d-flex" action="{% url 'search_result' %}" id="my_form">
+          <form class="d-flex nav_form" action="{% url 'search_result' %}" id="my_form">
             <input  name="searchname" class="form-control me-2" type="search" placeholder="ابحث عن منتج هنا" aria-label="Search">
-            <a class="btn" href="javascript:{}" onclick="document.getElementById('my_form').submit(); return false;"><i class='fas fa-search'></i></a>
-            <a href="{% url 'cart'%}" class="btn btn2" type="submit"><i class="fas fa-shopping-cart"></i></a>
+            <a class="btn searchBtn" href="javascript:{}" onclick="document.getElementById('my_form').submit(); return false;">
+              <i class='fas fa-search'></i>
+            </a>
+            <a href="{% url 'cart'%}" class="btn btn2 cartBtn" type="submit">
+              <i class="fas fa-shopping-cart"></i>
+              {% if not request.user.is_authenticated or request.user.is_anonymous %}
+              <div class="not-auth">
+                    <span>not-auth</span>
+              </div>
+              {% elif order %}
+              <span class="cart_count">{{prototal}}</span>
+              {% else %}
+              <div class="not-auth">
+                <span>not-auth</span>
+              </div>
+              {% endif %}
+            </a>
           </form>
            
         </div>
         
       </div>
+      <a href="{% url 'cart'%}" class="btn btn2 mob-cartBtn" type="submit">
+        <i class="fas fa-shopping-cart"></i>
+        {% if not request.user.is_authenticated or request.user.is_anonymous %}
+        <div class="not-auth">
+              <span>not-auth</span>
+        </div>
+        {% elif order %}
+        <span class="mob-cart_count">{{prototal}}</span>
+        {% else %}
+        <div class="not-auth">
+          <span>not-auth</span>
+        </div>
+        {% endif %}
+      </a>
     </nav>
    </div>
     

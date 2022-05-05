@@ -7,7 +7,7 @@
 
   <div class="container">
     <div class="row sign "> 
-      <h2 class="locationTitile">إنشاء حساب</h2>
+      <h2 class="locationTitile">الملف الشخصي</h2>
       <div class="col-12">
             <section class="signing_up">
 {% if request.user.is_authenticated %}
@@ -15,38 +15,45 @@
   {% csrf_token %}
 
   {% include 'includes/_alerts.html'%} 
-  <div class="form-group fc2">
-    <i class="fas fa-user"></i><input class="form-control fc" type="text" placeholder="الاسم الثاني" name="lname" value="{{fname}}">
-  </div>
-  <div class="form-group fc2">
-    <i class="fas fa-user"></i><input class="form-control fc" type="text" placeholder="الاسم الأول" name="fname" value="{{lname}}">
-  </div>
   
   <div class="form-group">
-    <i class="fa fa-envelope text-secondary"></i><input class="form-control border border-secondary text-secondary rounded fc" type="email" placeholder="البريد الالكتروني" name="email"  readonly value="{{email}}">
+    <i class="fas fa-user"></i><input id="firstName" class="form-control form-input fc" type="text" placeholder=" " name="fname" value="{{lname}}">
+    <label class="form-label" for="firstName">الإسم الأول </label>
   </div>
   <div class="form-group">
-    <i class="fas fa-user-circle text-secondary"></i><input class="form-control border border-secondary text-secondary rounded fc" type="text" placeholder="الاسم" name="username" disabled readonly value="{{username}}">
-  </div>
-  <div class="form-group fc2">
-    <i class="fa fa-lock"></i><input class="form-control fc" type="password" placeholder="تأكيد كلمة السر" name="password2">
-  </div>
-  <div class="form-group fc2">
-    <i class="fa fa-lock"></i><input class="form-control fc" type="password" placeholder="كلمة السر" name="password1">
+    <i class="fas fa-user"></i><input id="lastName" class="form-control form-input fc" type="text" placeholder=" " name="lname" value="{{fname}}">
+    <label class="form-label" for="lastName">الإسم الثاني </label>
   </div>
   <div class="form-group">
-    <i class="fas fa-map-marker-alt"></i><input class="form-control fc" type="text" placeholder="العنوان" name="address"value="{{address}}">
+    <i class="fa fa-envelope text-secondary"></i><input id="email" class="form-control form-input border border-secondary text-secondary rounded fc" type="email" placeholder=" " name="email" disabled readonly value="{{email}}">
+    <label class="form-label form-dis" for="email"> البريد الإلكتروني </label>
   </div>
   <div class="form-group">
-    <i class="fas fa-mobile"></i><input class="form-control fc" type="tel" placeholder="رقم التلفون" name="phone" value="{{phone}}">
+    <i class="fas fa-user-circle text-secondary"></i><input id="username" class="form-control form-input border border-secondary text-secondary rounded fc" type="text" placeholder=" " name="username" disabled readonly value="{{username}}">
+    <label class="form-label form-dis" for="username">اسم المسخدم </label>
+  </div>
+  <div class="form-group">
+    <i class="fa fa-lock"></i><input id="password1" class="form-control form-input fc" type="password" placeholder=" " name="password1">
+    <label class="form-label" for="password1">كلمة السر</label>
+  </div>
+  <div class="form-group">
+    <i class="fa fa-lock"></i><input id="password2" class="form-control form-input fc" type="password" placeholder=" " name="password2">
+    <label class="form-label" for="password2">تأكيد كلمة السر</label>
+  </div>
+  <div class="form-group">
+    <i class="fas fa-map-marker-alt"></i><input id="address" class="form-control form-input fc" type="text" placeholder=" " name="address"value="{{address}}">
+    <label class="form-label" for="address">العنوان </label>
+  </div>
+  <div class="form-group">
+    <i class="fas fa-mobile"></i><input id="phone" class="form-control form-input fc" type="tel" placeholder=" " name="phone" value="{{phone}}">
+    <label class="form-label" for="phone">رقم التلفون</label>
   </div>
 
      <button name="btnsave" type="submit" class="btn btn-primary btn-block mt-3 mb-3">حفظ التغييرات</button>
      <div class="input_details">
   
    
-      <a href="{% url 'signin' %}">تسجيل دخول</a><span> تملك حساب بالفعل؟</span>
- </div>
+</div>
 </form>
 {% else %}
 <h4 class="alert alert danger"><a class="text-dark" href="{% url 'signin' %}">تسجل الدخول</a> <bdi>يجب ان</bdi></h4>

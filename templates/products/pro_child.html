@@ -1,13 +1,16 @@
 {% extends 'base.html'%}
 {% load static %}
-{% block title %}-{{ pchild.name }}{% endblock %}
+{% block title %}- {{ pchild.name }}{% endblock %}
 {% block content %}
 
 
 <!-- start search_result -->
 
-<div class="container-fluid">
+<div class="container">
     <a href="{% url 'products' %}" class="pro_arrow"><i class="fas fa-arrow-left"></i></a>
+    <a href="{% url 'index' %}" class="pro_arrow home_arrow"><i class="fas fa-home"></i></a>
+
+
     <div class="row about product-info searchR"> 
      <h2 class="locationTitile">{{ pchild.name }}</h2>
 
@@ -15,7 +18,7 @@
 
      {% for child in prol %}
 
-      <div class="col-4 col-md-3 col-lg-2 searchM">
+      <div class="col-6 col-md-3 col-lg-3 searchM">
         
           <div class="card" style="width: 18rem;">
               <img src="{{ child.photo.url }}" class="card-img-top" alt="...">
@@ -24,11 +27,17 @@
               {% endif %}
               <div class="card-body">
                 <h5 class="card-title">{{ child.name }}</h5>
-                <p class="card-text CT2"> <span class="latestPrice2">
-                  {% if child.oldPrice %}
-                  جم{{ child.oldPrice}}
-                  {% endif %}</span><span class="price"><bdi>جم </bdi>{{ child.price }}</span></p>
-                <p class="card-text CT1">code: <span>{{ child.code }}</span></p>
+                <div class="card-hover">
+                  <div class="card-text CT2"> <span class="price"><span class="price">{{ child.price }} جم</span><span class="latestPrice2">
+                    {% if child.oldPrice %}
+                    {{ child.oldPrice}}جم
+                    {% endif %}
+                 </span>
+                  </div>
+                    
+                  <div class="card-text CT1">code: <span>{{ child.code }}</span></div>
+                </div>
+                
                 <a href="{% url 'product_info' chi_id=child.id pro_id=pchild.id%}" class="NEWbtn">
                   <span></span>
                   <span></span>

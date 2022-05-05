@@ -84,34 +84,32 @@
   <div class="row aboutUs"> 
     <h4 class="hr" ><span>:من نحن</span></h4>
 
-    <div class="col-12 col-lg-6">
+    <div class="col-12 col-lg-6 col_padding">
       
           <img  src="{% static 'img/icon.jpg'%}" class="image image1" alt="...">       
         
     </div>
-    <div class="col-12 col-lg-6">
+    <div class="col-12 col-lg-6 col_padding">
      
       
-        <p data-center-center="opacity:1;right:0;"  data-0-bottom="opacity:0;right:-100px;" class="text">الحججازي للتجهيز جميع انظمة عرض لكافة المحلات <br><br>
-          للاستفسار: <br>
-          ☎️0932716232 <br>
-          وليد حجازي📱01025109080 <br>
-          احمد الظابط📱01009663365 <br>
-          او زورونا علي العناوين التالية : <br><br>
-          - الفرع الرئيسي / سوهاج القيسارية العويسات <br>
-          - الفرع الثاني / سوهاج شارع احمد بن حنبل أمام حي شرق الزهراء <br>
+        <p data-center-center="opacity:1;right:0;"  data-0-bottom="opacity:0;right:-100px;" class="text about_p"> الحجازي خبره اكتر من 15 سنه في تجهيز المحلات التجاريه <br><br>
+زورونا في العناوين التالية : <br>
+الفرع الرئيسي / سوهاج القيسارية العويسات <br>
+الفرع الثاني / سوهاج شارع احمد بن حنبل أمام حي شرق الزهراء <br>
         </p>
       
      
     </div> 
 </div>
 </div>
-<h4 class="hr"><span>:خدماتنا</span></h4>
-
 <!-- end about -->
+
+<!-- start services -->
+
+<h4 class="hr"><span>:خدماتنا</span></h4>
 <div class="container-fluid">
   <div class="row aboutUs Nserve">
-      <div class="col-md-3 col-sm-6">
+      <div class="col-6 col-sm-6 col-md-3">
           <div class="serviceBox">
               <div class="service-icon">
                 <i class="fas fa-shopping-cart"></i>
@@ -124,7 +122,7 @@
           </div>
       </div>
 
-      <div class="col-md-3 col-sm-6">
+      <div class="col-6 col-md-3 col-sm-6">
           <div class="serviceBox">
               <div class="service-icon">
                 <i class="fas fa-store"></i>
@@ -136,7 +134,7 @@
               <a href="{% url 'works' %}" class="read">اذهب</a>
           </div>
       </div>
-      <div class="col-md-3 col-sm-6">
+      <div class="col-6 col-md-3 col-sm-6">
         <div class="serviceBox">
             <div class="service-icon">
               <i class="fas fa-user-circle"></i>
@@ -148,14 +146,14 @@
             <a href="{% url 'signup' %}" class="read">اذهب</a>
         </div>
     </div>
-    <div class="col-md-3 col-sm-6">
+    <div class="col-6 col-md-3 col-sm-6">
       <div class="serviceBox">
           <div class="service-icon">
             <i class="fas fa-map-marked-alt"></i>
           </div>
           <h3 class="title">فروعنا</h3>
           <p class="description">
-             اذهب للفرع الاقرب لك
+ ابحث عن الفرع الاقرب لموقعك
           </p>
           <a href="{% url 'location' %}" class="read">اذهب</a>
       </div>
@@ -163,13 +161,116 @@
   </div>
 </div>
 
-<!-- start new about-->
+<!-- end services -->
+
+<!-- start new products -->
+<h4 class="hr"><span>: خصومات</span></h4>
+<section class="splide spi2" aria-label="Splide Basic HTML Example">
+  <span class="sale_icon">SALE%%</span>
+
+  <div class="splide__track new__track">
+		<ul class="splide__list">
+      {% if chil2 %}
+
+      {% for child in chil2|slice:':3' %}
+      <li class="splide__slide new__splide">
+       <div class="searchR">
+           <div class="card" style="width: 18rem;">
+               <img src="{{ child.photo.url }}" class="card-img-top" alt="...">
+               {% if child.oldPrice %}
+               <span class="sale">sale!</span>
+               {% endif %}
+               <div class="card-body">
+                 <h5 class="card-title">{{ child.name }}</h5>
+                 <div class="card-hover">
+                   <div class="card-text CT2"> <span class="price"><span class="price">{{ child.price }} جم</span><span class="latestPrice2">
+                     {% if child.oldPrice %}
+                     {{ child.oldPrice}}جم
+                     {% endif %}
+                  </span>
+                   </div>
+                   <div class="card-text CT1">code: <span>{{ child.code }}</span></div>
+                 </div>    
+                 <a href="{% url 'product_info' chi_id=child.id pro_id=child.product_id%}" class="NEWbtn">
+                   <span></span>
+                   <span></span>
+                   <span></span>
+                   <span></span>
+                   تفاصيل
+                 </a>
+               </div>
+             </div>      
+       </div>
+      {% endfor %}
+      {% else %}
+      <h3 class="mt-5 mb-5">لا يوجد نتائج</h3>
+      {% endif %}
+     </li>	
+		
+		</ul>
+  </div>
+</section>
+ 
+<!-- end new products -->
+
+<!-- start new products -->
+<h4 class="hr"><span>: احدث منتجاتنا</span></h4>
+
+<section class="splide spi1" aria-label="Splide Basic HTML Example">
+  <span class="new_icon">NEW!!</span>
+
+  <div class="splide__track new__track">
+		<ul class="splide__list">
+      {% if chil %}
+
+      {% for child in chil|slice:':10' %}
+      <li class="splide__slide new__splide">
+       <div class="searchR">
+           <div class="card" style="width: 18rem;">
+               <img src="{{ child.photo.url }}" class="card-img-top" alt="...">
+               {% if child.oldPrice %}
+               <span class="sale">sale!</span>
+               {% endif %}
+               <div class="card-body">
+                 <h5 class="card-title">{{ child.name }}</h5>
+                 <div class="card-hover">
+                   <div class="card-text CT2"> <span class="price"><span class="price">{{ child.price }} جم</span><span class="latestPrice2">
+                     {% if child.oldPrice %}
+                     {{ child.oldPrice}}جم
+                     {% endif %}
+                  </span>
+                   </div>
+                   <div class="card-text CT1">code: <span>{{ child.code }}</span></div>
+                 </div>    
+                 <a href="{% url 'product_info' chi_id=child.id pro_id=child.product_id%}" class="NEWbtn">
+                   <span></span>
+                   <span></span>
+                   <span></span>
+                   <span></span>
+                   تفاصيل
+                 </a>
+               </div>
+             </div>      
+       </div>
+      {% endfor %}
+      {% else %}
+      <h3 class="mt-5 mb-5">لا يوجد نتائج</h3>
+      {% endif %}
+     </li>	
+		
+		</ul>
+  </div>
+</section>
+ 
+<!-- end new products -->
+
+<!-- start انظمة العرض-->
 
 <h4 class="hr"><span>:انظمة العرض</span></h4>
-{% for sec in mysections %}
 <div class="container-fluid SecContainer">
   <div class="row about"> 
-        <div class="col-12">
+    {% for sec in mysections %}
+        <div class="col-6">
             <div class="box3">
                 <img src="{{ sec.photo.url }}">
                 <div class="box-heading3">
@@ -184,9 +285,10 @@
                 </div>
             </div>
         </div>
+      {% endfor %}
   </div>
 </div>
-{% endfor %}
+
 
 
 

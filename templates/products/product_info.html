@@ -10,9 +10,11 @@
     <div class="container">
         <div class="row about product-info NewInfo"> 
 
-          <div class="col-12 col-lg-6 P_IMG">
+          <div class="col-12 col-lg-6 P_IMG info_sec">
 
             <a href="{% url 'pro_child' pro_id=pchild.product_id %}" class="proInfo_arrow"><i class="fas fa-arrow-left"></i></a>
+            <a href="{% url 'index' %}" class="proInfo_arrow_home"><i class="fas fa-home"></i></a>
+
             {% include 'includes/_alerts.html'%} 
 
 
@@ -96,12 +98,12 @@
                   <span class="visually-hidden">Next</span>
                 </button>
             </div>
-        </div> 
+          </div> 
  <!-- end carousel -->
-              
+            
               
       
-          <div class="col-12 col-lg-6 P_IN">
+          <div class="col-12 col-lg-6 P_IN info_sec">
 
             <h5 class="locationTitile infoTittle">{{ pchild.name }}</h5>
 

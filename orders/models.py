@@ -39,7 +39,4 @@ class Payment(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
     shipment_address = models.CharField(max_length=250)
     shipment_phone = models.CharField(max_length=20)
-    card_name = models.CharField(max_length=100)
-    card_number = CardNumberField()
-    expire = CardExpiryField()
-    security_code = SecurityCodeField()
+ 

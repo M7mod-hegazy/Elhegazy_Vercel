@@ -4,6 +4,8 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from products.models import Product
 from more.models import Work
+from orders.models import Order, OrderDetails
+
 
 # Import Pagination Stuff
 from django.core.paginator import Paginator
@@ -13,13 +15,27 @@ from django.core.paginator import Paginator
 
 
 def location(request):
-    context = {
+      context = {
         'products': Product.objects.all()
 
-    }
-    return render(request, 'more/location.html', context)
+      }
+      if request.user.is_authenticated and not request.user.is_anonymous:
+        if Order.objects.all().filter(user=request.user, is_finished=False):
+            order = Order.objects.get(user=request.user, is_finished=False)
+            orderdetails = OrderDetails.objects.all().filter(order=order)
+            prototal = 0
+            for prosup in orderdetails:
+                prototal += prosup.quantity
+            context = {
+              'order': order,
+              'prototal': prototal, 
+              'products': Product.objects.all()
+
+           }
+      return render(request, 'more/location.html', context)
 
 def works(request):
+  
     products = Product.objects.all()
     work = Work.objects.all()
     # Set up Pagination
@@ -27,6 +43,26 @@ def works(request):
     page = request.GET.get('page')
     workl = p.get_page(page)
     nums = "a" * workl.paginator.num_pages
-
+    context = {
+     'products':products,
+     'work':work,
+     'workl':workl,
+     'nums':nums
+    }
+    if request.user.is_authenticated and not request.user.is_anonymous:
+        if Order.objects.all().filter(user=request.user, is_finished=False):
+            order = Order.objects.get(user=request.user, is_finished=False)
+            orderdetails = OrderDetails.objects.all().filter(order=order)
+            prototal = 0
+            for prosup in orderdetails:
+                prototal += prosup.quantity
+            context = {
+              'order': order,
+              'prototal': prototal, 
+              'products':products,
+              'work':work,
+              'workl':workl,
+              'nums':nums
+            }
     
-    return render(request, 'more/works.html', {'products':products, 'work':work, 'workl':workl, 'nums':nums})
+    return render(request, 'more/works.html', context)

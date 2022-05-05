@@ -1,13 +1,15 @@
 {% extends 'base.html'%}
 {% load static %}
-{% block title %}-الدفع{% endblock %}
+{% block title %}-تأكيد الطلب{% endblock %}
 {% block content %}
 
   <!-- start signup -->
 
-  <div class="container">
+  <div class="container payment_container">
+    <a href="{% url 'index' %}" class="pro_arrow cart_arrow"><i class="fas fa-home"></i></a>
+
     <div class="row sign "> 
-      <h2 class="locationTitile">الدفع</h2>
+      <h2 class="locationTitile">تأكيد الطلب</h2>
       <div class="col-12">
             <section class="signing_up payment">
               {% include 'includes/_alerts.html'%} 
@@ -18,54 +20,47 @@
                   </div>
               {% elif not order %}
                 <div class="wrongcart wrongpay">
-                  <a href="{% url 'products' %}" class="text-light">تسوق</a><h3 class="mt-3  payh3"> لا يوجد طلبات بعد</h3>
+                  <a class="linkc" href="{% url 'products' %}">اضف منتجات للعربه</a><h3 class="mt-3">لم يوجد طلبات </h3>
                 </div>
               {%else%}
               {% if is_added == True %}
-              <form method="POST" style='display:none;'>
+                <div class="wrongcart wrongpay">
+                  <h3 class="mt-3  payh3">     : من فضلك اتصل بأحد الأرقام التاليه لتأكيد طلبك </h3>
+                </div>
+                <div class="payment_phones">
+                  <div><span>01009663365</span><i class="fas fa-phone m-2"></i></div>
+                  <div><span>01025109080</span><i class="fas fa-phone m-2"></i></div>
+                  <div><span>0932716232</span><i class="fas fa-phone-rotary"></i></div>   
+                </div>
+              <form novalidate method="POST" style='display:none;'>
               {% else %}
-              <form method="POST">
+              <form novalidate method="POST" id="cartForm">
               {% endif %}
                 {% csrf_token %}
-                <h5 class="carttotal"><bdi><span class=" border border-primary rounded p-1">{{order.id}}</span><bdi> :طلب رقم</bdi></bdi></h5>
+                
+                <h5 class="carttotal"><bdi><span class=" border border-primary rounded cart_margin p-1">{{order.id}}</span><bdi> :طلب رقم</bdi></bdi></h5>
                 <hr>
-                <h5 class="carttotal"><bdi>منتج </bdi><span class="border border-primary rounded p-1">{{prototal}}</span><bdi> :بمجموع</bdi> , <bdi> صنف </bdi><span class="border border-primary rounded p-1">{{orderdetails.count}}</span><bdi> :لعدد</bdi></h5>
+                <h5 class="carttotal"><bdi>منتج </bdi><span class="border border-primary rounded cart_margin p-1">{{prototal}}</span><bdi> :بمجموع</bdi> , <bdi> صنف </bdi><span class="border border-primary rounded cart_margin p-1">{{orderdetails.count}}</span><bdi> :لعدد</bdi></h5>
                 <hr>
-                <h5 class="carttotal"><bdi><span class="price border border-primary rounded p-1"><bdi>جم</bdi>{{total}}</span><bdi> :بمبلغ</bdi></bdi></h5>
+                <h5 class="carttotal"><bdi><span class="price border border-primary rounded cart_margin p-1"><bdi>جم</bdi>{{total}}</span><bdi> :بمبلغ</bdi></bdi></h5>
                 <hr>
-                <a href="{% url 'cart' %}" class="btn btn-primary p-1">العوده للعربه</a>
+                <a href="{% url 'cart' %}" class="btn btn-primary p-1 cart_back_btn">العوده للعربه</a>
                 <hr>
 
-                <div class="form-group fg fgg">
-                  <label for="inputship_address">:عنوان التوصيل</label>
-                  <i class="fas fa-map-marker-alt"></i></i><input required id="inputship_address" class="form-control fc fcc" type="text" placeholder="العنوان بالتفصيل" name="ship_address" value="{{ship_address}}">
+                <div class="form-group ">
+                  <i class="fas fa-map-marker-alt"></i></i><input id="ship_address" class="form-control form-input" type="text" placeholder=" " name="ship_address" value="{{ship_address}}">
+                  <label class="form-label" for="ship_address">عنوان التوصيل</label>
+
                 </div>
-                <div class="form-group fg fgg">
-                  <label for="ship_phone">:رقم التلفون</label>
-                  <i class="fas fa-mobile-alt"></i><input required id="ship_phone" class="form-control fc fcc" type="text" placeholder="رقم هاتف يعمل" name="ship_phone" value="{{ship_phone}}">
-                </div>
-                
-                <div class="form-group fg fgg">
-                  <label for="card_name">:الأسم على البطاقه</label>
-                  <i class="fas fa-credit-card"></i><input required id="card_name" class="form-control fc fcc" type="text" placeholder="الأسم على البطاقه" name="card_name" value="{{card_name}}">
-                </div>
-                <div class="form-group fg fgg">
-                  <label for="card_number">:رقم الكارت</label>
-                  <i class="fas fa-credit-card"></i></i><input required id="card_number" class="form-control fc fcc" type="text" placeholder="3333 3333 3333 3333" name="card_number" value="{{card_number}}">
-                </div>
-               
-                <div class="form-group fg fc3">
-                  <label for="expire">:تاريخ إنتهاء الكارت</label>
-                  <i class="far fa-calendar-alt"></i><input required id="expire" class="form-control fc fcc" type="text" placeholder="mm/YY" name="expire" value="{{expire}}">
-                </div>
-                <div class="form-group fg fc3">
-                  <label for="cvv">:CVV</label>
-                  <i class="fa fa-lock"></i><input required id="cvv" class="form-control fc fcc" type="text" placeholder="333" name="security_code" value="{{security_code}}">
+                <div class="form-group ">
+                  <i class="fas fa-mobile-alt"></i><input id="ship_phone" class="form-control form-input" type="text" placeholder=" " name="ship_phone" value="{{ship_phone}}">
+                  <label class="form-label" for="ship_phone">رقم التلفون</label>
+
                 </div>
                 <div class="paybtn">
-                   <button name="btnpayment" type="submit" class="btn btn-primary btn-block mt-3 mb-3">دفع</button>
+                   <button name="payBtn" class="btn btn-primary btn-block mt-3 mb-3" >تأكيد الطلب</button>
                 </div>
-              </form>
+              
               {%endif%}
               
             
@@ -77,8 +72,10 @@
  </div>
 </section> 
 </div> 
-  <!-- end signup -->
-
-
-  <!-- end signin -->
+<script>
+  function pay(){
+    document.getElementById('btnclose2').click();
+    document.getElementById('cartForm').submit();
+  }
+</script>
   {% endblock %}

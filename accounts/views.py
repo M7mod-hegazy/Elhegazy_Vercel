@@ -2,6 +2,7 @@
 from django.contrib.messages.api import success
 from django.shortcuts import render, redirect
 from products.models import Product, Child
+from orders.models import Order, OrderDetails
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login as auth_login
@@ -10,27 +11,34 @@ from .forms import SignUpForm
 from django.contrib.auth.models import User
 from .models import UserProfile
 import re
-from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.core.paginator import Paginator
 
 # Create your views here.
 
 
+
 def signin(request):
     product = Product.objects.all()
+    context = {
+       'product': product
+    }
     if request.method == 'POST' and 'btnlogin' in request.POST:
         username = request.POST['username']
         password = request.POST['password1']
         user = auth.authenticate(username=username, password=password)
+       
         if user is not None:
             if 'rememberme' not in request.POST:
                 request.session.set_expiry(0)
-            auth.login(request, user)
-
-        else:
+            auth.login(request, user)  
+        else:            
             messages.error(request, 'خطأ في اسم المسخدم او البريد الإلكتروني')
         return redirect('signin')
+    elif request.user.is_authenticated and not request.user.is_anonymous :
+        return redirect('/')
+        
     else:
-        return render(request, 'accounts/signin.html', {'products': product})
+        return render(request, 'accounts/signin.html', context)
 
 
 def signup(request):
@@ -185,7 +193,15 @@ def profile(request):
             }
             if not request.user.is_anonymous:
                 userprofile = UserProfile.objects.get(user=request.user)
-                context = {
+                if Order.objects.all().filter(user=request.user, is_finished=False):
+                    order = Order.objects.get(user=request.user, is_finished=False)
+                    orderdetails = OrderDetails.objects.all().filter(order=order)
+                    prototal = 0
+                    for prosup in orderdetails:
+                        prototal += prosup.quantity
+                    context = {
+                    'order': order,
+                    'prototal': prototal,
                     'products': Product.objects.all(),
                     'fname': request.user.first_name,
                     'lname': request.user.last_name,
@@ -194,10 +210,22 @@ def profile(request):
                     'password': request.user.password,
                     'address': userprofile.address,
                     'phone': userprofile.tell
+                    }
+                    return render(request, 'accounts/profile.html', context)
+                else:
+                    context = {
+                    'products': Product.objects.all(),
+                    'fname': request.user.first_name,
+                    'lname': request.user.last_name,
+                    'email': request.user.email,
+                    'username': request.user.username,
+                    'password': request.user.password,
+                    'address': userprofile.address,
+                    'phone': userprofile.tell
+                  }
+                    return render(request, 'accounts/profile.html', context)
 
-                }
 
-            return render(request, 'accounts/profile.html', context)
         else:
             return redirect('profile')
 
@@ -207,7 +235,7 @@ def product_favorite(request, pro_id, chi_id):
     products = Product.objects.all()
     chil = Child.objects.all()
     if request.user.is_authenticated and not request.user.is_anonymous:
-
+       
         pro_fav = Child.objects.get(product__pk=pro_id, pk=chi_id)
 
         if UserProfile.objects.filter(user=request.user, product_favorites=pro_fav).exists():
@@ -215,6 +243,7 @@ def product_favorite(request, pro_id, chi_id):
             userprofile.product_favorites.remove(pro_fav)
             messages.error(request, 'تم مسح المنتج من المفضله بنجاح ')
             return redirect('/products/' + str(pro_id) + '/info/' + str(chi_id))
+            
         else:
             userprofile = UserProfile.objects.get(user=request.user)
             userprofile.product_favorites.add(pro_fav)
@@ -235,6 +264,21 @@ def show_product_favorite(request):
         page = request.GET.get('page')
         prol2 = p.get_page(page)
         nums = "a" * prol2.paginator.num_pages
+        if Order.objects.all().filter(user=request.user, is_finished=False):
+            order = Order.objects.get(user=request.user, is_finished=False)
+            orderdetails = OrderDetails.objects.all().filter(order=order)
+            prototal = 0
+            for prosup in orderdetails:
+                prototal += prosup.quantity    
 
-        context = {'prol':pro, 'products':pro5, 'prol2':prol2}
-    return render(request, 'products/favorite.html', context)    
+            context = {
+            'order': order,
+            'prototal': prototal,
+            'prol':pro,
+            'products':pro5,
+            'prol2':prol2
+            }
+            return render(request, 'products/favorite.html', context)    
+        else:
+            return render(request, 'products/favorite.html', {'prol':pro,'products':pro5,'prol2':prol2})    
+  
