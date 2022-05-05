@@ -1,1 +1,1 @@
-web:gunicorn frist.wsgi
+web: gunicorn frist.wsgi
