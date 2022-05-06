@@ -11,6 +11,7 @@ django-filter==21.1
 django-heroku==0.3.1
 django-widget-tweaks==1.4.12
 filelock==3.6.0
+gunicorn==20.1.0
 heroku==0.1.4
 idna==3.3
 Pillow==9.1.0
