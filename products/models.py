@@ -1,7 +1,6 @@
 from os import name
 from django.db import models
 from datetime import datetime
-import qrcode
 from io import BytesIO
 from django.core.files import File
 from PIL import Image, ImageDraw
@@ -41,21 +40,8 @@ class Child(models.Model):
     photo5 = models.ImageField(
         upload_to='photos/%Y/%m/%d/', blank=True, null=True)
 
-    qr_code = models.ImageField(upload_to='qr_codes', blank=True)
 
-    def save(self, *args, **kwargs):
-        chi = self.id
-        prod = self.product.id
-        qrcode_img = qrcode.make(
-            'http/elhegazy/' + str(prod) + '/info/' + str(chi))
-        canvas = Image.new('RGB', (330, 330), 'white')
-        canvas.paste(qrcode_img)
-        fname = f'qr_code-{self.name}.png'
-        buffer = BytesIO()
-        canvas.save(buffer, 'PNG')
-        self.qr_code.save(fname, File(buffer), save=False)
-        canvas.close()
-        super().save(*args, **kwargs)
+
         
        
 

@@ -1,7 +1,7 @@
 from os import name
 from django.db import models
 from datetime import datetime
-from products.models import Child, Product
+from products.models import Product
 # Create your models here.
 
 
