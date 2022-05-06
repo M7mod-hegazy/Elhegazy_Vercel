@@ -1,0 +1,21 @@
+{
+  "name": "m7mod",
+  "description": "elhegazy",
+  "main": "elhegazy",
+  "authors": [
+    "M7mod-hegazy <68657674+M7mod-hegazy@users.noreply.github.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "elhegazy"
+  ],
+  "homepage": "https://github.com/M7mod-hegazy/elhegaze.V_1.1",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

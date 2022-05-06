@@ -1,7 +1,6 @@
 from os import name
 from django.db import models
 from datetime import datetime
-import qrcode
 from io import BytesIO
 from django.core.files import File
 from PIL import Image, ImageDraw
