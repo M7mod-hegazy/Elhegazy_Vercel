@@ -28,7 +28,9 @@ SECRET_KEY = '57Eb060Ef463C7E9396850Adc95D2Ec3115B68174D72C468'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["elhegaze-v1.herokuapp.com/"]
+ALLOWED_HOSTS = [
+    '*'
+    ]
 
 
 # Application definition
@@ -121,7 +123,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
-LANGUAGE_CODE = 'en'
+LANGUAGE_CODE = 'ar'
 
 TIME_ZONE = 'UTC'
 
@@ -147,10 +149,10 @@ STATICFILES_DIRS = [
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # media folder
-
 MEDIA_ROOT = BASE_DIR / 'media'
-
 MEDIA_URL = '/media/'
+
+
 
 LOGOUT_REDIRECT_URL = 'index'
 LOGIN_REDIRECT_URL = 'index'
