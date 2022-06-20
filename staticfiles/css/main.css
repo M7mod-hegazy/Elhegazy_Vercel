@@ -6136,6 +6136,7 @@ span.new_icon {
   }
   h1.slideshow__slide-caption-title {
     font-size: 15px;
+    margin-bottom: 55px;
   }
 }
 
@@ -6149,5 +6150,9 @@ span.new_icon {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.location_container a.pro_arrow {
+  top: 50px;
 }
 /*# sourceMappingURL=main.css.map */

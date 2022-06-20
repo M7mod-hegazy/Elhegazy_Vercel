@@ -5491,10 +5491,14 @@ span.new_icon {
   }
   h1.slideshow__slide-caption-title {
     font-size: 15px;
+    margin-bottom: 55px;
   }
 }
 .first_row {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.location_container a.pro_arrow {
+  top: 50px;
 }
