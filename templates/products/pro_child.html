@@ -28,12 +28,14 @@
               <div class="card-body">
                 <h5 class="card-title">{{ child.name }}</h5>
                 <div class="card-hover">
-                  <div class="card-text CT2"> <span class="price"><span class="price">{{ child.price }} جم</span><span class="latestPrice2">
-                    {% if child.oldPrice %}
-                    {{ child.oldPrice}}جم
-                    {% endif %}
-                 </span>
-                  </div>
+                  {% comment %}
+                    <div class="card-text CT2"> <span class="price"><span class="price">{{ child.price }} جم</span><span class="latestPrice2">
+                      {% if child.oldPrice %}
+                      {{ child.oldPrice}}جم
+                      {% endif %}
+                      </span>
+                    </div> 
+                  {% endcomment %}
                     
                   <div class="card-text CT1">code: <span>{{ child.code }}</span></div>
                 </div>

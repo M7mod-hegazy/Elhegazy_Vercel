@@ -40,7 +40,7 @@ def pro_child(request, pro_id):
     chil = Child.objects.all().filter(product__pk=pro_id)
     pchild = get_object_or_404(Product, pk=pro_id)
     product = Product.objects.all().prefetch_related('childs')
-    p = Paginator(chil, 4)
+    p = Paginator(chil, 48)
     page = request.GET.get('page')
     prol = p.get_page(page)
     nums = "a" * prol.paginator.num_pages
@@ -102,7 +102,7 @@ def search_result(request):
     name = None
     code = None
 
-    p = Paginator(Child.objects.all(), 6)
+    p = Paginator(Child.objects.all(), 48)
     page = request.GET.get('page')
     prol = p.get_page(page)
     nums = "a" * prol.paginator.num_pages

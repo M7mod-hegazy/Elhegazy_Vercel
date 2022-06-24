@@ -252,7 +252,7 @@ li.nav-item {
   margin-bottom: 2px;
   margin: 5px 5px;
   padding: 10px 10px;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .ACT {
@@ -1512,7 +1512,7 @@ img.qrcode {
   border-bottom: solid 3px #0d6efd;
   background-color: rgba(255, 255, 255, 0.15);
   padding: 4.5px;
-  margin-top: 10px !important;
+  margin-top: 30px !important;
   width: 90%;
 }
 
@@ -4545,7 +4545,6 @@ span.WorksName {
 .box3 .description3 {
   font-size: 14px;
   color: #fff;
-  line-height: 25px;
 }
 
 .box3 .read3 {
@@ -4909,21 +4908,29 @@ span.WorksName {
 }
 
 @media only screen and (max-width: 576px) {
+  .serviceBox {
+    margin-bottom: 15px;
+    padding: 12px 10px;
+  }
   .serviceBox .read {
-    font-size: 8px;
+    font-size: 7px;
+    padding: 7px 15px;
   }
   .serviceBox .description {
-    font-size: 8px;
+    font-size: 6px;
+    margin-bottom: 10px;
   }
   .serviceBox .title {
-    font-size: 10px;
+    font-size: 7px;
+    margin-bottom: 0px;
   }
   .serviceBox .service-icon i {
-    font-size: 15px;
+    font-size: 10px;
   }
   .serviceBox .service-icon {
-    width: 40px;
-    height: 40px;
+    width: 25px;
+    height: 25px;
+    border-radius: 0 10px;
     display: -ms-grid;
     display: grid;
     place-content: center;
@@ -5930,7 +5937,7 @@ span.new_icon {
     padding: 20px 0 0 0;
   }
   p.description3 {
-    font-size: 8px !important;
+    font-size: 7px !important;
     margin: 0;
     padding: 0;
   }
@@ -6154,5 +6161,12 @@ span.new_icon {
 
 .location_container a.pro_arrow {
   top: 50px;
+}
+
+.empty_works {
+  display: -ms-grid;
+  display: grid;
+  place-content: center;
+  padding-bottom: 15px;
 }
 /*# sourceMappingURL=main.css.map */

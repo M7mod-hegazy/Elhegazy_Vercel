@@ -128,7 +128,7 @@
               <div class="service-icon">
                 <i class="fas fa-store"></i>
               </div>
-              <h3 class="title">اعمال سابقه</h3>
+              <h3 class="title">سابقه أعمال</h3>
               <p class="description">
                  هذه بعض النماذج لمحلات جهزنها بالكامل  
               </p>
@@ -138,13 +138,13 @@
       <div class="col-6 col-md-3 col-sm-6">
         <div class="serviceBox">
             <div class="service-icon">
-              <i class="fas fa-user-circle"></i>
+              <i class="fab fa-facebook-square"></i>
             </div>
-            <h3 class="title">إنشاء حساب</h3>
+            <h3 class="title">الفيس بوك</h3>
             <p class="description">
-               يمكنك الإنضمام إلينا للتمتع بمزيد من المزايه
+               يمكنك التصفح عبر صفحتنا على الفيس بوك
             </p>
-            <a href="{% url 'signup' %}" class="read">اذهب</a>
+            <a href="https://www.facebook.com/elhegazi" target="_blank" class="read">اذهب</a>
         </div>
     </div>
     <div class="col-6 col-md-3 col-sm-6">
@@ -164,55 +164,58 @@
 
 <!-- end services -->
 
-<!-- start new products -->
-<h4 class="hr"><span>: خصومات</span></h4>
-<section class="splide spi2" aria-label="Splide Basic HTML Example">
-  <span class="sale_icon">SALE%%</span>
+<!-- start sale products -->
 
-  <div class="splide__track new__track">
-		<ul class="splide__list">
-      {% if chil2 %}
+{% comment %}
+  <h4 class="hr"><span>: خصومات</span></h4>
+  <section class="splide spi2" aria-label="Splide Basic HTML Example">
+    <span class="sale_icon">SALE%%</span>
 
-      {% for child in chil2|slice:':3' %}
-      <li class="splide__slide new__splide">
-       <div class="searchR">
-           <div class="card" style="width: 18rem;">
-               <img src="{{ child.photo.url }}" class="card-img-top" alt="...">
-               {% if child.oldPrice %}
-               <span class="sale">sale!</span>
-               {% endif %}
-               <div class="card-body">
-                 <h5 class="card-title">{{ child.name }}</h5>
-                 <div class="card-hover">
-                   <div class="card-text CT2"> <span class="price"><span class="price">{{ child.price }} جم</span><span class="latestPrice2">
-                     {% if child.oldPrice %}
-                     {{ child.oldPrice}}جم
-                     {% endif %}
-                  </span>
-                   </div>
-                   <div class="card-text CT1">code: <span>{{ child.code }}</span></div>
-                 </div>    
-                 <a href="{% url 'product_info' chi_id=child.id pro_id=child.product_id%}" class="NEWbtn">
-                   <span></span>
-                   <span></span>
-                   <span></span>
-                   <span></span>
-                   تفاصيل
-                 </a>
-               </div>
-             </div>      
-       </div>
-      {% endfor %}
-      {% else %}
-      <h3 class="mt-5 mb-5">لا يوجد نتائج</h3>
-      {% endif %}
-     </li>	
-		
-		</ul>
-  </div>
-</section>
+    <div class="splide__track new__track">
+      <ul class="splide__list">
+        {% if chil2 %}
+
+        {% for child in chil2|slice:':3' %}
+        <li class="splide__slide new__splide">
+        <div class="searchR">
+            <div class="card" style="width: 18rem;">
+                <img src="{{ child.photo.url }}" class="card-img-top" alt="...">
+                {% if child.oldPrice %}
+                <span class="sale">sale!</span>
+                {% endif %}
+                <div class="card-body">
+                  <h5 class="card-title">{{ child.name }}</h5>
+                  <div class="card-hover">
+                    <div class="card-text CT2"> <span class="price"><span class="price">{{ child.price }} جم</span><span class="latestPrice2">
+                      {% if child.oldPrice %}
+                      {{ child.oldPrice}}جم
+                      {% endif %}
+                    </span>
+                    </div>
+                    <div class="card-text CT1">code: <span>{{ child.code }}</span></div>
+                  </div>    
+                  <a href="{% url 'product_info' chi_id=child.id pro_id=child.product_id%}" class="NEWbtn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    تفاصيل
+                  </a>
+                </div>
+              </div>      
+        </div>
+        {% endfor %}
+        {% else %}
+        <h3 class="mt-5 mb-5">لا يوجد نتائج</h3>
+        {% endif %}
+      </li>	
+      
+      </ul>
+    </div>
+  </section>
+{% endcomment %}
  
-<!-- end new products -->
+<!-- end sale products -->
 
 <!-- start new products -->
 <h4 class="hr"><span>: احدث منتجاتنا</span></h4>
@@ -235,12 +238,14 @@
                <div class="card-body">
                  <h5 class="card-title">{{ child.name }}</h5>
                  <div class="card-hover">
-                   <div class="card-text CT2"> <span class="price"><span class="price">{{ child.price }} جم</span><span class="latestPrice2">
+                   {% comment %}
+                    <div class="card-text CT2"> <span class="price"><span class="price">{{ child.price }} جم</span><span class="latestPrice2">
                      {% if child.oldPrice %}
                      {{ child.oldPrice}}جم
                      {% endif %}
-                  </span>
-                   </div>
+                     </span>
+                    </div> 
+                   {% endcomment %}
                    <div class="card-text CT1">code: <span>{{ child.code }}</span></div>
                  </div>    
                  <a href="{% url 'product_info' chi_id=child.id pro_id=child.product_id%}" class="NEWbtn">
