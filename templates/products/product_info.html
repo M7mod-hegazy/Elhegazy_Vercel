@@ -10,7 +10,7 @@
     <div class="container">
         <div class="row about product-info NewInfo"> 
 
-          <div class="col-12 col-lg-6 P_IMG info_sec">
+          <div class="col-12  P_IMG info_sec">
 
             <a href="{% url 'pro_child' pro_id=pchild.product_id %}" class="proInfo_arrow"><i class="fas fa-arrow-left"></i></a>
             <a href="{% url 'index' %}" class="proInfo_arrow_home"><i class="fas fa-home"></i></a>
@@ -19,7 +19,10 @@
 
 
  <!-- start carousel -->
+ <h5 class="locationTitile infoTittle">{{ pchild.name }}</h5>
+
  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+
               <div class="carousel-indicators">
               <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
               {% if pchild.photo2 %}
@@ -103,14 +106,14 @@
             
               
       
-          <div class="col-12 col-lg-6 P_IN info_sec">
+          <div class="col-12  P_IN info_sec">
 
-            <h5 class="locationTitile infoTittle">{{ pchild.name }}</h5>
-
-            <p class="infoDetails"><span class="">{{ pchild.details }}</span></p>
-
-             <div class="NF"></div>
-<hr>
+            {% if pchild.details %}
+              <p class="infoDetails"><span class="">{{ pchild.details }}</span></p>
+              <div class="NF"></div>
+              <hr>
+            {% endif %}
+    
              {% comment %}
                 <div class="infoCircle2">السعر: <span class="productPrice">{{ pchild.price }} جم</span><span class="latestPrice">
                   {% if pchild.oldPrice %}

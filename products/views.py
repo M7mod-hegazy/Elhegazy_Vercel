@@ -102,7 +102,7 @@ def search_result(request):
     name = None
     code = None
 
-    p = Paginator(Child.objects.all(), 48)
+    p = Paginator(Child.objects.all(), 12)
     page = request.GET.get('page')
     prol = p.get_page(page)
     nums = "a" * prol.paginator.num_pages
