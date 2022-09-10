@@ -108,7 +108,7 @@
             <h5 class="locationTitile infoTittle">{{ pchild.name }}</h5>
 
             {% if pchild.details %}
-              <p class="infoDetails"><span class="">{{ pchild.details }}</span></p>
+              <p class="infoDetails"><span class="">{{ pchild.details|linebreaks }}</span></p>
               <div class="NF"></div>
               <hr>
            {% endif %}
