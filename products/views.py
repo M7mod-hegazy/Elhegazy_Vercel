@@ -40,7 +40,7 @@ def pro_child(request, pro_id):
     chil = Child.objects.all().filter(product__pk=pro_id)
     pchild = get_object_or_404(Product, pk=pro_id)
     product = Product.objects.all().prefetch_related('childs')
-    p = Paginator(chil, 12)
+    p = Paginator(chil, 2)
     page = request.GET.get('page')
     prol = p.get_page(page)
     nums = "a" * prol.paginator.num_pages
@@ -95,39 +95,52 @@ def product_info(request, pro_id, chi_id):
         return render(request, 'products/product_info.html', context={'pchild': pchild, 'products': products,
                                                                       'chil': chil, 'obj': obj})
 
-
 def search_result(request):
     pro2 = Child.objects.all()
     pro5 = Product.objects.all()
     name = None
     code = None
-
-    p = Paginator(Child.objects.all(), 12)
-    page = request.GET.get('page')
-    prol = p.get_page(page)
-    nums = "a" * prol.paginator.num_pages
+    details = None
     seens = None
-    query_string = request.GET['searchname']
+    p = None
+    page = None
+    prol=  None
 
     search_vector = SearchVector('name', 'code', 'details')
     if ('searchname' in request.GET) and request.GET['searchname'].strip():
-        seens = Child.objects.annotate(
-            search=search_vector).filter(search=query_string)
-        if seens:
-            pass
-        else:
-            messages.error(request, 'لا يوجد نتائج مطابقه')
-
-    context3 = {
-
-        'name': name,
-        'code': code,
-        'products2': pro2,
-        'products': pro5,
-        'prol': prol,
-        'nums': nums,
-        'seens': seens, 'query_string': query_string
-    }
+        query_string = request.GET.get('searchname')
+        seens = Child.objects.annotate(search=search_vector).filter(search=query_string)
+        page = request.GET.get('page')
+        paginator = Paginator(seens,12)
+        try:  
+            p = paginator.page(page)
+        except PageNotAnInteger:
+            p = paginator.page(1)
+        except EmptyPage:
+            p = paginator.page(paginator.num_pages)
+        prol = seens.count()
+        
+  
+        context3 = {
+            'name': name,
+            'code': code,
+            'details':details,
+            'products2': pro2,
+            'products': pro5,
+            'prol': prol,
+            'p':p,
+            'seens': seens, 'query_string': query_string
+        }
+    else:   
+          context3 = {
+            'name': name,
+            'code': code,
+            'details':details,
+            'products2': pro2,
+            'products': pro5,
+           
+        } 
+        
     if request.user.is_authenticated and not request.user.is_anonymous:
         if Order.objects.all().filter(user=request.user, is_finished=False):
             order = Order.objects.get(user=request.user, is_finished=False)
@@ -140,10 +153,10 @@ def search_result(request):
                 'prototal': prototal,
                 'name': name,
                 'code': code,
+                'details': details,
                 'products2': pro2,
                 'products': pro5,
                 'prol': prol,
-                'nums': nums,
                 'seens': seens,
                 'query_string': query_string
             }

@@ -15,7 +15,84 @@
      <h2 class="locationTitile">{{ pchild.name }}</h2>
 
     {% if prol %}
-
+    {%if pchild.photo.url %}
+        <div id="carouselExampleIndicators" class="carousel slide proCarousel" data-bs-ride="true">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            {%if pchild.photo2%}
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            {%else%}{%endif%}
+            {%if pchild.photo3 %}
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            {%else%}{%endif%}
+            {%if pchild.photo4 %}
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+            {%else%}{%endif%}
+            {%if pchild.photo5 %}
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
+            {%else%}{%endif%}
+            {%if pchild.photo6 %}
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5" aria-label="Slide 6"></button>
+            {%else%}{%endif%}
+            {%if pchild.photo7 %}
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="6" aria-label="Slide 7"></button>
+            {%else%}{%endif%}
+            {%if pchild.photo8 %}
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="7" aria-label="Slide 8"></button>
+            {%else%}{%endif%}
+            {%if pchild.photo9 %}
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="8" aria-label="Slide 9"></button>
+            {%else%}{%endif%}
+            {%if pchild.photo10 %}
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="9" aria-label="Slide 10"></button>
+            {%else%}{%endif%}
+          </div>
+          <div class="carousel-inner carousel2">
+            <div class="carousel-item active">
+              <img src="{{ pchild.photo.url }}" class="d-block w-100" alt="{{pchild.name}}">
+            </div>
+            {%if pchild.photo2 %}
+            <div class="carousel-item"><img src="{{ pchild.photo2.url }}" class="d-block w-100" alt="{{pchild.name}}"></div>
+            {%else%}{%endif%}
+            {%if pchild.photo3 %}
+            <div class="carousel-item"><img src="{{ pchild.photo3.url }}" class="d-block w-100" alt="{{pchild.name}}"></div>
+            {%else%}{%endif%}
+            {%if pchild.photo4 %}
+            <div class="carousel-item"><img src="{{ pchild.photo4.url }}" class="d-block w-100" alt="{{pchild.name}}"></div>
+            {%else%}{%endif%}
+            {%if pchild.photo5 %}
+            <div class="carousel-item"><img src="{{ pchild.photo5.url }}" class="d-block w-100" alt="{{pchild.name}}"></div>
+            {%else%}{%endif%}
+            {%if pchild.photo6 %}
+            <div class="carousel-item"><img src="{{ pchild.photo6.url }}" class="d-block w-100" alt="{{pchild.name}}"></div>
+            {%else%}{%endif%}
+            {%if pchild.photo7 %}
+            <div class="carousel-item"><img src="{{ pchild.photo7.url }}" class="d-block w-100" alt="{{pchild.name}}"></div>
+            {%else%}{%endif%}
+            {%if pchild.photo8 %}
+            <div class="carousel-item"><img src="{{ pchild.photo8.url }}" class="d-block w-100" alt="{{pchild.name}}"></div>
+            {%else%}{%endif%}
+            {%if pchild.photo9 %}
+            <div class="carousel-item"><img src="{{ pchild.photo9.url }}" class="d-block w-100" alt="{{pchild.name}}"></div>
+            {%else%}{%endif%}
+            {%if pchild.photo10 %}
+            <div class="carousel-item"><img src="{{ pchild.photo10.url }}" class="d-block w-100" alt="{{pchild.name}}"></div>
+            {%else%}{%endif%}
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon CCPI" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon CCNI" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      {% if pchild.details %}
+        <p class="infoDetails INF2"><span class="">{{ pchild.details }}</span></p>
+      {% endif %}    
+    {% endif %}
+    
      {% for child in prol %}
 
       <div class="col-6 col-md-3 col-lg-3 searchM">
@@ -72,8 +149,8 @@
     <ul class="pagination justify-content-center P">
           
       {% if prol.has_previous %}
-        <li class="page-item"><a class="page-link" href="?page=1">&#11164&#11164</a></li>
-        <li class="page-item"><a class="page-link" href="?page={{ prol.previous_page_number }}">&#11164</a></li>
+        <li class="page-item"><a class="page-link" href="?page=1"><i class="fa-solid fa-angles-left"></i></a></li>
+        <li class="page-item"><a class="page-link" href="?page={{ prol.previous_page_number }}"><i class="fa-solid fa-angle-left"></i></a></li>
       {% endif %}
       
       <li class="page-item disabled"><a href="#" class="page-link">صفحه {{ prol.number }} من {{ prol.paginator.num_pages }}</a></li>
@@ -81,8 +158,8 @@
       
       
       {% if prol.has_next %}
-        <li class="page-item"><a class="page-link" href="?page={{ prol.next_page_number }}">&#11166</a></li>
-        <li class="page-item"><a class="page-link" href="?page={{ prol.paginator.num_pages }}">&#11166&#11166</a></li>
+        <li class="page-item"><a class="page-link" href="?page={{ prol.next_page_number }}"><i class="fa-solid fa-angle-right"></i></a></li>
+        <li class="page-item"><a class="page-link" href="?page={{ prol.paginator.num_pages }}"><i class="fa-solid fa-angles-right"></i></a></li>
         
       {% endif %}
   

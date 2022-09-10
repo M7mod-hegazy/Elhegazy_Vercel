@@ -11,7 +11,7 @@ $links: #8db8f6;
 $linksHover: rgba(255, 255, 255, 1);
 $myButton: #070af6;
 $myButton2: #4900fe;
-
+$paginatorButton: #0507c2;
 $dark: #004ab4;
 $white: #fff;
 $black: #000;
@@ -131,7 +131,7 @@ nav.sticky .navbar-collapse {
   opacity: 0.9;
 }
 .navbar {
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 1000;
@@ -574,7 +574,7 @@ button.btn {
   }
 }
 .allProduct .pro_arrow {
-  margin-left: 5px;
+  margin-left: 15px;
 }
 @media (max-width: 699px) {
   .accordion .card .card-header .product-button {
@@ -1027,7 +1027,7 @@ img.myLogo {
 
 .locationing {
   box-shadow: 1px 2px 2px $main1;
-  margin-top: 50px;
+  margin-top: 150px;
   border-radius: 5px;
   margin-bottom: 30px;
   background-image: $background1;
@@ -1063,11 +1063,11 @@ img.myLogo {
 
 .product-info {
   box-shadow: 1px 2px 2px $main1;
-  margin-top: 50px;
+  margin-top: 150px !important;
   margin-bottom: 45px;
   text-align: center;
   h2.locationTitile {
-    margin: 0px !important;
+    margin: 10px 0px !important;
   }
 
   .Plink {
@@ -1914,6 +1914,7 @@ a.NEWbtn:hover {
   overflow: hidden;
   height: 100vh;
   min-height: 400px;
+  margin-top: 105px;
 
   &__slide {
     visibility: hidden;
@@ -5068,8 +5069,8 @@ a.btn.btn-outline-primary.btn-qty {
 .page-link:hover {
   z-index: 2;
   color: #fff;
-  background-color: $myButton;
-  border-color: $myButton;
+  background-color: $paginatorButton;
+  border-color: $paginatorButton;
 }
 
 //end pagination
@@ -5513,4 +5514,72 @@ span.new_icon {
   display: grid;
   place-content: center;
   padding-bottom: 15px;
+}
+
+.proCarousel {
+  margin: 4px 5px 35px 5px !important;
+
+  .carousel-indicators {
+    bottom: -50px !important;
+  }
+}
+
+.CCNI,
+.CCPI {
+  width: 5rem !important;
+  height: 5rem !important;
+}
+
+.INF2 {
+  border-bottom: 2px solid #6668ef;
+  margin: 10px 0px !important;
+}
+.container.allProduct {
+  margin-top: 145px;
+}
+.boxContent3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: normal;
+  flex-direction: column;
+}
+p.description3 {
+  overflow: hidden;
+}
+.carousel-first {
+  margin: 0px 10px 25px 0px !important;
+}
+.box3 .read3 {
+  align-items: center;
+}
+
+@media (min-width: 990px) {
+  ul.dropdown-menu.list.show {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 671px;
+    li {
+      flex-grow: 1;
+      width: 30%;
+      height: 100px;
+      height: 34px;
+    }
+    li.divider {
+      width: 95% !important;
+      border-bottom: 1px solid;
+      margin-right: 2%;    }
+  }
+}
+
+li.page-item {
+  margin: 0px 4px;
+  border-radius: 24px;
+}
+.page-item.disabled .page-link {
+  color: #fff;
+  pointer-events: none;
+  background-color: #9e9dde;
+  border-color: #a3a2ec;
 }

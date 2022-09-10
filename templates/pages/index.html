@@ -31,7 +31,7 @@
             <div class="container js-parallax" data-speed="1" data-position="top" data-target="#js-header">
               <h1 class="slideshow__slide-caption-title">{{ slide.name }}</h1>
               <a class="slideshow__slide-caption-subtitle -load o-hsub -link" href="{% url 'pro_child' pro_id=slide.product.id %}">
-                <span class="slideshow__slide-caption-subtitle-label">لمزيد من المعلومات</span>
+                <span class="slideshow__slide-caption-subtitle-label">إضغط لعرض المنتجات</span>
               </a>
             </div>
           </div>
@@ -287,7 +287,7 @@
                     <p class="description3">
                       {{ sec.details }}
                     </p>
-                    <a href="{% url 'pro_child' pro_id=sec.product.id %}" class="read3">المزيد <i class="fa fa-angle-right"></i></a>
+                    <a href="{% url 'pro_child' pro_id=sec.product.id %}" class="read3">عرض المنتجات <i class="fa fa-angle-right"></i></a>
                 </div>
             </div>
         </div>

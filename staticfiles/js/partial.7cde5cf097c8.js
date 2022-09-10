@@ -40,34 +40,28 @@ nav33.onclick = function () {
 }    
 */
 
-
-
 window.addEventListener("scroll", function () {
-    var nav = document.querySelector("nav");
-    nav.classList.toggle("sticky", window.scrollY > 20);
+  var nav = document.querySelector("nav");
+  nav.classList.toggle("sticky", window.scrollY > 0);
 });
 
-
-
-
-
-"use strict";
+("use strict");
 
 const $window = $(window);
-const $body = $('body');
+const $body = $("body");
 
 class Slideshow {
   constructor(userOptions = {}) {
     const defaultOptions = {
-      $el: $('.slideshow'),
+      $el: $(".slideshow"),
       showArrows: false,
       showPagination: true,
       duration: 10000,
-      autoplay: true
+      autoplay: true,
     };
     let options = Object.assign({}, defaultOptions, userOptions);
     this.$el = options.$el;
-    this.maxSlide = this.$el.find($('.js-slider-home-slide')).length;
+    this.maxSlide = this.$el.find($(".js-slider-home-slide")).length;
     this.showArrows = this.maxSlide > 1 ? options.showArrows : false;
     this.showPagination = options.showPagination;
     this.currentSlide = 1;
@@ -75,11 +69,11 @@ class Slideshow {
     this.animationDuration = 1200;
     this.autoplaySpeed = options.duration;
     this.interval;
-    this.$controls = this.$el.find('.js-slider-home-button');
+    this.$controls = this.$el.find(".js-slider-home-button");
     this.autoplay = this.maxSlide > 1 ? options.autoplay : false;
-    this.$el.on('click', '.js-slider-home-next', event => this.nextSlide());
-    this.$el.on('click', '.js-slider-home-prev', event => this.prevSlide());
-    this.$el.on('click', '.js-pagination-item', event => {
+    this.$el.on("click", ".js-slider-home-next", (event) => this.nextSlide());
+    this.$el.on("click", ".js-slider-home-prev", (event) => this.prevSlide());
+    this.$el.on("click", ".js-pagination-item", (event) => {
       if (!this.isAnimating) {
         this.preventClick();
         this.goToSlide(event.target.dataset.slide);
@@ -100,22 +94,24 @@ class Slideshow {
       let pagination = '<div class="pagination"><div class="container">';
 
       for (let i = 0; i < this.maxSlide; i++) {
-        let item = `<span class="pagination__item js-pagination-item ${i === 0 ? 'is-current' : ''}" data-slide=${i + 1}>${i + 1}</span>`;
+        let item = `<span class="pagination__item js-pagination-item ${
+          i === 0 ? "is-current" : ""
+        }" data-slide=${i + 1}>${i + 1}</span>`;
         pagination = pagination + item;
       }
 
-      pagination = pagination + '</div></div>';
+      pagination = pagination + "</div></div>";
       this.$el.append(pagination);
     }
   }
 
   preventClick() {
     this.isAnimating = true;
-    this.$controls.prop('disabled', true);
+    this.$controls.prop("disabled", true);
     clearInterval(this.interval);
     setTimeout(() => {
       this.isAnimating = false;
-      this.$controls.prop('disabled', false);
+      this.$controls.prop("disabled", false);
 
       if (this.autoplay) {
         this.startAutoplay();
@@ -134,19 +130,31 @@ class Slideshow {
       this.currentSlide = this.maxSlide;
     }
 
-    const newCurrent = this.$el.find('.js-slider-home-slide[data-slide="' + this.currentSlide + '"]');
-    const newPrev = this.currentSlide === 1 ? this.$el.find('.js-slider-home-slide').last() : newCurrent.prev('.js-slider-home-slide');
-    const newNext = this.currentSlide === this.maxSlide ? this.$el.find('.js-slider-home-slide').first() : newCurrent.next('.js-slider-home-slide');
-    this.$el.find('.js-slider-home-slide').removeClass('is-prev is-next is-current');
-    this.$el.find('.js-pagination-item').removeClass('is-current');
+    const newCurrent = this.$el.find(
+      '.js-slider-home-slide[data-slide="' + this.currentSlide + '"]'
+    );
+    const newPrev =
+      this.currentSlide === 1
+        ? this.$el.find(".js-slider-home-slide").last()
+        : newCurrent.prev(".js-slider-home-slide");
+    const newNext =
+      this.currentSlide === this.maxSlide
+        ? this.$el.find(".js-slider-home-slide").first()
+        : newCurrent.next(".js-slider-home-slide");
+    this.$el
+      .find(".js-slider-home-slide")
+      .removeClass("is-prev is-next is-current");
+    this.$el.find(".js-pagination-item").removeClass("is-current");
 
     if (this.maxSlide > 1) {
-      newPrev.addClass('is-prev');
-      newNext.addClass('is-next');
+      newPrev.addClass("is-prev");
+      newNext.addClass("is-next");
     }
 
-    newCurrent.addClass('is-current');
-    this.$el.find('.js-pagination-item[data-slide="' + this.currentSlide + '"]').addClass('is-current');
+    newCurrent.addClass("is-current");
+    this.$el
+      .find('.js-pagination-item[data-slide="' + this.currentSlide + '"]')
+      .addClass("is-current");
   }
 
   nextSlide() {
@@ -170,7 +178,6 @@ class Slideshow {
   destroy() {
     this.$el.off();
   }
-
 }
 
 (function () {
@@ -179,19 +186,19 @@ class Slideshow {
 
   function load() {
     const options = {
-      showPagination: true
+      showPagination: true,
     };
     let slideShow = new Slideshow(options);
   }
 
   function addLoadClass() {
-    $body.addClass('is-loaded');
+    $body.addClass("is-loaded");
     setTimeout(function () {
-      $body.addClass('is-animated');
+      $body.addClass("is-animated");
     }, 600);
   }
 
-  $window.on('load', function () {
+  $window.on("load", function () {
     if (!loaded) {
       loaded = true;
       load();
@@ -207,79 +214,74 @@ class Slideshow {
 })();
 
 $(document).ready(function () {
-
   var owl = $("#owl-demo");
 
   owl.owlCarousel({
     slideSpeed: 300,
     paginationSpeed: 400,
     singleItem: true,
-    afterMove: moved
+    afterMove: moved,
   });
 
   var owlDate = owl.data("owlCarousel");
   var gallery = $(".slider-gallery ul");
-  var prev = $('.prev.gallery-controls');
-  var next = $('.next.gallery-controls');
+  var prev = $(".prev.gallery-controls");
+  var next = $(".next.gallery-controls");
   var count = 0;
   var extraItem = gallery[0].childElementCount - 8;
 
   if (gallery[0].clientHeight > 450 && gallery[0].offsetTop === 0) {
-    $('.next.gallery-controls').addClass('active');
-  }
-  else if (gallery[0].clientHeight > 450 && gallery[0].offsetTop > 0) {
-    $('.gallery-controls').addClass('active');
+    $(".next.gallery-controls").addClass("active");
+  } else if (gallery[0].clientHeight > 450 && gallery[0].offsetTop > 0) {
+    $(".gallery-controls").addClass("active");
   }
 
-  prev.on('click', function () {
+  prev.on("click", function () {
     if (count >= 0) {
-      gallery.css('top', '+=57px');
-      count--
+      gallery.css("top", "+=57px");
+      count--;
     }
 
     if (count < extraItem) {
-      $('.next.gallery-controls').addClass('active');
+      $(".next.gallery-controls").addClass("active");
     }
 
     if (count === 0) {
-      $('.prev.gallery-controls').removeClass('active');
+      $(".prev.gallery-controls").removeClass("active");
     }
-
   });
 
-  next.on('click', function () {
+  next.on("click", function () {
     if (count < extraItem) {
-      gallery.css('top', '-=57px');
-      count++
+      gallery.css("top", "-=57px");
+      count++;
     }
 
     if (count >= 1) {
-      $('.prev.gallery-controls').addClass('active');
+      $(".prev.gallery-controls").addClass("active");
     }
 
     if (count === extraItem) {
-      $('.next.gallery-controls').removeClass('active');
+      $(".next.gallery-controls").removeClass("active");
     }
-
   });
 
   $(".next.controls").click(function () {
     owl.trigger("owl.next");
     if (extraItem > 0) {
-
       if (owlDate.currentItem >= 7 && count < extraItem) {
-        gallery.css('top', '-=57px');
-        count++
+        gallery.css("top", "-=57px");
+        count++;
       }
       if (owlDate.currentItem >= 7 && count > 1) {
-        $('.prev.gallery-controls').addClass('active');
-        $('.next.gallery-controls').removeClass('active');
+        $(".prev.gallery-controls").addClass("active");
+        $(".next.gallery-controls").removeClass("active");
       }
       if (owlDate.currentItem === 0) {
-        gallery.css('top', '0');
+        gallery.css("top", "0");
         count = 0;
-        $('.prev.gallery-controls').removeClass('active');
-        $('.next.gallery-controls').addClass('active');
+        $(".prev.gallery-controls").removeClass("active");
+        $(".next.gallery-controls").addClass("active");
       }
     }
   });
@@ -288,25 +290,24 @@ $(document).ready(function () {
     owl.trigger("owl.prev");
     if (extraItem > 0) {
       if (owlDate.currentItem >= 7 && count >= 1) {
-        gallery.css('top', '+=57px');
-        count--
+        gallery.css("top", "+=57px");
+        count--;
       }
       if (owlDate.currentItem >= 7 && count < extraItem) {
-        $('.next.gallery-controls').addClass('active');
+        $(".next.gallery-controls").addClass("active");
       }
       if (owlDate.currentItem >= 7 && count === 0) {
-        $('.prev.gallery-controls').removeClass('active');
+        $(".prev.gallery-controls").removeClass("active");
       }
       if (owlDate.currentItem === owlDate.maximumItem) {
-        var size = '-' + (extraItem * 57) + 'px';
-        gallery.css('top', size);
-        $('.prev.gallery-controls').addClass('active');
-        $('.next.gallery-controls').removeClass('active');
+        var size = "-" + extraItem * 57 + "px";
+        gallery.css("top", size);
+        $(".prev.gallery-controls").addClass("active");
+        $(".next.gallery-controls").removeClass("active");
         count = extraItem;
       }
     }
   });
-
 
   $(".slider").on("mouseover", function (e) {
     $(".slider").addClass("active");
@@ -326,7 +327,8 @@ $(document).ready(function () {
   function moved() {
     var $element = $(".slider-gallery li");
     $element.removeClass("active");
-    $(".slider-gallery").find('[data-slide="' + owlDate.currentItem + '"]').addClass("active");
+    $(".slider-gallery")
+      .find('[data-slide="' + owlDate.currentItem + '"]')
+      .addClass("active");
   }
 });
-

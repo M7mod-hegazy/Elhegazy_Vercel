@@ -13,7 +13,18 @@ class Product(models.Model):
     name = models.CharField(max_length=200, unique=True)
     code = models.CharField(max_length=200, unique=True)
     price = models.CharField(max_length=200)
+    details = models.TextField(max_length=1000, blank=True)
     photo = models.ImageField(upload_to='photos/%Y/%m/%d/')
+    photo2 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
+    photo3 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
+    photo4 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
+    photo5 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
+    photo6 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
+    photo7 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
+    photo8 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
+    photo9 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
+    photo10 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
+
     is_active = models.BooleanField(default=True)
     publish_date = models.DateTimeField(default=datetime.now)
 
@@ -40,10 +51,6 @@ class Child(models.Model):
     photo5 = models.ImageField(
         upload_to='photos/%Y/%m/%d/', blank=True, null=True)
 
-
-
-        
-       
 
     is_active = models.BooleanField(default=True)
     publish_date = models.DateTimeField(default=datetime.now)

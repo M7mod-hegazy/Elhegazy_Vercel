@@ -40,34 +40,28 @@ nav33.onclick = function () {
 }    
 */
 
-
-
 window.addEventListener("scroll", function () {
-    var nav = document.querySelector("nav");
-    nav.classList.toggle("sticky", window.scrollY > 20);
+  var nav = document.querySelector("nav");
+  nav.classList.toggle("sticky", window.scrollY > 0);
 });
 
-
-
-
-
-"use strict";
+("use strict");
 
 const $window = $(window);
-const $body = $('body');
+const $body = $("body");
 
 class Slideshow {
   constructor(userOptions = {}) {
     const defaultOptions = {
-      $el: $('.slideshow'),
+      $el: $(".slideshow"),
       showArrows: false,
       showPagination: true,
       duration: 10000,
-      autoplay: true
+      autoplay: true,
     };
     let options = Object.assign({}, defaultOptions, userOptions);
     this.$el = options.$el;
-    this.maxSlide = this.$el.find($('.js-slider-home-slide')).length;
+    this.maxSlide = this.$el.find($(".js-slider-home-slide")).length;
     this.showArrows = this.maxSlide > 1 ? options.showArrows : false;
     this.showPagination = options.showPagination;
     this.currentSlide = 1;
@@ -75,11 +69,11 @@ class Slideshow {
     this.animationDuration = 1200;
     this.autoplaySpeed = options.duration;
     this.interval;
-    this.$controls = this.$el.find('.js-slider-home-button');
+    this.$controls = this.$el.find(".js-slider-home-button");
     this.autoplay = this.maxSlide > 1 ? options.autoplay : false;
-    this.$el.on('click', '.js-slider-home-next', event => this.nextSlide());
-    this.$el.on('click', '.js-slider-home-prev', event => this.prevSlide());
-    this.$el.on('click', '.js-pagination-item', event => {
+    this.$el.on("click", ".js-slider-home-next", (event) => this.nextSlide());
+    this.$el.on("click", ".js-slider-home-prev", (event) => this.prevSlide());
+    this.$el.on("click", ".js-pagination-item", (event) => {
       if (!this.isAnimating) {
         this.preventClick();
         this.goToSlide(event.target.dataset.slide);
@@ -100,22 +94,24 @@ class Slideshow {
       let pagination = '<div class="pagination"><div class="container">';
 
       for (let i = 0; i < this.maxSlide; i++) {
-        let item = `<span class="pagination__item js-pagination-item ${i === 0 ? 'is-current' : ''}" data-slide=${i + 1}>${i + 1}</span>`;
+        let item = `<span class="pagination__item js-pagination-item ${
+          i === 0 ? "is-current" : ""
+        }" data-slide=${i + 1}>${i + 1}</span>`;
         pagination = pagination + item;
       }
 
-      pagination = pagination + '</div></div>';
+      pagination = pagination + "</div></div>";
       this.$el.append(pagination);
     }
   }
 
   preventClick() {
     this.isAnimating = true;
-    this.$controls.prop('disabled', true);
+    this.$controls.prop("disabled", true);
     clearInterval(this.interval);
     setTimeout(() => {
       this.isAnimating = false;
-      this.$controls.prop('disabled', false);
+      this.$controls.prop("disabled", false);
 
       if (this.autoplay) {
         this.startAutoplay();
@@ -134,19 +130,31 @@ class Slideshow {
       this.currentSlide = this.maxSlide;
     }
 
-    const newCurrent = this.$el.find('.js-slider-home-slide[data-slide="' + this.currentSlide + '"]');
-    const newPrev = this.currentSlide === 1 ? this.$el.find('.js-slider-home-slide').last() : newCurrent.prev('.js-slider-home-slide');
-    const newNext = this.currentSlide === this.maxSlide ? this.$el.find('.js-slider-home-slide').first() : newCurrent.next('.js-slider-home-slide');
-    this.$el.find('.js-slider-home-slide').removeClass('is-prev is-next is-current');
-    this.$el.find('.js-pagination-item').removeClass('is-current');
+    const newCurrent = this.$el.find(
+      '.js-slider-home-slide[data-slide="' + this.currentSlide + '"]'
+    );
+    const newPrev =
+      this.currentSlide === 1
+        ? this.$el.find(".js-slider-home-slide").last()
+        : newCurrent.prev(".js-slider-home-slide");
+    const newNext =
+      this.currentSlide === this.maxSlide
+        ? this.$el.find(".js-slider-home-slide").first()
+        : newCurrent.next(".js-slider-home-slide");
+    this.$el
+      .find(".js-slider-home-slide")
+      .removeClass("is-prev is-next is-current");
+    this.$el.find(".js-pagination-item").removeClass("is-current");
 
     if (this.maxSlide > 1) {
-      newPrev.addClass('is-prev');
-      newNext.addClass('is-next');
+      newPrev.addClass("is-prev");
+      newNext.addClass("is-next");
     }
 
-    newCurrent.addClass('is-current');
-    this.$el.find('.js-pagination-item[data-slide="' + this.currentSlide + '"]').addClass('is-current');
+    newCurrent.addClass("is-current");
+    this.$el
+      .find('.js-pagination-item[data-slide="' + this.currentSlide + '"]')
+      .addClass("is-current");
   }
 
   nextSlide() {
@@ -170,7 +178,6 @@ class Slideshow {
   destroy() {
     this.$el.off();
   }
-
 }
 
 (function () {
@@ -179,19 +186,19 @@ class Slideshow {
 
   function load() {
     const options = {
-      showPagination: true
+      showPagination: true,
     };
     let slideShow = new Slideshow(options);
   }
 
   function addLoadClass() {
-    $body.addClass('is-loaded');
+    $body.addClass("is-loaded");
     setTimeout(function () {
-      $body.addClass('is-animated');
+      $body.addClass("is-animated");
     }, 600);
   }
 
-  $window.on('load', function () {
+  $window.on("load", function () {
     if (!loaded) {
       loaded = true;
       load();
@@ -206,15 +213,15 @@ class Slideshow {
   addLoadClass();
 })();
 
-var gallery = document.querySelector('.gallery');
-var galleryItems = document.querySelectorAll('.gallery-item');
+var gallery = document.querySelector(".gallery");
+var galleryItems = document.querySelectorAll(".gallery-item");
 var numOfItems = gallery.children.length;
 var itemWidth = 23; // percent: as set in css
 
-var featured = document.querySelector('.featured-item');
+var featured = document.querySelector(".featured-item");
 
-var leftBtn = document.querySelector('.move-btn.left');
-var rightBtn = document.querySelector('.move-btn.right');
+var leftBtn = document.querySelector(".move-btn.left");
+var rightBtn = document.querySelector(".move-btn.right");
 var leftInterval;
 var rightInterval;
 
@@ -222,105 +229,104 @@ var scrollRate = 0.2;
 var left;
 
 function selectItem(e) {
-	if (e.target.classList.contains('active')) return;
-	
-	featured.style.backgroundImage = e.target.style.backgroundImage;
-	
-	for (var i = 0; i < galleryItems.length; i++) {
-		if (galleryItems[i].classList.contains('active'))
-			galleryItems[i].classList.remove('active');
-	}
-	
-	e.target.classList.add('active');
+  if (e.target.classList.contains("active")) return;
+
+  featured.style.backgroundImage = e.target.style.backgroundImage;
+
+  for (var i = 0; i < galleryItems.length; i++) {
+    if (galleryItems[i].classList.contains("active"))
+      galleryItems[i].classList.remove("active");
+  }
+
+  e.target.classList.add("active");
 }
 
 function galleryWrapLeft() {
-	var first = gallery.children[0];
-	gallery.removeChild(first);
-	gallery.style.left = -itemWidth + '%';
-	gallery.appendChild(first);
-	gallery.style.left = '0%';
+  var first = gallery.children[0];
+  gallery.removeChild(first);
+  gallery.style.left = -itemWidth + "%";
+  gallery.appendChild(first);
+  gallery.style.left = "0%";
 }
 
 function galleryWrapRight() {
-	var last = gallery.children[gallery.children.length - 1];
-	gallery.removeChild(last);
-	gallery.insertBefore(last, gallery.children[0]);
-	gallery.style.left = '-23%';
+  var last = gallery.children[gallery.children.length - 1];
+  gallery.removeChild(last);
+  gallery.insertBefore(last, gallery.children[0]);
+  gallery.style.left = "-23%";
 }
 
 function moveLeft() {
-	left = left || 0;
+  left = left || 0;
 
-	leftInterval = setInterval(function() {
-		gallery.style.left = left + '%';
+  leftInterval = setInterval(function () {
+    gallery.style.left = left + "%";
 
-		if (left > -itemWidth) {
-			left -= scrollRate;
-		} else {
-			left = 0;
-			galleryWrapLeft();
-		}
-	}, 1);
+    if (left > -itemWidth) {
+      left -= scrollRate;
+    } else {
+      left = 0;
+      galleryWrapLeft();
+    }
+  }, 1);
 }
 
 function moveRight() {
-	//Make sure there is element to the leftd
-	if (left > -itemWidth && left < 0) {
-		left = left  - itemWidth;
-		
-		var last = gallery.children[gallery.children.length - 1];
-		gallery.removeChild(last);
-		gallery.style.left = left + '%';
-		gallery.insertBefore(last, gallery.children[0]);	
-	}
-	
-	left = left || 0;
+  //Make sure there is element to the leftd
+  if (left > -itemWidth && left < 0) {
+    left = left - itemWidth;
 
-	leftInterval = setInterval(function() {
-		gallery.style.left = left + '%';
+    var last = gallery.children[gallery.children.length - 1];
+    gallery.removeChild(last);
+    gallery.style.left = left + "%";
+    gallery.insertBefore(last, gallery.children[0]);
+  }
 
-		if (left < 0) {
-			left += scrollRate;
-		} else {
-			left = -itemWidth;
-			galleryWrapRight();
-		}
-	}, 1);
+  left = left || 0;
+
+  leftInterval = setInterval(function () {
+    gallery.style.left = left + "%";
+
+    if (left < 0) {
+      left += scrollRate;
+    } else {
+      left = -itemWidth;
+      galleryWrapRight();
+    }
+  }, 1);
 }
 
 function stopMovement() {
-	clearInterval(leftInterval);
-	clearInterval(rightInterval);
+  clearInterval(leftInterval);
+  clearInterval(rightInterval);
 }
 
-leftBtn.addEventListener('mouseenter', moveLeft);
-leftBtn.addEventListener('mouseleave', stopMovement);
-rightBtn.addEventListener('mouseenter', moveRight);
-rightBtn.addEventListener('mouseleave', stopMovement);
-
+leftBtn.addEventListener("mouseenter", moveLeft);
+leftBtn.addEventListener("mouseleave", stopMovement);
+rightBtn.addEventListener("mouseenter", moveRight);
+rightBtn.addEventListener("mouseleave", stopMovement);
 
 //Start this baby up
 (function init() {
-	var images = [
-		'https://s3-us-west-2.amazonaws.com/forconcepting/800Wide50Quality/car.jpg',
-		'https://s3-us-west-2.amazonaws.com/forconcepting/800Wide50Quality/city.jpg',
-		'https://s3-us-west-2.amazonaws.com/forconcepting/800Wide50Quality/deer.jpg',
-		'https://s3-us-west-2.amazonaws.com/forconcepting/800Wide50Quality/flowers.jpg',
-		'https://s3-us-west-2.amazonaws.com/forconcepting/800Wide50Quality/food.jpg',
-		'https://s3-us-west-2.amazonaws.com/forconcepting/800Wide50Quality/guy.jpg',
-		'https://s3-us-west-2.amazonaws.com/forconcepting/800Wide50Quality/landscape.jpg',
-		'https://s3-us-west-2.amazonaws.com/forconcepting/800Wide50Quality/lips.jpg',
-		'https://s3-us-west-2.amazonaws.com/forconcepting/800Wide50Quality/night.jpg',
-		'https://s3-us-west-2.amazonaws.com/forconcepting/800Wide50Quality/table.jpg'
-	];
-	
-	//Set Initial Featured Image
-	featured.style.backgroundImage = 'url(' + images[0] + ')';
-	
-	//Set Images for Gallery and Add Event Listeners
-	for (var i = 0; i < galleryItems.length; i++) {
-		galleryItems[i].style.backgroundImage = 'url(' + images[i] + ')';
-		galleryItems[i].addEventListener('click', selectItem);
-	}
+  var images = [
+    "https://s3-us-west-2.amazonaws.com/forconcepting/800Wide50Quality/car.jpg",
+    "https://s3-us-west-2.amazonaws.com/forconcepting/800Wide50Quality/city.jpg",
+    "https://s3-us-west-2.amazonaws.com/forconcepting/800Wide50Quality/deer.jpg",
+    "https://s3-us-west-2.amazonaws.com/forconcepting/800Wide50Quality/flowers.jpg",
+    "https://s3-us-west-2.amazonaws.com/forconcepting/800Wide50Quality/food.jpg",
+    "https://s3-us-west-2.amazonaws.com/forconcepting/800Wide50Quality/guy.jpg",
+    "https://s3-us-west-2.amazonaws.com/forconcepting/800Wide50Quality/landscape.jpg",
+    "https://s3-us-west-2.amazonaws.com/forconcepting/800Wide50Quality/lips.jpg",
+    "https://s3-us-west-2.amazonaws.com/forconcepting/800Wide50Quality/night.jpg",
+    "https://s3-us-west-2.amazonaws.com/forconcepting/800Wide50Quality/table.jpg",
+  ];
+
+  //Set Initial Featured Image
+  featured.style.backgroundImage = "url(" + images[0] + ")";
+
+  //Set Images for Gallery and Add Event Listeners
+  for (var i = 0; i < galleryItems.length; i++) {
+    galleryItems[i].style.backgroundImage = "url(" + images[i] + ")";
+    galleryItems[i].addEventListener("click", selectItem);
+  }
 })();

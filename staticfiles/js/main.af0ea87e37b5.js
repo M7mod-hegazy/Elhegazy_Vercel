@@ -47,7 +47,6 @@ nav33.onclick = function () {
 //         result = input * 85,
 //         final = document.getElementById("superMassage1");
 
-
 //     if (input === "") {
 //         final.value = "×";
 
@@ -74,7 +73,6 @@ nav33.onclick = function () {
 //         result2 = input2 * 100,
 //         final2 = document.getElementById("superMassage2");
 
-
 //     if (input2 === "") {
 //         final2.value = "×";
 
@@ -97,13 +95,11 @@ nav33.onclick = function () {
 //     result3 = input3 * 75,
 //     final3 = document.getElementById("superMassage3");
 
-
 // document.getElementById("super3").onkeyup = function sProcuct3() {
 //     "use strict";
 //     var input3 = document.getElementById("super3").value,
 //         result3 = input3 * 75,
 //         final3 = document.getElementById("superMassage3");
-
 
 //     if (input3 === "") {
 //         final3.value = "×";
@@ -129,7 +125,6 @@ nav33.onclick = function () {
 //         result = input * 80,
 //         final = document.getElementById("superMassage4");
 
-
 //     if (input === "") {
 //         final.value = "×";
 
@@ -152,7 +147,6 @@ nav33.onclick = function () {
 //     var input = document.getElementById("super5").value,
 //         result = input * 85,
 //         final = document.getElementById("superMassage5");
-
 
 //     if (input === "") {
 //         final.value = "×";
@@ -177,7 +171,6 @@ nav33.onclick = function () {
 //         result = input * 85,
 //         final = document.getElementById("superMassage6");
 
-
 //     if (input === "") {
 //         final.value = "×";
 
@@ -200,7 +193,6 @@ nav33.onclick = function () {
 //     var input = document.getElementById("super7").value,
 //         result = input * 85,
 //         final = document.getElementById("superMassage7");
-
 
 //     if (input === "") {
 //         final.value = "×";
@@ -225,7 +217,6 @@ nav33.onclick = function () {
 //         result = input * 100,
 //         final = document.getElementById("superMassage8");
 
-
 //     if (input === "") {
 //         final.value = "×";
 
@@ -248,7 +239,6 @@ nav33.onclick = function () {
 //     var input = document.getElementById("super9").value,
 //         result = input * 100,
 //         final = document.getElementById("superMassage9");
-
 
 //     if (input === "") {
 //         final.value = "×";
@@ -273,7 +263,6 @@ nav33.onclick = function () {
 //         result = input * 65,
 //         final = document.getElementById("superMassage10");
 
-
 //     if (input === "") {
 //         final.value = "×";
 
@@ -296,7 +285,6 @@ nav33.onclick = function () {
 //     var input = document.getElementById("super11").value,
 //         result = input * 65,
 //         final = document.getElementById("superMassage11");
-
 
 //     if (input === "") {
 //         final.value = "×";
@@ -321,7 +309,6 @@ nav33.onclick = function () {
 //         result = input * 70,
 //         final = document.getElementById("superMassage12");
 
-
 //     if (input === "") {
 //         final.value = "×";
 
@@ -344,7 +331,6 @@ nav33.onclick = function () {
 //     var input = document.getElementById("super13").value,
 //         result = input * 75,
 //         final = document.getElementById("superMassage13");
-
 
 //     if (input === "") {
 //         final.value = "×";
@@ -369,7 +355,6 @@ nav33.onclick = function () {
 //         result = input * 80,
 //         final = document.getElementById("superMassage14");
 
-
 //     if (input === "") {
 //         final.value = "×";
 
@@ -392,7 +377,6 @@ nav33.onclick = function () {
 //     var input = document.getElementById("super15").value,
 //         result = input * 85,
 //         final = document.getElementById("superMassage15");
-
 
 //     if (input === "") {
 //         final.value = "×";
@@ -417,7 +401,6 @@ nav33.onclick = function () {
 //         result = input * 85,
 //         final = document.getElementById("superMassage16");
 
-
 //     if (input === "") {
 //         final.value = "×";
 
@@ -441,7 +424,6 @@ nav33.onclick = function () {
 //         result = input * 90,
 //         final = document.getElementById("superMassage17");
 
-
 //     if (input === "") {
 //         final.value = "×";
 
@@ -464,7 +446,6 @@ nav33.onclick = function () {
 //     var input = document.getElementById("super18").value,
 //         result = input * 95,
 //         final = document.getElementById("superMassage18");
-
 
 //     if (input === "") {
 //         final.value = "×";
@@ -490,7 +471,6 @@ nav33.onclick = function () {
 //         result = input * 80,
 //         final = document.getElementById("superMassage19");
 
-
 //     if (input === "") {
 //         final.value = "×";
 
@@ -515,7 +495,6 @@ nav33.onclick = function () {
 //         result2 = input2 * 85,
 //         final2 = document.getElementById("superMassage20");
 
-
 //     if (input2 === "") {
 //         final2.value = "×";
 
@@ -534,15 +513,11 @@ nav33.onclick = function () {
 //     }
 // }
 
-
-
-
 // document.getElementById("super21").onkeyup = function sProcuct21() {
 //     "use strict";
 //     var input3 = document.getElementById("super21").value,
 //         result3 = input3 * 90,
 //         final3 = document.getElementById("superMassage21");
-
 
 //     if (input3 === "") {
 //         final3.value = "×";
@@ -568,7 +543,6 @@ nav33.onclick = function () {
 //         result = input * 65,
 //         final = document.getElementById("superMassage22");
 
-
 //     if (input === "") {
 //         final.value = "×";
 
@@ -591,7 +565,6 @@ nav33.onclick = function () {
 //     var input = document.getElementById("super23").value,
 //         result = input * 75,
 //         final = document.getElementById("superMassage23");
-
 
 //     if (input === "") {
 //         final.value = "×";
@@ -616,7 +589,6 @@ nav33.onclick = function () {
 //         result = input * 75,
 //         final = document.getElementById("superMassage24");
 
-
 //     if (input === "") {
 //         final.value = "×";
 
@@ -639,7 +611,6 @@ nav33.onclick = function () {
 //     var input = document.getElementById("super25").value,
 //         result = input * 80,
 //         final = document.getElementById("superMassage25");
-
 
 //     if (input === "") {
 //         final.value = "×";
@@ -664,7 +635,6 @@ nav33.onclick = function () {
 //         result = input * 75,
 //         final = document.getElementById("superMassage26");
 
-
 //     if (input === "") {
 //         final.value = "×";
 
@@ -687,7 +657,6 @@ nav33.onclick = function () {
 //     var input = document.getElementById("super27").value,
 //         result = input * 85,
 //         final = document.getElementById("superMassage27");
-
 
 //     if (input === "") {
 //         final.value = "×";
@@ -712,7 +681,6 @@ nav33.onclick = function () {
 //         result = input * 90,
 //         final = document.getElementById("superMassage28");
 
-
 //     if (input === "") {
 //         final.value = "×";
 
@@ -735,7 +703,6 @@ nav33.onclick = function () {
 //     var input = document.getElementById("super29").value,
 //         result = input * 140,
 //         final = document.getElementById("superMassage29");
-
 
 //     if (input === "") {
 //         final.value = "×";
@@ -760,7 +727,6 @@ nav33.onclick = function () {
 //         result = input * 150,
 //         final = document.getElementById("superMassage30");
 
-
 //     if (input === "") {
 //         final.value = "×";
 
@@ -783,7 +749,6 @@ nav33.onclick = function () {
 //     var input = document.getElementById("super31").value,
 //         result = input * 45,
 //         final = document.getElementById("superMassage31");
-
 
 //     if (input === "") {
 //         final.value = "×";
@@ -808,7 +773,6 @@ nav33.onclick = function () {
 //         result = input * 200,
 //         final = document.getElementById("superMassage32");
 
-
 //     if (input === "") {
 //         final.value = "×";
 
@@ -831,7 +795,6 @@ nav33.onclick = function () {
 //     var input = document.getElementById("super33").value,
 //         result = input * 200,
 //         final = document.getElementById("superMassage33");
-
 
 //     if (input === "") {
 //         final.value = "×";
@@ -856,7 +819,6 @@ nav33.onclick = function () {
 //         result = input * 240,
 //         final = document.getElementById("superMassage34");
 
-
 //     if (input === "") {
 //         final.value = "×";
 
@@ -879,7 +841,6 @@ nav33.onclick = function () {
 //     var input = document.getElementById("super35").value,
 //         result = input * 100,
 //         final = document.getElementById("superMassage35");
-
 
 //     if (input === "") {
 //         final.value = "×";
@@ -904,7 +865,6 @@ nav33.onclick = function () {
 //         result = input * 240,
 //         final = document.getElementById("superMassage36");
 
-
 //     if (input === "") {
 //         final.value = "×";
 
@@ -927,7 +887,6 @@ nav33.onclick = function () {
 //     var input = document.getElementById("super37").value,
 //         result = input * 240,
 //         final = document.getElementById("superMassage37");
-
 
 //     if (input === "") {
 //         final.value = "×";
@@ -952,7 +911,6 @@ nav33.onclick = function () {
 //         result = input * 350,
 //         final = document.getElementById("superMassage38");
 
-
 //     if (input === "") {
 //         final.value = "×";
 
@@ -975,7 +933,6 @@ nav33.onclick = function () {
 //     var input = document.getElementById("super39").value,
 //         result = input * 450,
 //         final = document.getElementById("superMassage39");
-
 
 //     if (input === "") {
 //         final.value = "×";
@@ -1000,7 +957,6 @@ nav33.onclick = function () {
 //         result = input * 215,
 //         final = document.getElementById("superMassage40");
 
-
 //     if (input === "") {
 //         final.value = "×";
 
@@ -1023,7 +979,6 @@ nav33.onclick = function () {
 //     var input = document.getElementById("super41").value,
 //         result = input * 7,
 //         final = document.getElementById("superMassage41");
-
 
 //     if (input === "") {
 //         final.value = "×";
@@ -1048,7 +1003,6 @@ nav33.onclick = function () {
 //         result = input * 2300,
 //         final = document.getElementById("superMassage42");
 
-
 //     if (input === "") {
 //         final.value = "×";
 
@@ -1071,7 +1025,6 @@ nav33.onclick = function () {
 //     var input = document.getElementById("super43").value,
 //         result = input * 2500,
 //         final = document.getElementById("superMassage43");
-
 
 //     if (input === "") {
 //         final.value = "×";
@@ -1182,9 +1135,6 @@ nav33.onclick = function () {
 //     resultValue.value = '';
 // }
 
-
-
-
 // function findTotal(){
 //     var arr = document.getElementsByName('superMassage');
 //     var tot=0;
@@ -1201,7 +1151,6 @@ nav33.onclick = function () {
 //     var input = document.getElementById("suggitionInput").value,
 //         output = document.getElementById("suggitionOutput");
 
-
 //     if (input === "") {
 //         output.innerHTML = "×";
 
@@ -1216,93 +1165,93 @@ nav33.onclick = function () {
 
 //     } else if (input > 0 & input <= 57) {
 //         output.innerHTML = "لا يمكن تركيب اي قائم";
-    
+
 //     }
 //     else if (input > 57 & input <= 77 ) {
 //         output.innerHTML = "يمكن تركيب 2 قائم بينهم 50 سم";
-    
+
 //     }
 //     else if (input > 77 & input <= 104) {
 //         output.innerHTML = "يمكن تركيب 2 قائم بينهم 70 سم";
-    
+
 //     }
 //     else if (input > 104 & input <= 127) {
 //         output.innerHTML = "يمكن تركيب 2 قائم بينهم 100 سم";
-    
+
 //     }
 //     else if (input > 127 & input <= 147) {
 //         output.innerHTML = "يمكن تركيب 3 قائم بينهم 70سم و 50 سم";
-    
+
 //     }
 //     else if (input > 147 & input <= 153) {
 //         output.innerHTML = "يمكن تركيب 3 قائم بينهم 70 سم و 70 سم";
-    
+
 //     }else if (input > 153 & input <= 173) {
 //         output.innerHTML = "يمكن تركيب 3 قائم بينهم 100 سم و 50 سم";
-    
+
 //     }else if (input > 173 & input <= 199) {
 //         output.innerHTML = "يمكن تركيب 3 قائم بينهم 100 سم و 70 سم";
-    
+
 //     }else if (input > 199 & input <= 223) {
 //         output.innerHTML = "يمكن تركيب 3 قائم بينهم 100 سم و 100 سم";
-    
+
 //     }else if (input > 223 & input <= 243) {
 //         output.innerHTML = "يمكن تركيب 4 قائم بينهم 100 سم و 70 سم و 50 سم";
-    
+
 //     }else if (input > 243 & input <= 249) {
 //         output.innerHTML = "يمكن تركيب  4 قائم بينهم 100 سم و 70 سم و 70 سم";
-    
+
 //     }else if (input > 249 & input <= 269) {
 //         output.innerHTML = "يمكن تركيب 4 قائم بينهم 100 سم و 100 سم و 50 سم";
-    
+
 //     }else if (input > 269 & input <= 287) {
 //         output.innerHTML = "يمكن تركيب 4 قائم بينهم 100 سم و 100 سم و 70 سم";
-    
+
 //     }else if (input > 288 & input <= 319) {
 //         output.innerHTML = "يمكن تركيب 4 قائم بينهم 100 سم و 100 سم و 100 سم";
-    
+
 //     }else if (input > 319 & input <= 339) {
 //         output.innerHTML = "يمكن تركيب 5 قائم بينهم 100سم و 100سم و 70سم و 50سم";
-    
+
 //     }else if (input > 339 & input <= 345) {
 //         output.innerHTML = "يمكن تركيب  5 قائم بينهم 100سم و 100سم و 70سم و 70سم";
-    
+
 //     }else if (input > 345 & input <= 365) {
 //         output.innerHTML = "يمكن تركيب 5 قائم بينهم 100سم و 100سم و 100سم و 50سم";
-    
+
 //     }else if (input > 365 & input <= 391) {
 //         output.innerHTML = "يمكن تركيب 5 قائم بينهم 100سم و 100سم و 100سم و 70سم";
-    
+
 //     }else if (input > 391 & input <= 415) {
 //         output.innerHTML = "يمكن تركيب 5 قائم بينهم 100سم و 100سم و 100سم و 100سم";
-    
+
 //     }else if (input > 415 & input <= 435) {
 //         output.innerHTML = "يمكن تركيب 6 قائم بينهم 100سم و 100سم و 100سم و 70سم و 50سم";
-    
+
 //     }else if (input > 435 & input <= 441) {
 //         output.innerHTML = "يمكن تركيب  6 قائم بينهم 100سم و 100سم و 100سم و 70سم و 70سم";
-    
+
 //     }else if (input > 441 & input <= 461) {
 //         output.innerHTML = "يمكن تركيب 6 قائم بينهم 100سم و 100سم و 100سم و 100سم و 50سم";
-    
+
 //     }else if (input > 461 & input <= 487) {
 //         output.innerHTML = "يمكن تركيب 6 قائم بينهم 100سم و 100سم و 100سم و 100سم و 70سم";
-    
+
 //     }else if (input > 487 & input <= 511) {
 //         output.innerHTML = "يمكن تركيب 6 قائم بينهم 100سم و 100سم و 100سم و 100سم و 100سم";
-    
+
 //     }else if (input > 511 & input <= 531) {
 //         output.innerHTML = "يمكن تركيب 7 قائم بينهم 100سم و 100سم و 100سم و100سم و 70سم و 50سم";
-    
+
 //     }else if (input > 531 & input <= 537) {
 //         output.innerHTML = "يمكن تركيب  7 قائم بينهم 100سم و 100سم و 100سم و 100سم و 70سم و 70سم";
-    
+
 //     }else if (input > 537 & input <= 557) {
 //         output.innerHTML = "يمكن تركيب 7 قائم بينهم 100سم و 100سم و 100سم و 100سم و 100سم و 50سم";
-    
+
 //     }else if (input > 557 & input <= 583) {
 //         output.innerHTML = "يمكن تركيب 7 قائم بينهم 100سم و 100سم و 100سم و 100سم و 100سم و 70سم";
-    
+
 //     }else if (input > 583 & input <= 600) {
 //         output.innerHTML = "يمكن تركيب 7 قائم بينهم 100سم و 100سم و 100سم و 100سم و 100سم و 100سم";
 //     }else {
@@ -1315,139 +1264,131 @@ nav33.onclick = function () {
 //     document.getElementById("ShelfStanndCalc").value = (document.getElementById("SstandsNumber").value - 1) * document.getElementById("SshelfsNumber").value;
 // }
 
-
 window.addEventListener("scroll", function () {
-    var nav = document.querySelector("nav");
-    nav.classList.toggle("sticky", window.scrollY > 20);
+  var nav = document.querySelector("nav");
+  nav.classList.toggle("sticky", window.scrollY > 0);
 });
 
 // document.getElementById("wood-calc-Button").onclick = function () {
 // document.getElementById("wood-result").value = (parseInt(document.getElementById("wood-width").value) *  parseInt(document.getElementById("wood-height").value)) / 3;
 // }
 
-
 $(document).ready(function () {
+  var owl = $("#owl-demo");
 
-    var owl = $("#owl-demo");
-  
-    owl.owlCarousel({
-      slideSpeed: 300,
-      paginationSpeed: 400,
-      singleItem: true,
-      afterMove: moved
-    });
-  
-    var owlDate = owl.data("owlCarousel");
-    var gallery = $(".slider-gallery ul");
-    var prev = $('.prev.gallery-controls');
-    var next = $('.next.gallery-controls');
-    var count = 0;
-    var extraItem = gallery[0].childElementCount - 8;
-  
-    if (gallery[0].clientHeight > 450 && gallery[0].offsetTop === 0) {
-      $('.next.gallery-controls').addClass('active');
+  owl.owlCarousel({
+    slideSpeed: 300,
+    paginationSpeed: 400,
+    singleItem: true,
+    afterMove: moved,
+  });
+
+  var owlDate = owl.data("owlCarousel");
+  var gallery = $(".slider-gallery ul");
+  var prev = $(".prev.gallery-controls");
+  var next = $(".next.gallery-controls");
+  var count = 0;
+  var extraItem = gallery[0].childElementCount - 8;
+
+  if (gallery[0].clientHeight > 450 && gallery[0].offsetTop === 0) {
+    $(".next.gallery-controls").addClass("active");
+  } else if (gallery[0].clientHeight > 450 && gallery[0].offsetTop > 0) {
+    $(".gallery-controls").addClass("active");
+  }
+
+  prev.on("click", function () {
+    if (count >= 0) {
+      gallery.css("top", "+=57px");
+      count--;
     }
-    else if (gallery[0].clientHeight > 450 && gallery[0].offsetTop > 0) {
-      $('.gallery-controls').addClass('active');
+
+    if (count < extraItem) {
+      $(".next.gallery-controls").addClass("active");
     }
-  
-    prev.on('click', function () {
-      if (count >= 0) {
-        gallery.css('top', '+=57px');
-        count--
-      }
-  
-      if (count < extraItem) {
-        $('.next.gallery-controls').addClass('active');
-      }
-  
-      if (count === 0) {
-        $('.prev.gallery-controls').removeClass('active');
-      }
-  
-    });
-  
-    next.on('click', function () {
-      if (count < extraItem) {
-        gallery.css('top', '-=57px');
-        count++
-      }
-  
-      if (count >= 1) {
-        $('.prev.gallery-controls').addClass('active');
-      }
-  
-      if (count === extraItem) {
-        $('.next.gallery-controls').removeClass('active');
-      }
-  
-    });
-  
-    $(".next.controls").click(function () {
-      owl.trigger("owl.next");
-      if (extraItem > 0) {
-  
-        if (owlDate.currentItem >= 7 && count < extraItem) {
-          gallery.css('top', '-=57px');
-          count++
-        }
-        if (owlDate.currentItem >= 7 && count > 1) {
-          $('.prev.gallery-controls').addClass('active');
-          $('.next.gallery-controls').removeClass('active');
-        }
-        if (owlDate.currentItem === 0) {
-          gallery.css('top', '0');
-          count = 0;
-          $('.prev.gallery-controls').removeClass('active');
-          $('.next.gallery-controls').addClass('active');
-        }
-      }
-    });
-  
-    $(".prev.controls").click(function () {
-      owl.trigger("owl.prev");
-      if (extraItem > 0) {
-        if (owlDate.currentItem >= 7 && count >= 1) {
-          gallery.css('top', '+=57px');
-          count--
-        }
-        if (owlDate.currentItem >= 7 && count < extraItem) {
-          $('.next.gallery-controls').addClass('active');
-        }
-        if (owlDate.currentItem >= 7 && count === 0) {
-          $('.prev.gallery-controls').removeClass('active');
-        }
-        if (owlDate.currentItem === owlDate.maximumItem) {
-          var size = '-' + (extraItem * 57) + 'px';
-          gallery.css('top', size);
-          $('.prev.gallery-controls').addClass('active');
-          $('.next.gallery-controls').removeClass('active');
-          count = extraItem;
-        }
-      }
-    });
-  
-  
-    $(".slider").on("mouseover", function (e) {
-      $(".slider").addClass("active");
-    });
-  
-    $(".slider").on("mouseleave", function () {
-      setTimeout(function () {
-        $(".slider").removeClass("active");
-      }, 1500);
-    });
-  
-    $(".slider-gallery").on("click", "img", function () {
-      var sliderNum = $(this).parent().data("slide");
-      owl.trigger("owl.goTo", sliderNum);
-    });
-  
-    function moved() {
-      var $element = $(".slider-gallery li");
-      $element.removeClass("active");
-      $(".slider-gallery").find('[data-slide="' + owlDate.currentItem + '"]').addClass("active");
+
+    if (count === 0) {
+      $(".prev.gallery-controls").removeClass("active");
     }
   });
-  
-  
+
+  next.on("click", function () {
+    if (count < extraItem) {
+      gallery.css("top", "-=57px");
+      count++;
+    }
+
+    if (count >= 1) {
+      $(".prev.gallery-controls").addClass("active");
+    }
+
+    if (count === extraItem) {
+      $(".next.gallery-controls").removeClass("active");
+    }
+  });
+
+  $(".next.controls").click(function () {
+    owl.trigger("owl.next");
+    if (extraItem > 0) {
+      if (owlDate.currentItem >= 7 && count < extraItem) {
+        gallery.css("top", "-=57px");
+        count++;
+      }
+      if (owlDate.currentItem >= 7 && count > 1) {
+        $(".prev.gallery-controls").addClass("active");
+        $(".next.gallery-controls").removeClass("active");
+      }
+      if (owlDate.currentItem === 0) {
+        gallery.css("top", "0");
+        count = 0;
+        $(".prev.gallery-controls").removeClass("active");
+        $(".next.gallery-controls").addClass("active");
+      }
+    }
+  });
+
+  $(".prev.controls").click(function () {
+    owl.trigger("owl.prev");
+    if (extraItem > 0) {
+      if (owlDate.currentItem >= 7 && count >= 1) {
+        gallery.css("top", "+=57px");
+        count--;
+      }
+      if (owlDate.currentItem >= 7 && count < extraItem) {
+        $(".next.gallery-controls").addClass("active");
+      }
+      if (owlDate.currentItem >= 7 && count === 0) {
+        $(".prev.gallery-controls").removeClass("active");
+      }
+      if (owlDate.currentItem === owlDate.maximumItem) {
+        var size = "-" + extraItem * 57 + "px";
+        gallery.css("top", size);
+        $(".prev.gallery-controls").addClass("active");
+        $(".next.gallery-controls").removeClass("active");
+        count = extraItem;
+      }
+    }
+  });
+
+  $(".slider").on("mouseover", function (e) {
+    $(".slider").addClass("active");
+  });
+
+  $(".slider").on("mouseleave", function () {
+    setTimeout(function () {
+      $(".slider").removeClass("active");
+    }, 1500);
+  });
+
+  $(".slider-gallery").on("click", "img", function () {
+    var sliderNum = $(this).parent().data("slide");
+    owl.trigger("owl.goTo", sliderNum);
+  });
+
+  function moved() {
+    var $element = $(".slider-gallery li");
+    $element.removeClass("active");
+    $(".slider-gallery")
+      .find('[data-slide="' + owlDate.currentItem + '"]')
+      .addClass("active");
+  }
+});

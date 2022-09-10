@@ -60,8 +60,7 @@ nav.sticky .navbar-collapse {
 }
 
 .navbar {
-  position: -webkit-sticky;
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 1000;
@@ -542,7 +541,7 @@ button.btn {
 }
 
 .allProduct .pro_arrow {
-  margin-left: 5px;
+  margin-left: 15px;
 }
 
 @media (max-width: 699px) {
@@ -1137,7 +1136,7 @@ img.myLogo {
 .locationing {
   -webkit-box-shadow: 1px 2px 2px #2927ec;
           box-shadow: 1px 2px 2px #2927ec;
-  margin-top: 50px;
+  margin-top: 150px;
   border-radius: 5px;
   margin-bottom: 30px;
   background-image: radial-gradient(circle at 17% 77%, rgba(17, 17, 17, 0.04) 0%, rgba(17, 17, 17, 0.04) 50%, rgba(197, 197, 197, 0.04) 50%, rgba(197, 197, 197, 0.04) 100%), radial-gradient(circle at 26% 17%, rgba(64, 64, 64, 0.04) 0%, rgba(64, 64, 64, 0.04) 50%, rgba(244, 244, 244, 0.04) 50%, rgba(244, 244, 244, 0.04) 100%), radial-gradient(circle at 44% 60%, rgba(177, 177, 177, 0.04) 0%, rgba(177, 177, 177, 0.04) 50%, rgba(187, 187, 187, 0.04) 50%, rgba(187, 187, 187, 0.04) 100%), linear-gradient(19deg, #1c75fa, #22029f);
@@ -1173,13 +1172,13 @@ img.myLogo {
 .product-info {
   -webkit-box-shadow: 1px 2px 2px #2927ec;
           box-shadow: 1px 2px 2px #2927ec;
-  margin-top: 50px;
+  margin-top: 150px !important;
   margin-bottom: 45px;
   text-align: center;
 }
 
 .product-info h2.locationTitile {
-  margin: 0px !important;
+  margin: 10px 0px !important;
 }
 
 .product-info .Plink {
@@ -2141,6 +2140,7 @@ a.NEWbtn:hover {
   overflow: hidden;
   height: 100vh;
   min-height: 400px;
+  margin-top: 105px;
 }
 
 .slideshow__slide {
@@ -5602,8 +5602,8 @@ a.btn.btn-outline-primary.btn-qty {
 .page-link:hover {
   z-index: 2;
   color: #fff;
-  background-color: #070af6;
-  border-color: #070af6;
+  background-color: #0507c2;
+  border-color: #0507c2;
 }
 
 div#carouselExampleIndicators {
@@ -6168,5 +6168,100 @@ span.new_icon {
   display: grid;
   place-content: center;
   padding-bottom: 15px;
+}
+
+.proCarousel {
+  margin: 4px 5px 35px 5px !important;
+}
+
+.proCarousel .carousel-indicators {
+  bottom: -50px !important;
+}
+
+.CCNI,
+.CCPI {
+  width: 5rem !important;
+  height: 5rem !important;
+}
+
+.INF2 {
+  border-bottom: 2px solid #6668ef;
+  margin: 10px 0px !important;
+}
+
+.container.allProduct {
+  margin-top: 145px;
+}
+
+.boxContent3 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: normal;
+      -ms-flex-align: normal;
+          align-items: normal;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+p.description3 {
+  overflow: hidden;
+}
+
+.carousel-first {
+  margin: 0px 10px 25px 0px !important;
+}
+
+.box3 .read3 {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media (min-width: 990px) {
+  ul.dropdown-menu.list.show {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    width: 671px;
+  }
+  ul.dropdown-menu.list.show li {
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
+    width: 30%;
+    height: 100px;
+    height: 34px;
+  }
+  ul.dropdown-menu.list.show li.divider {
+    width: 95% !important;
+    border-bottom: 1px solid;
+    margin-right: 2%;
+  }
+}
+
+li.page-item {
+  margin: 0px 4px;
+  border-radius: 24px;
+}
+
+.page-item.disabled .page-link {
+  color: #fff;
+  pointer-events: none;
+  background-color: #9e9dde;
+  border-color: #a3a2ec;
 }
 /*# sourceMappingURL=main.css.map */

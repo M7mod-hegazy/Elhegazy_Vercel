@@ -4,4 +4,4 @@ from .models import Child, Product
 
 
 admin.site.register(Product),
-admin.site.register(Child)
+admin.site.register(Child),

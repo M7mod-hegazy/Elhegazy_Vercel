@@ -2,16 +2,16 @@
 {% load static %}
 {% block title %}- جميع المنتجات{% endblock %}
 {% block content %}
-<div class="container allProduct">
+<div class="container allProduct ">
   <a href="{% url 'index' %}" class="pro_arrow"><i class="fas fa-home"></i></a>
 
   <div class="accordion myProduct " id="accordionExample">
       <h2 class="accordionTitle">منتجاتنا</h2>
       <section>
+      <div class="row about"> 
 
   {% for pro in products %}
-      
-      <div class="card">
+      {% comment %} <div class="card">
         <a href="{% url 'pro_child' pro_id=pro.id %}" class="linkColor">
         <div class="card-header" id="headingOne">
       
@@ -29,9 +29,23 @@
           <span class="product-button">اضغط لعرض المنتجات</span>
         
         </div>
-      </a>
-      
-    
+       </a>
+      </div> {% endcomment %}
+      <div class="col-6">
+        <div class="box3">
+            <img src="{{ pro.photo.url }}">
+            <div class="box-heading3">
+                <h3 class="title3">{{ pro.name }}</h3>
+                <span class="post3">إضغط لعرض المنتجات</span>
+            </div>
+            <div class="boxContent3 boxAll">
+                <p class="description3">
+                  {{ pro.details }}
+                </p>
+                <a href="{% url 'pro_child' pro_id=pro.id %}" class="read3">عرض المنتجات <i class="fa fa-angle-right"></i></a>
+            </div>
+        </div>
+    </div>
   {% endfor %}
   </div>
   <!-- end accordion collapse -->
