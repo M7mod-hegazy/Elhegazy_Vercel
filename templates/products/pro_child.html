@@ -89,10 +89,12 @@
           </button>
         </div>
       {% if pchild.details %}
-        <p class="infoDetails INF2"><span class="">{{ pchild.details|linebreaks }}</span></p>
+        <div class="infoDetails2 ">
+          <p class=""><bdi>{{ pchild.details|linebreaks }}</bdi></p>
+        </div>
       {% endif %}    
     {% endif %}
-    
+      <span class="INF2"></span>
      {% for child in prol %}
 
       <div class="col-6 col-md-3 col-lg-3 searchM">
