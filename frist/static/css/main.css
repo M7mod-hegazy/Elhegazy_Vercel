@@ -5950,7 +5950,6 @@ span.new_icon {
             justify-content: space-between;
     font-size: 8px !important;
     height: 30px;
-    width: 75px;
     position: absolute;
     left: 20px;
     bottom: 20px;
@@ -6268,5 +6267,15 @@ li.page-item {
 .infoDetails2 {
   margin: -40px 0px;
   font-size: 10px;
+}
+
+.container-fluid.allProduct {
+  margin-top: 150px;
+}
+
+@media (max-width: 990px) {
+  .container-fluid.allProduct {
+    margin-top: 105px;
+  }
 }
 /*# sourceMappingURL=main.css.map */
