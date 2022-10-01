@@ -4162,7 +4162,7 @@ span.WorksName {
   color: #fff;
 }
 .box3 .read3 {
-  display: inline-block;
+  display: flex;
   padding: 10px 20px;
   background: $main1;
   font-size: 14px;
@@ -5591,8 +5591,18 @@ li.page-item {
 .container-fluid.allProduct {
   margin-top: 150px;
 }
+.box3 .title3{
+  line-height:21px
+}
 @media (max-width: 990px) {
   .container-fluid.allProduct {
     margin-top: 105px;
 }
+.box3 .title3{
+  line-height:11px !important;
+}
+}
+
+.box3 .read3{
+  justify-content:center;
 }
