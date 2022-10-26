@@ -6293,4 +6293,8 @@ li.page-item {
       -ms-flex-pack: center;
           justify-content: center;
 }
+
+.slideshow {
+  margin-top: 76px !important;
+}
 /*# sourceMappingURL=main.css.map */
