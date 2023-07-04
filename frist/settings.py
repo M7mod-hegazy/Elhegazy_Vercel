@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from django.contrib.messages import constants as messages
 import dj_database_url
 from pathlib import Path
+from dotenv import load_dotenv
+load_dotenv()
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -94,7 +96,7 @@ STATICFILE_FINDERS = (
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'elhegazedb',
         'USER': 'postgres',
         'PASSWORD': '275757',
@@ -102,6 +104,7 @@ DATABASES = {
         'PORT': '5432',
     }
 }
+
 
 
 # Password validation
@@ -162,9 +165,9 @@ LOGIN_REDIRECT_URL = 'index'
 LOGIN_URL = 'signin'
 
 STATICFILE_FINDERS = (
-
     'django_collectstatic_bower.staticfiles.finders.BowerComponentFinder',
 )
+
 
 
 
