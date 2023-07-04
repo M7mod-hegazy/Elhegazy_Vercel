@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 from django.contrib.messages import constants as messages
 import dj_database_url
-import django_heroku
 from pathlib import Path
 
 
@@ -29,8 +28,8 @@ SECRET_KEY = '57Eb060Ef463C7E9396850Adc95D2Ec3115B68174D72C468'
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    'elhegaze-v1.herokuapp.com/',
     'localhost',
+    'eb-env.eba-aapubfdx.us-west-2.elasticbeanstalk.com',
     'www.elhegazi.com',
     'elhegazi.com'
     ]
@@ -167,11 +166,7 @@ STATICFILE_FINDERS = (
     'django_collectstatic_bower.staticfiles.finders.BowerComponentFinder',
 )
 
-# Heroku: Update database configuration from $DATABASE_URL.
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
 
-django_heroku.settings(locals())
 
 # Custom massages
 MESSAGE_TAGS = {
@@ -179,10 +174,3 @@ MESSAGE_TAGS = {
 
 }
 
-AWS_ACCESS_KEY_ID  ="AKIATNUG7D6UZZLNG2JY"
-AWS_SECRET_ACCESS_KEY ="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"
-AWS_STORAGE_BUCKET_NAME = "elhegazi"
-AWS_S3_FILE_OVERWRITE = False
-AWS_DEFAULT_ACL = None
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
