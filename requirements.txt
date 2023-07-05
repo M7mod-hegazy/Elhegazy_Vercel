@@ -19,6 +19,7 @@ dockerpty==0.4.1
 filelock==3.6.0
 gunicorn==20.1.0
 heroku3==5.1.4
+first==2.0.2
 idna==3.3
 jmespath==1.0.1
 Pillow==9.1.0
