@@ -34,7 +34,8 @@ ALLOWED_HOSTS = [
     '172.31.32.246',
     'eb-env.eba-aapubfdx.us-west-2.elasticbeanstalk.com',
     'www.elhegazi.com',
-    'elhegazi.com'
+    'elhegazi.com',
+    '127.0.0.1'
     ]
 
 
@@ -98,10 +99,10 @@ STATICFILE_FINDERS = (
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'elhegazedb',
-        'USER': 'postgres',
-        'PASSWORD': '275757',
-        'HOST': 'localhost',
+        'NAME': 'elhegazyDB',
+        'USER': 'm7mod',
+        'PASSWORD': '2351970321',
+        'HOST': 'elhegazydb.c773b6wa4rxs.us-west-2.rds.amazonaws.com',
         'PORT': '5432',
     }
 }
