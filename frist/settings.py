@@ -32,6 +32,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'localhost',
     '172.31.32.246',
+    '172.31.43.167',
     'eb-env.eba-aapubfdx.us-west-2.elasticbeanstalk.com',
     'www.elhegazi.com',
     'elhegazi.com',
