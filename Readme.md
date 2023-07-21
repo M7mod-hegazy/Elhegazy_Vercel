@@ -6,7 +6,7 @@ I am pleased to announce the opening of the first fully designed and implemented
 - HTML, CSS, JS, Bootstrap, jquery and some other libraries were used for Frontend 🖌️🎨
 - Python, django, ajax and some other libraries were used for Backend ⚙️🔧
 - Postgres was used for Database 📚📂
-- The project is hosted by Heroku and AWS ☁️
+- The project is hosted by Amazon AWS ☁️
 - And for editing photos in Photoshop and Illustrator 🎨🖼️
               - - - - - - - - - - - - - - - - - - - - - - - - - - -
   
@@ -33,7 +33,7 @@ The Resposive website is compatible with all screen sizes📱💻🖥️
 - تم استخدام HTML, CSS, JS, Bootstrap, jquery و بعض المكتبات الأخرى للواجهه الخارجيه Frontend 🖌️🎨
 - تم إستخدام Python, django, ajax وبعض المكتبات الأخرى لل Backend ⚙️🔧
 - تم استخدام Postgres لل Database 📚📂
-- تم استضافة المشروع عن طريق Heroku و AWS ☁️
+- تم استضافة المشروع عن طريق  Amazon AWS ☁️
 - و للتعديل على الصور Photoshop و Illustrator 🎨🖼️
              - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   
