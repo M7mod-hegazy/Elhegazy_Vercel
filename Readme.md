@@ -1,5 +1,7 @@
+![custom_resized_83fae5d1-3e6b-49d2-bac0-bf4f439e736d](https://github.com/M7mod-hegazy/elhegaze.V_1.1/assets/68657674/b003d773-04e1-442e-8bef-00c16c5f772f)[Uploading custom_resized_83fae5d1-3e6b-49d2-bac0-bf4f439e736d.jpg…]()
 I am pleased to announce the opening of the first fully designed and implemented website for my father's shop 🎉🎊
-------------------🌐 http://eb-env.eba-aapubfdx.us-west-2.elasticbeanstalk.com/ 🌐---------------
+------------------🌐 http://eb-env.eba-aapub!
+fdx.us-west-2.elasticbeanstalk.com/ 🌐---------------
                             <Tools>
 - HTML, CSS, JS, Bootstrap, jquery and some other libraries were used for Frontend 🖌️🎨
 - Python, django, ajax and some other libraries were used for Backend ⚙️🔧
