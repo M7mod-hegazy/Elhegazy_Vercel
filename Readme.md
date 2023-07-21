@@ -1,6 +1,7 @@
 ![custom_resized_83fae5d1-3e6b-49d2-bac0-bf4f439e736d](https://github.com/M7mod-hegazy/elhegaze.V_1.1/assets/68657674/b003d773-04e1-442e-8bef-00c16c5f772f)
 I am pleased to announce the opening of the first fully designed and implemented website for my father's shop 🎉🎊
 ------------------🌐 http://eb-env.eba-aapub!fdx.us-west-2.elasticbeanstalk.com/ 🌐---------------
+
                             <Tools>
 - HTML, CSS, JS, Bootstrap, jquery and some other libraries were used for Frontend 🖌️🎨
 - Python, django, ajax and some other libraries were used for Backend ⚙️🔧
@@ -8,6 +9,7 @@ I am pleased to announce the opening of the first fully designed and implemented
 - The project is hosted by Heroku and AWS ☁️
 - And for editing photos in Photoshop and Illustrator 🎨🖼️
               - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  
                       <Abilities>
 - A commercial website 🏪
 The Resposive website is compatible with all screen sizes📱💻🖥️
@@ -34,6 +36,7 @@ The Resposive website is compatible with all screen sizes📱💻🖥️
 - تم استضافة المشروع عن طريق Heroku و AWS ☁️
 - و للتعديل على الصور Photoshop و Illustrator 🎨🖼️
              - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  
                      < الإمكانيات Abilties >
 - موقع إلكتروني تجاري 🏪
 - الموقع Resposive متوافق مع جميع أحجام الشاشات📱💻🖥️
