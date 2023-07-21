@@ -12,8 +12,8 @@ I am pleased to announce the opening of the first fully designed and implemented
   
                       <Abilities>
 - A commercial website 🏪
-The Resposive website is compatible with all screen sizes📱💻🖥️
-- The ability to add, modify and delete everything on the site through the owner of the site only without entering the code admin panel 🔑
+The Responsive website is compatible with all screen sizes📱💻🖥️
+- The ability to add, modify and delete everything on the site through the owner of the site only without entering the code by admin panel 🔑
 - The site allows you to display products with the ability to classify them 📸
 - The site shows you the latest offers in the interface 🆕
 - We also show you the previous works 🏗️
@@ -40,7 +40,7 @@ The Resposive website is compatible with all screen sizes📱💻🖥️
                      < الإمكانيات Abilties >
 - موقع إلكتروني تجاري 🏪
 - الموقع Resposive متوافق مع جميع أحجام الشاشات📱💻🖥️
-- القدره على إضافه و تعديل و حذف كل شئ في الموقع عن طريق مالك الموقع فقط بدون تدخل بالكود admin panel 🔑
+- القدره على إضافه و تعديل و حذف كل شئ في الموقع عن طريق مالك الموقع فقط بدون تدخل بالكود عن طريق admin panel 🔑
 - يتيح لك الموقع عرض للمنتجات مع إمكانية تصنيفها 📸
 - يعرض لك الموقع أحدث العروض في الواجهه 🆕
 - كما نعرض لكم سابقة الأعمال 🏗️
