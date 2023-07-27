@@ -1150,6 +1150,7 @@ img.myLogo {
 
 .locationing .card .card-body {
   background-image: radial-gradient(circle at 17% 77%, rgba(17, 17, 17, 0.04) 0%, rgba(17, 17, 17, 0.04) 50%, rgba(197, 197, 197, 0.04) 50%, rgba(197, 197, 197, 0.04) 100%), radial-gradient(circle at 26% 17%, rgba(64, 64, 64, 0.04) 0%, rgba(64, 64, 64, 0.04) 50%, rgba(244, 244, 244, 0.04) 50%, rgba(244, 244, 244, 0.04) 100%), radial-gradient(circle at 44% 60%, rgba(177, 177, 177, 0.04) 0%, rgba(177, 177, 177, 0.04) 50%, rgba(187, 187, 187, 0.04) 50%, rgba(187, 187, 187, 0.04) 100%), linear-gradient(19deg, #1c75fa, #22029f);
+  color: #fff;
 }
 
 ::-webkit-scrollbar {
@@ -6031,7 +6032,7 @@ span.new_icon {
     top: 13px;
   }
   a.pro_arrow.home_arrow {
-    left: 58px;
+    left: 40px;
   }
   span.product-button {
     font-size: 4px;
@@ -6051,8 +6052,8 @@ span.new_icon {
     height: 250px;
   }
   .location_container a.pro_arrow.home_arrow {
-    left: 60px;
-    top: 75px;
+    left: 40px;
+    top: 164px;
   }
   .allProduct .pro_arrow {
     left: 50px;
@@ -6060,12 +6061,12 @@ span.new_icon {
   .NewInfo .info_sec .proInfo_arrow {
     font-size: 14px;
     top: 20px;
-    left: 56px;
+    left: 23px;
   }
   .NewInfo .info_sec .proInfo_arrow_home {
     font-size: 14px;
     top: 20px;
-    left: 80px;
+    left: 55px;
   }
   p.infoDetails {
     font-size: 8px;

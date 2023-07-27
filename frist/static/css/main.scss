@@ -1039,6 +1039,7 @@ img.myLogo {
 }
 .locationing .card .card-body {
   background-image: $background1;
+  color: $white; 
 }
 //end bootstap card فروعنا
 //start scroll
@@ -5389,7 +5390,7 @@ span.new_icon {
     top: 13px;
   }
   a.pro_arrow.home_arrow {
-    left: 58px;
+    left: 40px;
   }
   span.product-button {
     font-size: 4px;
@@ -5408,8 +5409,8 @@ span.new_icon {
     height: 250px;
   }
   .location_container a.pro_arrow.home_arrow {
-    left: 60px;
-    top: 75px;
+    left: 40px;
+    top: 164px;
   }
   .allProduct .pro_arrow {
     left: 50px;
@@ -5418,12 +5419,12 @@ span.new_icon {
     .proInfo_arrow {
       font-size: 14px;
       top: 20px;
-      left: 56px;
+      left: 23px;
     }
     .proInfo_arrow_home {
       font-size: 14px;
       top: 20px;
-      left: 80px;
+      left: 55px;
     }
   }
   p.infoDetails {
