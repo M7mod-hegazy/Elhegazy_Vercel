@@ -161,8 +161,8 @@
           <a id="downloadLink" href="{% url 'generate_qr_code' pro_id=pchild.product.pk chi_id=pchild.pk %}" download="{{ pchild.name }}.jpg" class="download-link" ><i class="fa-solid fa-download"></i></a>
 
           <div class="currentLink_container">
-            <p id="currentLink"></p>
-            <i class="fa-solid fa-copy" id="copyIcon"></i>
+            <p id="currentLink" class="currentLink" ></p>
+            <i class="fa-solid fa-copy" id="copyIcon" class="copyIcon" onclick="copyCurrentLink()"></i>
           </div>
           
         </div> 
@@ -197,12 +197,11 @@
 
       <!-- end product_info -->
 <script>
-  
   function addtocart(){
     document.getElementById('btnclose').click();
     document.getElementById('frmaddtocart').submit();
-  };
- 
+  }
+
   
 </script>
 

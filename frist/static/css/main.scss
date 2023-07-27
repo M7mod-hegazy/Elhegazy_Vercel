@@ -272,8 +272,9 @@ li.nav-item {
     width: 95%;
   }
   p {
-    padding: 10px;
-    margin: 10px;
+    padding: 5px;
+    font-size: 8px;
+    margin: 5px;
   }
   h2.locationTitile {
     margin: 0px !important;
@@ -1140,7 +1141,7 @@ img.qrcode {
   position: absolute;
   right: 10px;
   bottom: 10px;
-  width: 75px;
+  width: 60px;
   border: 3px solid black;
   padding: 0px;
   border-radius: 10px;
@@ -1883,8 +1884,8 @@ a.NEWbtn:hover {
   margin: 0 auto;
 
   @media (max-width: 699px) {
-    padding-right: 40px;
-    padding-left: 40px;
+    padding-right: 5px;
+    padding-left: 5px;
   }
 
   @media (min-width: 700px) and (max-width: 1599px) {
@@ -5619,19 +5620,19 @@ li.page-item {
 
 a#downloadLink {
   position: absolute;
-  right: 100px;
-  bottom: 5px;
+  right: 85px;
+  bottom: 6px;
   color: $links;
-  font-size: 25px;
+  font-size: 20px;
 }:hover{
  color: $linksHover;
 }
 a#lightboxTrigger2 {
   position: absolute;
-  right: 101px;
-  bottom: 45px;
+  right: 85px;
+  bottom: 42px;
   color: $links;
-  font-size: 25px;
+  font-size: 20px;
 }:hover{
   color: $linksHover;
  }
@@ -5648,11 +5649,17 @@ a#lightboxTrigger2 {
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   font-size: 13px;
-  width: 235px;
+  width: 205px;
   position: absolute;
-  bottom: 30px;
-  right: 157px;
+  bottom: 25px;
+  right: 114px;
+  white-space: nowrap;
   border-bottom: solid 3px $NewBlue;
+ }
+ @media (min-width: 992px) {
+  .currentLink_container {
+    width: 300px;
+  }
  }
  #currentLink {
   padding: 3px;

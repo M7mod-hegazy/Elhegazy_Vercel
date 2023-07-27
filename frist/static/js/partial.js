@@ -1,3 +1,4 @@
+
 /*
 var arabic = document.getElementById("ar"),
     english = document.getElementById("en");
@@ -214,12 +215,16 @@ class Slideshow {
 })();
 
 
+
 lightbox.option({
   "alwaysShowNavOnTouchDevices" : true,
   "disableScrolling" : true,
   "wrapAround" : true,
 })
+
+
 function copyCurrentLink() {
+  // Your copyCurrentLink() function remains unchanged
   var currentLink = document.getElementById('currentLink');
   var textArea = document.createElement('textarea');
   textArea.value = currentLink.innerText;
@@ -230,33 +235,30 @@ function copyCurrentLink() {
 
   alert('Current link copied to clipboard!');
 }
-
-// Event listener for the copy icon
-var copyIcon = document.getElementById('copyIcon');
-copyIcon.addEventListener('click', copyCurrentLink);
-document.getElementById('currentLink').innerText = window.location.href;
-
+function showLink() {
+  // Set the innerText of 'currentLink' element to the current URL
+  document.getElementById('currentLink').innerText = window.location.href;
+}
 
 ///////////////////////////////////////////////////////////////////////
-///////////////  code before here /////////////////////////////////////
+/////////////// no code before here /////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////
+
 var splide = new Splide('.splide.spi1', {
   type: 'loop',
   perPage: 4,
   focus: 'center',
   autoplay: true,
-});
-splide.mount();
+}).mount();
 
-var splide = new Splide( '.splide.spi2', {
-  type   : 'loop',
-  perPage: 4,
-  focus  : 'center',
-  autoplay: true,
-} ); 
-// Mount the carousel
-splide.mount();
-
+// var splide = new Splide( '.splide.spi2', {
+//   type   : 'loop',
+//   perPage: 4,
+//   focus  : 'center',
+//   autoplay: true,
+// } ); 
+// // Mount the carousel
+// splide.mount();
 ///////////////////////////////////////////////////////////////////////
-/////////////// no code after this /////////////////////////////////////
+/////////////// code after this /////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////
