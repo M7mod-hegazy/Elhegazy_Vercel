@@ -791,7 +791,6 @@ footer .mainFooter {
   border-top: 1px solid white;
   height: 100%;
   background-size: cover;
-  color: #fff;
 }
 
 footer div {
@@ -1198,7 +1197,7 @@ img.myLogo {
 }
 
 .product-info .P_IN {
-  padding-bottom: 85px;
+  padding-bottom: 22px;
   position: relative;
 }
 
@@ -1261,7 +1260,7 @@ img.qrcode {
   position: absolute;
   right: 10px;
   bottom: 10px;
-  width: 75px;
+  width: 50px;
   border: 3px solid black;
   padding: 0px;
   border-radius: 10px;
@@ -1514,7 +1513,6 @@ img.qrcode {
   padding: 4.5px;
   margin-top: 30px !important;
   width: 90%;
-  color: #fff;
 }
 
 .CT2 {
@@ -1891,7 +1889,6 @@ a.NEWbtn:hover {
 
 .P_IMG {
   margin-top: 48px;
-  margin-bottom: -30px;
 }
 
 .PRO2_arrow:hover,
@@ -5988,6 +5985,9 @@ span.new_icon {
     font-size: 25px;
     top: 7px;
   }
+  .col-12.col-lg-6.P_IN.info_sec {
+    padding-bottom: 0px;
+  }
   .alert {
     font-size: 6px;
     padding: 8px 28px 8px 5px;
@@ -6297,76 +6297,4 @@ li.page-item {
 .slideshow {
   margin-top: 65px !important;
 }
-
-.image_popup {
-  color: red;
-}
-
-a#downloadLink {
-  position: absolute;
-  right: 100px;
-  bottom: 5px;
-  color: #8db8f6;
-  font-size: 25px;
-}
-
-:hover {
-  color: white;
-}
-
-a#lightboxTrigger2 {
-  position: absolute;
-  right: 101px;
-  bottom: 45px;
-  color: #8db8f6;
-  font-size: 25px;
-}
-
-:hover {
-  color: white;
-}
-
-.currentLink_container {
-  display: -ms-flexbox;
-  display: -webkit-box;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  background-color: rgba(255, 255, 255, 0.15);
-  border-radius: 102px;
-  padding: 5px 10px !important;
-  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  font-size: 13px;
-  width: 235px;
-  position: absolute;
-  bottom: 30px;
-  right: 157px;
-  border-bottom: solid 3px #0d6efd;
-}
-
-#currentLink {
-  padding: 3px;
-  -webkit-box-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  color: #fff;
-  margin: 0;
-  overflow: scroll;
-  margin-right: 10px;
-}
-
-#copyIcon {
-  position: absolute;
-  right: 9px;
-  z-index: 1000;
-  cursor: pointer;
-  color: #8db8f6;
-  margin-left: 10px;
-}
-
-#copyIcon:hover {
-  color: white;
-}
-/*# sourceMappingURL=main.css.map */
+/*# sourceMappingURL=main.fd469ea85973.css.map */

@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "@splidejs/splide": "^2.4.21",
-    "bootstrap": "^5.0.2"
+    "bootstrap": "^5.0.2",
+    "lightbox2": "^2.11.4"
   }
 }

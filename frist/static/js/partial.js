@@ -212,3 +212,51 @@ class Slideshow {
   }, maxLoad);
   addLoadClass();
 })();
+
+
+lightbox.option({
+  "alwaysShowNavOnTouchDevices" : true,
+  "disableScrolling" : true,
+  "wrapAround" : true,
+})
+function copyCurrentLink() {
+  var currentLink = document.getElementById('currentLink');
+  var textArea = document.createElement('textarea');
+  textArea.value = currentLink.innerText;
+  document.body.appendChild(textArea);
+  textArea.select();
+  document.execCommand('copy');
+  document.body.removeChild(textArea);
+
+  alert('Current link copied to clipboard!');
+}
+
+// Event listener for the copy icon
+var copyIcon = document.getElementById('copyIcon');
+copyIcon.addEventListener('click', copyCurrentLink);
+document.getElementById('currentLink').innerText = window.location.href;
+
+
+///////////////////////////////////////////////////////////////////////
+///////////////  code before here /////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
+var splide = new Splide('.splide.spi1', {
+  type: 'loop',
+  perPage: 4,
+  focus: 'center',
+  autoplay: true,
+});
+splide.mount();
+
+var splide = new Splide( '.splide.spi2', {
+  type   : 'loop',
+  perPage: 4,
+  focus  : 'center',
+  autoplay: true,
+} ); 
+// Mount the carousel
+splide.mount();
+
+///////////////////////////////////////////////////////////////////////
+/////////////// no code after this /////////////////////////////////////
+///////////////////////////////////////////////////////////////////////

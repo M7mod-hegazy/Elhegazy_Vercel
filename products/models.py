@@ -56,6 +56,7 @@ class Child(models.Model):
     publish_date = models.DateTimeField(default=datetime.now)
 
     def __str__(self):
+        qr_code_url = reverse('product_info', args=[self.id])
         return self.code
 
     class Meta:

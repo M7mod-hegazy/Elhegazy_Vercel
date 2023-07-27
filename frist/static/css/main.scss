@@ -790,6 +790,7 @@ footer .mainFooter {
   border-top: 1px solid white;
   height: 100%;
   background-size: cover;
+  color: $white;
 }
 footer div {
   text-align: center !important;
@@ -1084,7 +1085,7 @@ img.myLogo {
     right: 10px;
   }
   .P_IN {
-    padding-bottom: 22px;
+    padding-bottom: 85px;
     position: relative;
   }
 }
@@ -1139,7 +1140,7 @@ img.qrcode {
   position: absolute;
   right: 10px;
   bottom: 10px;
-  width: 50px;
+  width: 75px;
   border: 3px solid black;
   padding: 0px;
   border-radius: 10px;
@@ -1368,6 +1369,7 @@ img.qrcode {
   padding: 4.5px;
   margin-top: 30px !important;
   width: 90%;
+  color: $white;
 }
 .CT2 {
   border-bottom: solid 3px $NewBlue;
@@ -1720,6 +1722,7 @@ a.NEWbtn:hover {
 }
 .P_IMG {
   margin-top: 48px;
+  margin-bottom: -30px;
 }
 
 .PRO2_arrow:hover,
@@ -5342,9 +5345,7 @@ span.new_icon {
     font-size: 25px;
     top: 7px;
   }
-  .col-12.col-lg-6.P_IN.info_sec {
-    padding-bottom: 0px;
-  }
+  
   .alert {
     font-size: 6px;
     padding: 8px 28px 8px 5px;
@@ -5610,3 +5611,68 @@ li.page-item {
 
   margin-top: 65px !important;
 }
+
+
+.image_popup{
+  color: red;
+}
+
+a#downloadLink {
+  position: absolute;
+  right: 100px;
+  bottom: 5px;
+  color: $links;
+  font-size: 25px;
+}:hover{
+ color: $linksHover;
+}
+a#lightboxTrigger2 {
+  position: absolute;
+  right: 101px;
+  bottom: 45px;
+  color: $links;
+  font-size: 25px;
+}:hover{
+  color: $linksHover;
+ }
+
+ .currentLink_container {
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 102px;
+  padding: 5px 10px !important;
+  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 13px;
+  width: 235px;
+  position: absolute;
+  bottom: 30px;
+  right: 157px;
+  border-bottom: solid 3px $NewBlue;
+ }
+ #currentLink {
+  padding: 3px;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  color: $white;
+  margin: 0;
+  overflow: scroll;
+  margin-right: 10px;
+}
+#copyIcon {
+  position: absolute;
+  right: 9px;
+  z-index: 1000;
+  cursor: pointer;
+  color: $links;
+  margin-left: 10px;
+}
+#copyIcon:hover{
+  color: $linksHover;
+}
+

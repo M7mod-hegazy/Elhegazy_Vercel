@@ -17,7 +17,7 @@
                 <div class="slideshow__slide-background background-absolute">
                   <div class="slideshow__slide-image-wrap background-absolute">
                     <div class="slideshow__slide-image background-absolute">
-                    <img src="{{ slide.photo.url }}" style="width: 100%; height: 100%">
+                    <img src="{{ slide.photo.url }}" alt="..." style="width: 100%; height: 100%">
 
                     </div>
                   </div>
@@ -86,7 +86,7 @@
 
     <div class="col-12 col-lg-6 col_padding">
       
-          <img  src="{% static 'img/icon.jpg'%}" class="image image1" alt="...">       
+          <img  src="{% static 'img/icon.jpg'%}"  class="image image1" alt="...">       
         
     </div>
     <div class="col-12 col-lg-6 col_padding">
@@ -179,7 +179,7 @@
         <li class="splide__slide new__splide">
         <div class="searchR">
             <div class="card" style="width: 18rem;">
-                <img src="{{ child.photo.url }}" class="card-img-top" alt="...">
+                <img src="{{ child.photo.url }}" alt="..." class="card-img-top" alt="...">
                 {% if child.oldPrice %}
                 <span class="sale">sale!</span>
                 {% endif %}

@@ -48,13 +48,16 @@
                   <span class="sale">sale!</span>
                   {% endif %}
                 <div class="carousel-item active data-interval="500"">
+                  <a href="{{ pchild.photo.url }}" data-lightbox="roadtrip">
                     <img src="{{ pchild.photo.url }}" class="d-block w-100" alt="...">
-                    
+                  </a>  
                 </div>
 
                 {% if pchild.photo2 %}
                   <div class="carousel-item data-interval="500"">
-                    <img src="{{ pchild.photo2.url }}" class="d-block w-100" alt="...">
+                    <a href="{{ pchild.photo2.url }}" data-lightbox="roadtrip"> 
+                     <img src="{{ pchild.photo2.url }}" class="d-block w-100" alt="...">
+                    </a> 
                   </div>
                 {%else%}  
 
@@ -62,7 +65,9 @@
 
                 {% if pchild.photo3 %}
                 <div class="carousel-item data-interval="500"">
-                  <img src="{{ pchild.photo3.url }}" class="d-block w-100" alt="...">
+                  <a href="{{ pchild.photo3.url }}" data-lightbox="roadtrip">
+                     <img src="{{ pchild.photo3.url }}" class="d-block w-100" alt="...">
+                  </a>   
                 </div>
                 {%else%}  
 
@@ -70,7 +75,9 @@
 
                 {% if pchild.photo4 %}
                 <div class="carousel-item data-interval="500"">
-                  <img src="{{ pchild.photo4.url }}" class="d-block w-100" alt="...">
+                  <a href="{{ pchild.photo4.url }}" data-lightbox="roadtrip">
+                    <img src="{{ pchild.photo4.url }}" class="d-block w-100" alt="...">
+                  </a>  
                 </div>
                 {%else%}  
 
@@ -78,7 +85,9 @@
 
                 {% if pchild.photo5 %}
                 <div class="carousel-item data-interval="500"">
-                  <img src="{{ pchild.photo5.url }}" class="d-block w-100" alt="...">
+                  <a href="{{ pchild.photo5.url }}" data-lightbox="roadtrip">
+                    <img src="{{ pchild.photo5.url }}" class="d-block w-100" alt="...">
+                  </a>
                 </div>
                 {%else%}  
 
@@ -140,10 +149,23 @@
           </div> 
           
          
-        <!-- <div class="img-holder">
-         
-          <img class="qrcode" src={{obj.qr_code.url}}>
-        </div> -->
+        <div class="img-holder">
+          <a id="lightboxTrigger" href="{% url 'generate_qr_code' pro_id=pchild.product.pk chi_id=pchild.pk %}" data-lightbox="image-1">
+
+            <img class="qrcode"  src="{% url 'generate_qr_code' pro_id=pchild.product.pk chi_id=pchild.pk %}" alt="QR Code">
+
+          </a>
+          <a id="lightboxTrigger2" href="{% url 'generate_qr_code' pro_id=pchild.product.pk chi_id=pchild.pk %}" data-lightbox="image-2"><i class="fa-solid fa-expand"></i></a>
+
+
+          <a id="downloadLink" href="{% url 'generate_qr_code' pro_id=pchild.product.pk chi_id=pchild.pk %}" download="{{ pchild.name }}.jpg" class="download-link" ><i class="fa-solid fa-download"></i></a>
+
+          <div class="currentLink_container">
+            <p id="currentLink"></p>
+            <i class="fa-solid fa-copy" id="copyIcon"></i>
+          </div>
+          
+        </div> 
 
      </div>
     </div>
@@ -172,12 +194,16 @@
       </div>
     </form> 
     
-     
+
       <!-- end product_info -->
 <script>
+  
   function addtocart(){
     document.getElementById('btnclose').click();
     document.getElementById('frmaddtocart').submit();
-  }
+  };
+ 
+  
 </script>
+
 {% endblock %}

@@ -9,6 +9,10 @@ from django.urls import reverse
 from django.http import HttpResponse, HttpResponseRedirect
 from accounts.models import UserProfile
 from django.contrib.postgres.search import SearchVector
+import qrcode
+from io import BytesIO
+from PIL import Image
+
 
 # Import Pagination Stuff
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
@@ -73,12 +77,10 @@ def pro_child(request, pro_id):
     return render(request, 'products/pro_child.html',  prochild)
 
 
+
 def product_info(request, pro_id, chi_id):
     pchild = get_object_or_404(Child, product__pk=pro_id, pk=chi_id)
-    products = Product.objects.all()
-    chil = Child.objects.all()
-    obj = Child.objects.get(product__pk=pro_id, pk=chi_id)
-  
+    pro5 = Product.objects.all()
     if request.user.is_authenticated and not request.user.is_anonymous:
         userprofile = UserProfile.objects.get(user=request.user)
         if Order.objects.all().filter(user=request.user, is_finished=False):
@@ -87,13 +89,23 @@ def product_info(request, pro_id, chi_id):
             prototal = 0
             for prosup in orderdetails:
                 prototal += prosup.quantity
-            return render(request, 'products/product_info.html', context={'pchild': pchild, 'products': products,'chil': chil, 'obj': obj, 'userprofile': userprofile, 'order': order,'prototal': prototal})
+            return render(request, 'products/product_info.html', context={
+                'pchild': pchild,
+                'userprofile': userprofile,
+                'order': order,
+                'prototal': prototal,
+                'products': pro5,
+            })
         else:
-            return render(request, 'products/product_info.html', context={'pchild': pchild, 'products': products,
-                                                                      'chil': chil, 'obj': obj})    
+            return render(request, 'products/product_info.html', context={
+                'pchild': pchild,'products': pro5,
+            })
     else:
-        return render(request, 'products/product_info.html', context={'pchild': pchild, 'products': products,
-                                                                      'chil': chil, 'obj': obj})
+        return render(request, 'products/product_info.html', context={
+            'pchild': pchild,'products': pro5,
+        })
+
+
 
 def search_result(request):
     pro2 = Child.objects.all()
@@ -170,3 +182,31 @@ def search(request):
     }
 
     return render(request, 'products/search.html', pchild)
+
+
+# View for generating the QR code
+def generate_qr_code(request, pro_id, chi_id):
+    # Construct the complete URL using the request object and the ID
+    current_url = request.build_absolute_uri()
+    complete_url = f"{current_url}"
+
+    # Generate the QR code
+    qr = qrcode.QRCode(
+        version=1,
+        error_correction=qrcode.constants.ERROR_CORRECT_L,
+        box_size=10,
+        border=4,
+    )
+    qr.add_data(complete_url)
+    qr.make(fit=True)
+
+    # Create an image from the QR code data
+    img = qr.make_image(fill_color="black", back_color="white")
+
+    # Save the image to a BytesIO buffer to return it as a response
+    response = HttpResponse(content_type="image/png")
+    img.save(response, "PNG")
+    return response
+
+
+
