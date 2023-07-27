@@ -216,11 +216,17 @@ class Slideshow {
 
 
 
-lightbox.option({
-  "alwaysShowNavOnTouchDevices" : true,
-  "disableScrolling" : true,
-  "wrapAround" : true,
-})
+Fancybox.bind('[data-fancybox]', {
+  
+  clickContent: true,
+  clickSlide: false,
+  hash: true,
+  hideScrollbar: false,
+  idleTime: 2000,
+  infobar: false,
+  loop: true,
+});
+
 
 
 function copyCurrentLink() {
