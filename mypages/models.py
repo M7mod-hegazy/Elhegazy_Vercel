@@ -29,3 +29,6 @@ class Mysection(models.Model):
     secName = models.CharField(max_length=200, default="none")
     details = models.TextField(max_length=1000)
     photo = models.ImageField(upload_to='photos/%Y/%m/%d/',  blank=False)
+    
+    def __str__(self):
+        return self.name
