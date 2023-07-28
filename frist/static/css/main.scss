@@ -196,7 +196,7 @@ li.nav-item {
   opacity: 0.4;
   margin-left: 10px;
   margin-right: 10px;
-  border-top: 1px solid rgba($color: $white, $alpha: 0.6);
+  border-top: 1px solid rgba($color: $white, $alpha: 1);
 }
 .d-flex .cartBtn {
   position: relative;
@@ -5591,6 +5591,9 @@ li.page-item {
 .infoDetails2 {
     margin: -40px 0px;
     font-size: 10px;
+    p{
+      margin: -5px 0px 60px 0px;
+    }
 }
 .container-fluid.allProduct {
   margin-top: 150px;
@@ -5683,5 +5686,8 @@ a#lightboxTrigger2 {
 }
 #copyIcon:hover{
   color: $linksHover;
+}
+ul.dropdown-menu.list.show {
+  border: 1px solid white;
 }
 

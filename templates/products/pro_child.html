@@ -112,7 +112,24 @@
         <div class="infoDetails2 ">
           <p class=""><bdi>{{ pchild.details|linebreaks }}</bdi></p>
         </div>
-      {% endif %}    
+      {% endif %}  
+      <div class="img-holder">
+        <a id="lightboxTrigger" href="{% url 'generate_qr_code2' pro_id=pchild.pk  %}" data-fancybox="image-3">
+
+          <img class="qrcode"  src="{% url 'generate_qr_code2' pro_id=pchild.pk  %}" alt="QR Code">
+
+        </a>
+        <a id="lightboxTrigger2" href="{% url 'generate_qr_code2' pro_id=pchild.pk  %}" data-fancybox="image-4"><i class="fa-solid fa-expand"></i></a>
+
+
+        <a id="downloadLink" href="{% url 'generate_qr_code2' pro_id=pchild.pk  %}" download="{{ pchild.name }}.jpg" class="download-link" ><i class="fa-solid fa-download"></i></a>
+
+        <div class="currentLink_container">
+          <p id="currentLink" class="currentLink" ></p>
+          <i class="fa-solid fa-copy" id="copyIcon" class="copyIcon" onclick="copyCurrentLink()"></i>
+        </div>
+        
+      </div>      
     {% endif %}
       <span class="INF2"></span>
      {% for child in prol %}

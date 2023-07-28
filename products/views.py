@@ -184,11 +184,14 @@ def search(request):
     return render(request, 'products/search.html', pchild)
 
 
-# View for generating the QR code
+
 def generate_qr_code(request, pro_id, chi_id):
-    # Construct the complete URL using the request object and the ID
-    current_url = request.build_absolute_uri()
-    complete_url = f"{current_url}"
+    # Construct the complete URL manually without using build_absolute_uri
+    protocol = 'https' if request.is_secure() else 'http'
+    domain = request.get_host()
+    path = request.path
+
+    complete_url = f"{protocol}://{domain}{path}"
 
     # Generate the QR code
     qr = qrcode.QRCode(
@@ -208,5 +211,30 @@ def generate_qr_code(request, pro_id, chi_id):
     img.save(response, "PNG")
     return response
 
+def generate_qr_code2(request, pro_id):
+    # Construct the complete URL manually without using build_absolute_uri
+    protocol = 'https' if request.is_secure() else 'http'
+    domain = request.get_host()
+    path = request.path
+
+    complete_url = f"{protocol}://{domain}{path}"
+
+    # Generate the QR code
+    qr = qrcode.QRCode(
+        version=1,
+        error_correction=qrcode.constants.ERROR_CORRECT_L,
+        box_size=10,
+        border=4,
+    )
+    qr.add_data(complete_url)
+    qr.make(fit=True)
+
+    # Create an image from the QR code data
+    img = qr.make_image(fill_color="black", back_color="white")
+
+    # Save the image to a BytesIO buffer to return it as a response
+    response = HttpResponse(content_type="image/png")
+    img.save(response, "PNG")
+    return response
 
 

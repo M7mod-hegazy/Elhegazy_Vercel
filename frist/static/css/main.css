@@ -137,7 +137,7 @@ li.nav-item {
   opacity: 0.4;
   margin-left: 10px;
   margin-right: 10px;
-  border-top: 1px solid rgba(255, 255, 255, 0.6);
+  border-top: 1px solid white;
 }
 
 .d-flex .cartBtn {
@@ -6274,6 +6274,10 @@ li.page-item {
   font-size: 10px;
 }
 
+.infoDetails2 p {
+  margin: -5px 0px 60px 0px;
+}
+
 .container-fluid.allProduct {
   margin-top: 150px;
 }
@@ -6378,5 +6382,9 @@ a#lightboxTrigger2 {
 
 #copyIcon:hover {
   color: white;
+}
+
+ul.dropdown-menu.list.show {
+  border: 1px solid white;
 }
 /*# sourceMappingURL=main.css.map */
