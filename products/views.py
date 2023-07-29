@@ -117,6 +117,7 @@ def search_result(request):
     p = None
     page = None
     prol=  None
+    query_string = None
 
     search_vector = SearchVector('name', 'code', 'details')
     if ('searchname' in request.GET) and request.GET['searchname'].strip():
@@ -141,7 +142,8 @@ def search_result(request):
             'products': pro5,
             'prol': prol,
             'p':p,
-            'seens': seens, 'query_string': query_string
+            'seens': seens, 
+            'query_string': query_string
         }
     else:   
           context3 = {
@@ -153,25 +155,25 @@ def search_result(request):
            
         } 
         
-    if request.user.is_authenticated and not request.user.is_anonymous:
-        if Order.objects.all().filter(user=request.user, is_finished=False):
-            order = Order.objects.get(user=request.user, is_finished=False)
-            orderdetails = OrderDetails.objects.all().filter(order=order)
-            prototal = 0
-            for prosup in orderdetails:
-                prototal += prosup.quantity
-            context3 = {
-                'order': order,
-                'prototal': prototal,
-                'name': name,
-                'code': code,
-                'details': details,
-                'products2': pro2,
-                'products': pro5,
-                'prol': prol,
-                'seens': seens,
-                'query_string': query_string
-            }
+    # if request.user.is_authenticated and not request.user.is_anonymous:
+    #     if Order.objects.all().filter(user=request.user, is_finished=False):
+    #         order = Order.objects.get(user=request.user, is_finished=False)
+    #         orderdetails = OrderDetails.objects.all().filter(order=order)
+    #         prototal = 0
+    #         for prosup in orderdetails:
+    #             prototal += prosup.quantity
+    #         context3 = {
+    #             'order': order,
+    #             'prototal': prototal,
+    #             'name': name,
+    #             'code': code,
+    #             'details': details,
+    #             'products2': pro2,
+    #             'products': pro5,
+    #             'prol': prol,
+    #             'seens': seens,
+    #             'query_string': query_string
+    #         }
     return render(request, 'products/search_result.html', context3)
 
 

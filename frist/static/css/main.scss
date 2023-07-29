@@ -1369,7 +1369,7 @@ img.qrcode {
   border-bottom: solid 3px $NewBlue;
   background-color: rgba(255, 255, 255, 0.15);
   padding: 4.5px;
-  margin-top: 30px !important;
+  margin-top: 13px !important;
   width: 90%;
   color: $white;
 }
@@ -5558,20 +5558,16 @@ p.description3 {
 
 @media (min-width: 990px) {
   ul.dropdown-menu.list.show {
-    display: flex;
+    display: grid;
     flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    width: 671px;
+    place-content: center;
     li {
       flex-grow: 1;
-      width: 30%;
       height: 100px;
       height: 34px;
     }
     li.divider {
       width: 95% !important;
-      border-bottom: 1px solid;
       margin-right: 2%;    }
   }
  
@@ -5592,7 +5588,7 @@ li.page-item {
     margin: -40px 0px;
     font-size: 10px;
     p{
-      margin: -5px 0px 60px 0px;
+      margin: 15px 0px 0px 0px;
     }
 }
 .container-fluid.allProduct {
@@ -5690,4 +5686,37 @@ a#lightboxTrigger2 {
 ul.dropdown-menu.list.show {
   border: 1px solid white;
 }
+tbody, td, tfoot, th, thead, tr {
+  background-color: $main1 !important;
+}
 
+
+@media (min-width: 990px){
+ul.dropdown-menu.inOut.show {
+     display: grid;
+     width: 150px;
+}
+}
+
+@media (min-width: 990px){
+ul.dropdown-menu.list1.show li.divider{
+    width: 95% !important;
+    margin: 0 2%;
+    border-bottom: 1px solid;
+}
+ul.dropdown-menu.list1.show {
+  border: 1px solid white;
+  display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 560px;
+    
+}
+.list1 li{
+  width: 30%;
+}
+}
+.img-holder.holder_product {
+  margin-top: 100px;
+}

@@ -41,7 +41,7 @@
                 <span></span>
               </a>
              
-              <ul class="dropdown-menu list" aria-labelledby="navbarDropdownMenuLink">
+              <ul class="dropdown-menu list list1" aria-labelledby="navbarDropdownMenuLink">
                 <li class="divider"><a class="dropdown-item" id="dropDown1" href="{% url 'products' %}"><span></span>جميع المنتجات</a></li>
                 <div class="dropdown-divider"></div>
 
@@ -88,7 +88,6 @@
               </a>
             </li>
             
-            {% comment %} 
                 <li class="nav-item dropdown">
                   <a
                   {% if 'signin' in request.path or 'signup' in request.path or 'profile' in request.path or 'show_product_favorite' in request.path or 'cart' in request.path or 'show_orders' in request.path %}
@@ -108,7 +107,7 @@
                     <span></span>
                     <span></span>
                   </a>
-                  <ul class="dropdown-menu list" aria-labelledby="navbarDropdownMenuLink">
+                  <ul class="dropdown-menu list inOut" aria-labelledby="navbarDropdownMenuLink">
                     {%if user.is_authenticated%}
             
 
@@ -127,14 +126,12 @@
                     {%endif%}
                   </ul>
                 </li> 
-            {% endcomment %}
           </ul>
           <form class="d-flex nav_form" action="{% url 'search_result' %}" id="my_form">
             <input  name="searchname" class="form-control me-2" type="search" placeholder="ابحث عن منتج هنا" aria-label="Search">
             <a class="btn searchBtn" href="javascript:{}" onclick="document.getElementById('my_form').submit(); return false;">
               <i class='fas fa-search'></i>
             </a>
-            {% comment %} 
                 <a href="{% url 'cart'%}" class="btn btn2 cartBtn" type="submit">
                   <i class="fas fa-shopping-cart"></i>
                   {% if not request.user.is_authenticated or request.user.is_anonymous %}
@@ -149,13 +146,11 @@
                   </div>
                   {% endif %}
                 </a>
-            {% endcomment %}
           </form>
            
         </div>
         
       </div>
-      {% comment %}
           <a href="{% url 'cart'%}" class="btn btn2 mob-cartBtn" type="submit">
             <i class="fas fa-shopping-cart"></i>
             {% if not request.user.is_authenticated or request.user.is_anonymous %}
@@ -170,7 +165,6 @@
             </div>
             {% endif %}
           </a> 
-      {% endcomment %}
     </nav>
    </div>
     

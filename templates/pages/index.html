@@ -166,7 +166,6 @@
 
 <!-- start sale products -->
 
-{% comment %}
   <h4 class="hr"><span>: خصومات</span></h4>
   <section class="splide spi2" aria-label="Splide Basic HTML Example">
     <span class="sale_icon">SALE%%</span>
@@ -213,7 +212,6 @@
       </ul>
     </div>
   </section>
-{% endcomment %}
  
 <!-- end sale products -->
 
@@ -238,14 +236,12 @@
                <div class="card-body">
                  <h5 class="card-title">{{ child.name }}</h5>
                  <div class="card-hover">
-                   {% comment %}
                     <div class="card-text CT2"> <span class="price"><span class="price">{{ child.price }} جم</span><span class="latestPrice2">
                      {% if child.oldPrice %}
                      {{ child.oldPrice}}جم
                      {% endif %}
                      </span>
                     </div> 
-                   {% endcomment %}
                    <div class="card-text CT1">code: <span>{{ child.code }}</span></div>
                  </div>    
                  <a href="{% url 'product_info' chi_id=child.id pro_id=child.product_id%}" class="NEWbtn">

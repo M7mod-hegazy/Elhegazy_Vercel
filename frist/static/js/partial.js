@@ -249,7 +249,12 @@ function showLink() {
 ///////////////////////////////////////////////////////////////////////
 /////////////// no code before here /////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////
-
+var splide = new Splide( '.splide.spi2', {
+  type   : 'loop',
+  perPage: 4,
+  focus  : 'center',
+  autoplay: true,
+} ).mount();
 var splide = new Splide('.splide.spi1', {
   type: 'loop',
   perPage: 4,
@@ -257,14 +262,8 @@ var splide = new Splide('.splide.spi1', {
   autoplay: true,
 }).mount();
 
-// var splide = new Splide( '.splide.spi2', {
-//   type   : 'loop',
-//   perPage: 4,
-//   focus  : 'center',
-//   autoplay: true,
-// } ); 
-// // Mount the carousel
-// splide.mount();
+
+// Mount the carousel
 ///////////////////////////////////////////////////////////////////////
 /////////////// code after this /////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////
