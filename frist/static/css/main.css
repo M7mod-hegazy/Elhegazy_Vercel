@@ -1273,7 +1273,7 @@ img.qrcode {
   -webkit-box-shadow: 1px 2px 2px #2927ec;
           box-shadow: 1px 2px 2px #2927ec;
   padding: 10px;
-  margin-top: 50px;
+  margin-top: 105px;
   margin-bottom: 50px;
   border-radius: 5px;
   background-image: #2927ec;
@@ -1341,7 +1341,6 @@ img.qrcode {
 
 .sign {
   padding: 10px;
-  margin-top: 50px;
   margin-bottom: 50px;
   border-radius: 5px;
   background: #2927ec;
@@ -1678,7 +1677,6 @@ a.NEWbtn:hover {
 
 .sign {
   padding: 10px;
-  margin-top: 50px;
   margin-bottom: 50px;
   border-radius: 5px;
   background-image: #2927ec;
@@ -6028,11 +6026,12 @@ span.new_icon {
     font-size: 6px;
   }
   a.pro_arrow {
-    font-size: 14px;
+    font-size: 25px;
     top: 13px;
   }
   a.pro_arrow.home_arrow {
     left: 40px;
+    font-size: 25px;
   }
   span.product-button {
     font-size: 4px;
@@ -6060,14 +6059,14 @@ span.new_icon {
     left: 50px;
   }
   .NewInfo .info_sec .proInfo_arrow {
-    font-size: 14px;
+    font-size: 25px;
     top: 20px;
     left: 23px;
   }
   .NewInfo .info_sec .proInfo_arrow_home {
-    font-size: 14px;
+    font-size: 25px;
     top: 20px;
-    left: 55px;
+    left: 58px;
   }
   p.infoDetails {
     font-size: 8px;
@@ -6119,7 +6118,7 @@ span.new_icon {
   }
   .cart_container .pro_arrow {
     left: 55px;
-    top: 17px;
+    top: 8px;
   }
   section#js-header {
     height: 570px;
@@ -6419,5 +6418,19 @@ tbody, td, tfoot, th, thead, tr {
 
 .img-holder.holder_product {
   margin-top: 100px;
+}
+
+button.navbar-toggler {
+  border: 1px solid white;
+}
+
+i.fa-solid.fa-bars {
+  color: white;
+}
+
+@media (max-width: 576px) {
+  .product-info {
+    margin-top: 105px !important;
+  }
 }
 /*# sourceMappingURL=main.css.map */

@@ -29,7 +29,7 @@ class OrderDetails(models.Model):
     quantity = models.IntegerField()
 
     def __str__(self):
-        return 'User: ' + self.order.user.username + ', Product: ' + self.product.name + ', Order_id: ' + str(self.order.id)
+        return f'User:  {self.order.user.username}  Product:  {self.product.name} * ( {str(self.quantity)}), Order_id:  {str(self.order.id)}'
 
     class Meta:
         ordering = ['-id']
