@@ -22,8 +22,38 @@
         
       <div class="card" style="width: 18rem;">
           <img src="{{ child.photo.url }}" class="card-img-top" alt="...">
+          <div class="child_cart">
+            <div class="badge_content">
+              <div class="square"></div>
+              <div class="tri"></div>
+            </div> 
+            <div class="content">
+              <a href="{% url 'product_info' chi_id=child.id pro_id=child.product_id%}" >
+                  <i class="fas fa-cart-plus"></i>          
+              </a>
+            </div>
+          </div> 
+          <div class="child_heart">
+            <div class="badge_content ">
+              <div class="square"></div>
+              <div class="tri"></div>
+            </div>  
+            <div class="content">
+              <!-- Update the anchor tag to use data attributes -->
+            <a class="favorite-btn" data-pro-id="{{ child.product.id }}" data-chi-id="{{ child.id }}">
+              <i {% if request.user.is_authenticated and child in request.user.userprofile.product_favorites.all %} class="fas fa-heart love" {% else %}class="fas fa-heart"{% endif %}></i>
+            </a>
+
+            
+            </div>
+          </div> 
           {% if child.oldPrice %}
-          <span class="sale">sale!</span>
+          <div class="sale">
+            <div class="rope"></div>
+            <div class="content">
+                <h2>Sale!!</h2>
+            </div>
+          </div>          
           {% endif %}
           <div class="card-body">
             <h5 class="card-title">{{ child.name }}</h5>
@@ -50,7 +80,7 @@
           </div>
         </div>      
       
-  </div>
+      </div>
 
      {% endfor %}
 
@@ -88,6 +118,7 @@
    </ul>
   </nav>
   {% endif %}  -->
+  
   </section> 
   </div>
  

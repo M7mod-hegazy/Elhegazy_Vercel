@@ -1,5 +1,6 @@
 from multiprocessing import context
 from os import name
+from pickle import NONE
 from django.contrib import messages
 from django.shortcuts import redirect, render, get_object_or_404
 from datetime import datetime
@@ -10,8 +11,10 @@ from django.http import HttpResponse, HttpResponseRedirect
 from accounts.models import UserProfile
 from django.contrib.postgres.search import SearchVector
 import qrcode
-from io import BytesIO
-from PIL import Image
+from django.utils import timezone
+from django.http import JsonResponse
+
+
 
 
 # Import Pagination Stuff
@@ -41,7 +44,7 @@ def products(request):
 
 
 def pro_child(request, pro_id):
-    chil = Child.objects.all().filter(product__pk=pro_id)
+    chil = Child.objects.all().filter(product__pk=pro_id, is_active = True)
     pchild = get_object_or_404(Product, pk=pro_id)
     product = Product.objects.all().prefetch_related('childs')
     p = Paginator(chil, 12)
@@ -63,6 +66,7 @@ def pro_child(request, pro_id):
             prototal = 0
             for prosup in orderdetails:
                 prototal += prosup.quantity
+                
             prochild = {
                 'order': order,
                 'prototal': prototal,
@@ -108,6 +112,7 @@ def product_info(request, pro_id, chi_id):
 
 
 def search_result(request):
+    
     pro2 = Child.objects.all()
     pro5 = Product.objects.all()
     name = None
@@ -122,7 +127,7 @@ def search_result(request):
     search_vector = SearchVector('name', 'code', 'details')
     if ('searchname' in request.GET) and request.GET['searchname'].strip():
         query_string = request.GET.get('searchname')
-        seens = Child.objects.annotate(search=search_vector).filter(search=query_string)
+        seens = Child.objects.annotate(search=search_vector).filter(search=query_string, is_active = True)
         page = request.GET.get('page')
         paginator = Paginator(seens,12)
         try:  
@@ -132,9 +137,30 @@ def search_result(request):
         except EmptyPage:
             p = paginator.page(paginator.num_pages)
         prol = seens.count()
+        if request.user.is_authenticated and not request.user.is_anonymous:
+            if Order.objects.all().filter(user=request.user, is_finished=False):
+                order = Order.objects.get(user=request.user, is_finished=False)
+                orderdetails = OrderDetails.objects.all().filter(order=order)
+                prototal = 0
+                for prosup in orderdetails:
+                    prototal += prosup.quantity
         
   
-        context3 = {
+            context3 = {
+                'order': order,
+                'name': name,
+                'code': code,
+                'details':details,
+                'products2': pro2,
+                'products': pro5,
+                'prol': prol,
+                'p':p,
+                'seens': seens, 
+                'prototal': prototal,
+                'query_string': query_string
+            }
+        else:   
+          context3 = {
             'name': name,
             'code': code,
             'details':details,
@@ -144,7 +170,8 @@ def search_result(request):
             'p':p,
             'seens': seens, 
             'query_string': query_string
-        }
+           
+        } 
     else:   
           context3 = {
             'name': name,
@@ -152,7 +179,10 @@ def search_result(request):
             'details':details,
             'products2': pro2,
             'products': pro5,
-           
+            'prol': prol,
+            'p':p,
+            'seens': seens, 
+            'query_string': query_string
         } 
         
     # if request.user.is_authenticated and not request.user.is_anonymous:
@@ -238,5 +268,33 @@ def generate_qr_code2(request, pro_id):
     response = HttpResponse(content_type="image/png")
     img.save(response, "PNG")
     return response
+
+
+def product_favorite_pro_child(request):
+    if request.method == 'POST' and request.user.is_authenticated and not request.user.is_anonymous:
+        pro_id = request.POST.get('pro_id')
+        chi_id = request.POST.get('chi_id')
+        pchild = get_object_or_404(Child, product__pk=pro_id, pk=chi_id)
+
+        if request.user.is_authenticated and not request.user.is_anonymous:
+            pro_fav = Child.objects.get(product__pk=pro_id, pk=chi_id)
+
+            userprofile = UserProfile.objects.get(user=request.user)
+            if pro_fav in userprofile.product_favorites.all():
+                userprofile.product_favorites.remove(pro_fav)
+                message = 'تم مسح المنتج من المفضله بنجاح'
+                is_favorite = False
+            else:
+                userprofile.product_favorites.add(pro_fav)
+                message = 'تم إضافة المنتج للمفضله بنجاح'
+                is_favorite = True
+
+            return JsonResponse({'message': message, 'is_favorite': is_favorite})
+        else:
+            return JsonResponse({'message': 'يجب ان تسجل الدخول أولا'}, status=403)
+    elif not request.user.is_authenticated:
+        return JsonResponse({'message': 'يجب ان تسجل الدخول أولا'}, status=403)
+    # If the request method is not POST or the user is not authenticated
+    return JsonResponse({'message': 'Bad Request'}, status=400)
 
 

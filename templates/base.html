@@ -70,6 +70,8 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.20/fancybox/fancybox.umd.js" integrity="sha512-IhR9I8gekUZ8WxAdepIWS2GktjbwgLWRaxNFHhEjA0XowdI/JMZuMY9/6KRGfZJFmLc5u4qj6eosU8jlHqVsfQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/autoComplete.min.js"></script>
+
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-QHQFP3WNM0"></script>
     <script>
@@ -134,10 +136,194 @@
               y: 30,
               stagger: 0.2,
             });
-
             
+            
+         $(document).ready(function () {
+              
+              $('.favorite-btn').click(function (e) {
+                  e.preventDefault();
+                  const pro_id = $(this).data('pro-id');
+                  const chi_id = $(this).data('chi-id');
+                  const url = "{% url 'product_favorite_pro_child'%}";
+          
+                  // Save reference to the favorite button element
+                  const $favoriteBtn = $(this);
+          
+                  // Get the CSRF token from the cookie
+                  const csrftoken = getCookie('csrftoken');
+                 
 
           
+                  $.ajax({
+                      type: 'POST',
+                      url: url,
+                      data: {
+                          pro_id: pro_id,
+                          chi_id: chi_id,
+                          csrfmiddlewaretoken: csrftoken, // Include the CSRF token in the request
+                      },
+                      success: function (data) {
+                        if (data.is_favorite) {
+                          $favoriteBtn.find('i').addClass('love');
+                      } else {
+                          $favoriteBtn.find('i').removeClass('love');
+                      }
+                      // Show the response message (optional)
+                      },
+                      error: function (xhr, errmsg, err) {
+                        // Handle error cases
+                        if (xhr.status === 403) {
+                            alert('يجب ان تسجل الدخول أولا');
+                        } else {
+                            alert('حدث خطأ ما! الرجاء المحاولة لاحقًا.');
+                        }
+                    }
+                    
+                  });
+              });
+          });
+          
+          // Function to get CSRF token from the cookie
+          function getCookie(name) {
+              var value = "; " + document.cookie;
+              var parts = value.split("; " + name + "=");
+              if (parts.length == 2) return parts.pop().split(";").shift();
+          }
+           
+          
+
+{% comment %} 
+          $(document).ready(function () {
+            $('.increment-qty').click(function (e) {
+                e.preventDefault();
+                const orderdetailsId = $(this).data('orderdetails-id');
+                const url = "{% url 'add_qty_ajax' 0 %}".replace('0', orderdetailsId);
+        
+                // Save reference to the parent container
+                const $quantityContainer = $(this).closest('.quantity-container');
+                const $quantityContainer2 = $(this).closest('.quantity-container2');
+        
+                // Get the CSRF token from the cookie
+                const csrftoken = getCookie('csrftoken');
+        
+                $.ajax({
+                    type: 'POST',
+                    url: url,
+                    data: {
+                        orderdetails_id: orderdetailsId,
+                        csrfmiddlewaretoken: csrftoken, // Include the CSRF token in the request
+                    },
+                    success: function (data) {
+                        // Update the quantity display with the new quantity
+                        $quantityContainer.find('.quantity-display').text(data.new_quantity);
+
+                        // Update the line price by calculating price * quantity
+                        const linePrice = data.new_quantity * parseFloat(line.price);
+                        $quantityContainer.find('.line-price').text(linePrice.toFixed(2));
+
+                        // Update the total price
+                        updateTotalPrice();
+                    },
+                    error: function (xhr, errmsg, err) {
+                        // Handle error cases
+                        if (xhr.status === 403) {
+                            alert('يجب ان تسجل الدخول أولا');
+                        } else {
+                            alert('حدث خطأ ما! الرجاء المحاولة لاحقًا.');
+                        }
+                    }
+                });
+            });
+        });
+ 
+        $(document).ready(function () {
+          $('.decrement-qty').click(function (e) {
+              e.preventDefault();
+              const orderdetailsId = $(this).data('orderdetails-id');
+              const url = "{% url 'sub_qty_ajax' 0 %}".replace('0', orderdetailsId);
+      
+              // Save reference to the parent container
+              const $quantityContainer = $(this).closest('.quantity-container');
+      
+              // Get the CSRF token from the cookie
+              const csrftoken = getCookie('csrftoken');
+      
+              $.ajax({
+                  type: 'POST',
+                  url: url,
+                  data: {
+                      orderdetails_id: orderdetailsId,
+                      csrfmiddlewaretoken: csrftoken, // Include the CSRF token in the request
+                  },
+                  success: function (data) {
+                      // Update the quantity display with the new quantity
+                      $quantityContainer.find('.quantity-display').text(data.new_quantity);
+                      
+                      // Update the line price by calculating price * quantity
+                      const linePrice = data.new_quantity * line.price;
+                      $quantityContainer.find('.line-price').text(linePrice);
+                      
+                      // Update the total price by recalculating the sum of all line prices
+                      updateTotalPrice();
+                  },
+                  error: function (xhr, errmsg, err) {
+                      // Handle error cases
+                      if (xhr.status === 403) {
+                          alert('يجب ان تسجل الدخول أولا');
+                      } else {
+                          alert('حدث خطأ ما! الرجاء المحاولة لاحقًا.');
+                      }
+                  }
+              });
+          });
+      });
+      
+      $(document).ready(function () {
+        $('.delete').click(function (e) {
+            e.preventDefault();
+            const orderdetailsId = $(this).data('orderdetails-id');
+            const url = "{% url 'remove_from_cart_ajax' 0 %}".replace('0', orderdetailsId);
+    
+            // Save reference to the parent <li> element
+            const $listItem = $(this).closest('li');
+    
+            // Get the CSRF token from the cookie
+            const csrftoken = getCookie('csrftoken');
+    
+            $.ajax({
+                type: 'POST',
+                url: url,
+                data: {
+                    orderdetails_id: orderdetailsId,
+                    csrfmiddlewaretoken: csrftoken, // Include the CSRF token in the request
+                },
+                success: function (data) {
+                    // Update the total and order details count
+                    $('.carttotal .price').text(data.total);
+                    $('.product-total').text(data.product_total);
+                    $('.order-details-count').text(data.order_details_count);
+                
+                },
+                error: function (xhr, errmsg, err) {
+                    // Handle error cases
+                    if (xhr.status === 403) {
+                        alert('يجب ان تسجل الدخول أولا');
+                    } else {
+                        alert('حدث خطأ ما! الرجاء المحاولة لاحقًا.');
+                    }
+                }
+            });
+        });
+    });
+       
+    function updateTotalPrice() {
+      let total = 0;
+      $('.line-price').each(function () {
+          total += parseFloat($(this).text());
+      });
+      $('.carttotal .price').text(total.toFixed(2));
+  } 
+             {% endcomment %}
       
     </script>
   </body>

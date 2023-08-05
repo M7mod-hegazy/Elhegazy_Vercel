@@ -6,7 +6,6 @@ from products.models import Product, Child
 
 # Create your views here.
 
-
 def index(request):
      chilSale = Child.objects.all().exclude(oldPrice__exact='')
      myslyder = {
@@ -34,5 +33,3 @@ def index(request):
                 'chil2': chilSale,
             }
      return render(request, 'pages/index.html', myslyder)
-
-

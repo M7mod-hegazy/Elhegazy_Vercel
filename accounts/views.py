@@ -236,7 +236,7 @@ def product_favorite(request, pro_id, chi_id):
     chil = Child.objects.all()
     if request.user.is_authenticated and not request.user.is_anonymous:
        
-        pro_fav = Child.objects.get(product__pk=pro_id, pk=chi_id)
+        pro_fav = Child.objects.get(product__pk=pro_id, pk=chi_id, is_active=True)
 
         if UserProfile.objects.filter(user=request.user, product_favorites=pro_fav).exists():
             userprofile = UserProfile.objects.get(user=request.user)

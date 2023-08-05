@@ -11,5 +11,5 @@ urlpatterns = [
     path('<int:pro_id>?', views.generate_qr_code2, name='generate_qr_code2'),
     path('search_result', views.search_result, name='search_result'),
     path('search', views.search, name='search'),
-
+    path('product_favorite_pro_child',views.product_favorite_pro_child, name='product_favorite_pro_child'),
 ]

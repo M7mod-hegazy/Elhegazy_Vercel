@@ -5,6 +5,8 @@ from products.models import Product, Child
 from .models import Order, OrderDetails, Payment
 from django.utils import timezone
 import re
+from django.http import JsonResponse
+
 
 # Create your views here.
 
@@ -85,6 +87,22 @@ def remove_from_cart(request, orderdetails_id):
     return redirect('cart')
 
 
+def remove_from_cart_ajax(request, orderdetails_id):
+    if request.method == 'POST' and request.is_ajax():
+        try:
+            orderdetails = OrderDetails.objects.get(id=orderdetails_id)
+            if orderdetails.order.user.id == request.user.id:
+                orderdetails.delete()
+                return JsonResponse({'success': True})
+            else:
+                return JsonResponse({'success': False, 'error': 'Unauthorized'})
+                
+        except OrderDetails.DoesNotExist:
+            return JsonResponse({'success': False, 'error': 'Order details not found'})
+    else:
+        return JsonResponse({'success': False, 'error': 'Invalid request'})
+
+
 def add_qty(request, orderdetails_id):
     if request.user.is_authenticated and not request.user.is_anonymous and orderdetails_id:
         orderdetails = OrderDetails.objects.get(id=orderdetails_id)
@@ -94,6 +112,22 @@ def add_qty(request, orderdetails_id):
             orderdetails.save()
 
     return redirect('cart')
+
+
+def add_qty_ajax(request, orderdetails_id):
+    if request.user.is_authenticated and orderdetails_id:
+        try:
+            orderdetails = OrderDetails.objects.get(id=orderdetails_id, order__user=request.user)
+            orderdetails.quantity += 1
+            orderdetails.save()
+
+            response_data = {'success': True, 'new_quantity': orderdetails.quantity}
+        except OrderDetails.DoesNotExist:
+            response_data = {'success': False}
+    else:
+        response_data = {'success': False}
+
+    return JsonResponse(response_data)
 
 
 def sub_qty(request, orderdetails_id):
@@ -108,6 +142,24 @@ def sub_qty(request, orderdetails_id):
 
     return redirect('cart')
 
+def sub_qty_ajax(request, orderdetails_id):
+    if request.method == 'POST' and request.is_ajax():
+        try:
+            orderdetails = OrderDetails.objects.get(id=orderdetails_id)
+            if orderdetails.quantity > 1:
+                if orderdetails.order.user.id == request.user.id:
+                    orderdetails.quantity -= 1
+                    orderdetails.save()
+            elif orderdetails.quantity == 1:
+                orderdetails.delete()
+
+            response_data = {'new_quantity': orderdetails.quantity}
+        except OrderDetails.DoesNotExist:
+            response_data = {'error': 'Order details not found'}
+
+        return JsonResponse(response_data)
+    else:
+        return JsonResponse({'error': 'Invalid request'})
 
 def payment(request):
     context = {'products': Product.objects.all()}

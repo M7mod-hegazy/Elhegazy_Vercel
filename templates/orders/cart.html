@@ -36,15 +36,14 @@
                           </div>
                         <div class="col-12">
                             <hr class="carthr">
-                          <h5 class="carttotal"><bdi><span class="price border border-primary rounded p-1 cart_margin"><bdi>جم</bdi>{{total}}</span><bdi> بمبلغ كلي :</bdi></bdi>  ,  <bdi><span class=" border border-primary rounded p-1 cart_margin">{{order.id}}</span><bdi> طلب رقم :</bdi></bdi></h5>
+                            <h5 class="carttotal"><bdi><span class="price border border-primary rounded p-1 cart_margin"><bdi>جم</bdi>{{total}}</span><bdi> بمبلغ كلي :</bdi></bdi>, <bdi><span class="order-id border border-primary rounded p-1 cart_margin">{{order.id}}</span><bdi> طلب رقم :</bdi></bdi></h5>
                         </div>
-
+                        
                         <div class="col-12">
-                        <hr class="carthr">
-                        <h5 class="carttotal"><bdi>منتج </bdi><span class="border border-primary rounded p-1 cart_margin">{{prototal}}</span>: <bdi> بمجموع</bdi> , <bdi> صنف </bdi><span class="border border-primary rounded p-1 cart_margin">{{orderdetails.count}}</span>: <bdi> لعدد</bdi></h5>
+                            <hr class="carthr">
+                            <h5 class="carttotal"><bdi>منتج </bdi><span class="product-total border border-primary rounded p-1 cart_margin">{{prototal}}</span>: <bdi> بمجموع</bdi>, <bdi> صنف </bdi><span class="order-details-count border border-primary rounded p-1 cart_margin">{{orderdetails.count}}</span>: <bdi> لعدد</bdi></h5>
                         </div>
-
-                    </div>
+                        
                 </div>
                 <div class="panel-body table-responsive">
                     <table class="table table-hover">
@@ -69,7 +68,10 @@
                                 <td>{{forloop.counter}}</td>
                                 <td>
                                     <div class="user_icon">
+                                      <a href="{{line.product.photo.url}}" data-fancybox="cart{{line.id|add:3}}" class="img_holder">
+                                        <i class="fa fa-search img_zoom zoom_cart"></i>
                                         <img src="{{line.product.photo.url}}" alt="">
+                                      </a>  
                                     </div> 
                                 </td>
                                 <td>{{line.product.name}}</td>

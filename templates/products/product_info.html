@@ -45,17 +45,24 @@
             </div>
           <div class="carousel-inner">
                   {% if pchild.oldPrice %}
-                  <span class="sale">sale!</span>
+                  <div class="sale">
+                    <div class="rope"></div>
+                    <div class="content">
+                        <h2>Sale!!</h2>
+                    </div>
+                  </div>  
                   {% endif %}
                 <div class="carousel-item active data-interval="500"">
-                  <a href="{{ pchild.photo.url }}" data-fancybox="gallery">
+                  <a href="{{ pchild.photo.url }}" data-fancybox="gallery" class="img_holder">
+                   <i class="fa fa-search img_zoom child_zoom"></i>
                     <img src="{{ pchild.photo.url }}" class="d-block w-100" alt="...">
                   </a>  
                 </div>
 
                 {% if pchild.photo2 %}
                   <div class="carousel-item data-interval="500"">
-                    <a href="{{ pchild.photo2.url }}" data-fancybox="gallery"> 
+                    <a href="{{ pchild.photo2.url }}" data-fancybox="gallery" class="img_holder">
+                     <i class="fa fa-search img_zoom child_zoom"></i> 
                      <img src="{{ pchild.photo2.url }}" class="d-block w-100" alt="...">
                     </a> 
                   </div>
@@ -65,7 +72,8 @@
 
                 {% if pchild.photo3 %}
                 <div class="carousel-item data-interval="500"">
-                  <a href="{{ pchild.photo3.url }}" data-fancybox="gallery">
+                  <a href="{{ pchild.photo3.url }}" data-fancybox="gallery" class="img_holder">
+                   <i class="fa fa-search img_zoom child_zoom"></i>
                      <img src="{{ pchild.photo3.url }}" class="d-block w-100" alt="...">
                   </a>   
                 </div>
@@ -75,7 +83,8 @@
 
                 {% if pchild.photo4 %}
                 <div class="carousel-item data-interval="500"">
-                  <a href="{{ pchild.photo4.url }}" data-fancybox="gallery">
+                  <a href="{{ pchild.photo4.url }}" data-fancybox="gallery" class="img_holder">
+                   <i class="fa fa-search img_zoom child_zoom"></i>
                     <img src="{{ pchild.photo4.url }}" class="d-block w-100" alt="...">
                   </a>  
                 </div>
@@ -85,7 +94,8 @@
 
                 {% if pchild.photo5 %}
                 <div class="carousel-item data-interval="500"">
-                  <a href="{{ pchild.photo5.url }}" data-fancybox="gallery">
+                  <a href="{{ pchild.photo5.url }}" data-fancybox="gallery" class="img_holder">
+                   <i class="fa fa-search img_zoom child_zoom"></i>
                     <img src="{{ pchild.photo5.url }}" class="d-block w-100" alt="...">
                   </a>
                 </div>
@@ -134,14 +144,13 @@
               
                 <div class="fav-cart">
                   <button type="button" class="btn btn-primary text-white mr-2"   data-bs-toggle="modal" data-bs-target="#exampleModal">إضاقه إلى العربه</button>
-            
-                  <a href="{% url 'product_favorite' chi_id=pchild.id pro_id=pchild.product.id %}" type="submit" 
-                  {% if pchild.product.id in userprofile.product_favorites %}
-                  class="btn btn-primary text-danger"
-                  {% else %}
-                  class="btn btn-primary text-white"
-                  {% endif %}
-                  ><i class="fas fa-heart"></i></a>
+                  
+                
+                  <a class="favorite-btn btn btn-primary product_info_love" data-pro-id="{{ pchild.product.id }}" data-chi-id="{{ pchild.id }}">
+                    <i {% if request.user.is_authenticated and pchild in request.user.userprofile.product_favorites.all %} class="fas fa-heart love" {% else %}class="fas fa-heart "{% endif %}></i>
+                  </a>
+      
+                
                 </div> 
        
           </div> 

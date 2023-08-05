@@ -5,6 +5,10 @@ urlpatterns = [
     path('add_to_cart', views.add_to_cart, name='add_to_cart'),
     path('cart', views.cart, name='cart'),
     path('add_qty/<int:orderdetails_id>', views.add_qty, name='add_qty'),
+    path('add_qty_ajax/<int:orderdetails_id>/', views.add_qty_ajax, name='add_qty_ajax'),
+    path('sub_qty_ajax/<int:orderdetails_id>/', views.sub_qty_ajax, name='sub_qty_ajax'),
+    path('remove_from_cart_ajax/<int:orderdetails_id>/', views.remove_from_cart_ajax, name='remove_from_cart_ajax'),
+
     path('sub_qty/<int:orderdetails_id>', views.sub_qty, name='sub_qty'),
     path('remove_from_cart/<int:orderdetails_id>',
          views.remove_from_cart, name='remove_from_cart'),
