@@ -1430,7 +1430,7 @@ img.qrcode {
   }
   .searchR .card h5 {
     color: white;
-    font-size: 5px;
+    font-size: 8px;
     border-bottom: solid 1px #3d3fe9;
     padding-bottom: 5px;
     line-height: 10px;
@@ -5978,6 +5978,10 @@ i.fas.fa-heart.love {
 }
 
 @media (max-width: 576px) {
+  .splide__slide{
+    width: calc(45%) !important;
+    margin: 0 5px 35px 0px !important;
+  }
   .index_sale .rope {
     top: -46px;
     left: -20px;
