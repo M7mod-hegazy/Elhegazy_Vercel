@@ -3,7 +3,7 @@
 {% block title %}- جميع المنتجات{% endblock %}
 {% block content %}
 <div class="container-fluid allProduct ">
-  <a href="{% url 'index' %}" class="pro_arrow"><i class="fas fa-home"></i></a>
+  <a href="{% url 'index' %}" class="pro_arrow txt_shadow"><i class="fas fa-home"></i></a>
 
   <div class="accordion myProduct " id="accordionExample">
       <h2 class="accordionTitle">منتجاتنا</h2>
@@ -42,7 +42,7 @@
                 <p class="description3">
                   {{ pro.details }}
                 </p>
-                <a href="{% url 'pro_child' pro_id=pro.id %}" class="read3">عرض المنتجات <i class="fa fa-angle-right"></i></a>
+                <a href="{% url 'pro_child' pro_id=pro.id %}" class="read3 bx_shadow">عرض المنتجات <i class="fa fa-angle-right"></i></a>
             </div>
         </div>
     </div>

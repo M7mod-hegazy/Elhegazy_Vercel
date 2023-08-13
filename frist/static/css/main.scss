@@ -157,23 +157,17 @@ li.nav-item {
 
   a {
     color: white;
-    border: 1px solid white;
     border-radius: 20px 0px 0px 20px;
     margin-right: 0px !important;
     padding: 0.5rem 0.75rem !important;
   }
   .btn2 {
     color: $white;
-    border: 1px solid $white;
     border-radius: 50px;
     margin-right: 5px !important;
   }
 
-  a:hover {
-    border-color: #4900fe !important;
-    color: $white !important;
-    box-shadow: inset 11.5em 0 0 0 #0015e5;
-  }
+ 
   input {
     color: $white;
     border-radius: 0px 20px 20px 0px;
@@ -230,16 +224,11 @@ li.nav-item {
   .mob-cartBtn {
     display: inline;
     color: #fff;
-    border: 1px solid #fff;
     border-radius: 50px;
     position: absolute;
     top: 16px;
     left: 88px;
-    &:hover {
-      color: #fff !important;
-      border-color: #4900fe !important;
-      box-shadow: inset 11.5em 0 0 0 #0015e5;
-    }
+
     .mob-cart_count {
       border-radius: 50%;
       padding: 5px;
@@ -274,7 +263,7 @@ li.nav-item {
   }
   p {
     padding: 5px;
-    font-size: 8px;
+    font-size: 12px;
     margin: 5px;
   }
   h2.locationTitile {
@@ -1435,6 +1424,8 @@ img.qrcode {
     padding-bottom: 5px;
     line-height: 10px;
     margin-top: -12px;
+    padding-right: 10px;
+    padding-left: 10px;
   }
 
   .searchR .card p {
@@ -1453,7 +1444,7 @@ img.qrcode {
   .searchR .card a {
     position: absolute;
     left: 20%;
-    font-size: 29%;
+    font-size: 55%;
     right: 20%;
     border: solid 1px $white;
     top: -90px;
@@ -1730,7 +1721,7 @@ a.NEWbtn:hover {
 .PROO_arrow:hover,
 .proInfo_arrow:hover,
 .pro_arrow:hover {
-  color: $linksHover;
+  color: $links;
 }
 .signComment {
   color: #d1cece !important;
@@ -1748,7 +1739,7 @@ a.NEWbtn:hover {
 .NEWbtn {
   position: relative;
   display: inline-block;
-  padding: 5px 5px;
+  padding: 3px 5px;
   color: $white;
   font-size: 16px;
   text-decoration: none;
@@ -4473,15 +4464,15 @@ span.WorksName {
     margin-bottom: 10px;
   }
   .serviceBox .title {
-    font-size: 7px;
+    font-size: 10px;
     margin-bottom: 0px;
   }
   .serviceBox .service-icon i {
-    font-size: 10px;
+    font-size: 15px;
   }
   .serviceBox .service-icon {
-    width: 25px;
-    height: 25px;
+    width: 35px;
+    height: 35px;
     border-radius: 0 10px;
     display: grid;
     place-content: center;
@@ -4739,6 +4730,7 @@ span.sale {
 .panel .panel-heading .btn:hover {
   background: #201be2;
   box-shadow: 0 0 10px rgba($color: #201be2, $alpha: 0.5);
+  box-shadow: inset -1px -1px 1px black;
 }
 .panel .panel-body {
   padding: 5px;
@@ -4755,7 +4747,7 @@ span.sale {
 }
 .panel .panel-body .table tbody tr td {
   color: #fff;
-  font-size: 8px;
+  font-size: 12px;
   vertical-align: middle;
 }
 .panel .panel-body .table .user_icon {
@@ -4806,10 +4798,14 @@ span.sale {
   font-size: 12px;
   position: relative;
   z-index: 1;
+  text-shadow: -1px -1px 1px black;
   transition: all 0.3s ease 0s;
 }
 .panel .panel-body .table tbody .action-list li a:hover {
   text-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+}
+.panel .panel-body .table tbody .action-list li a i:hover{
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
 }
 .panel .panel-body .table tbody .action-list li a.delete {
   color: #e34724;
@@ -4858,6 +4854,8 @@ span.sale {
   }
   .panel .panel-heading .btn_group {
     text-align: center;
+    
+    padding: 0px 10px;
   }
 }
 .cartrow {
@@ -4871,6 +4869,7 @@ span.sale {
 }
 .txal.btn_group {
   text-align: left;
+  padding-left: 25px;
 }
 .hrcart {
   text-align: center;
@@ -4887,13 +4886,14 @@ h5.carttotal {
   text-align: right;
   font-size: 10px;
   font-weight: 300;
+  padding: 0px 10px;
 }
 @media (max-width: 767px) {
   .panel .panel-heading .title {
     text-align: right;
     padding-top: 10px;
     margin-right: 15px;
-    font-size: 8px;
+    font-size: 10px;
   }
   .panel .panel-heading .btn_group {
     text-align: left;
@@ -4902,19 +4902,20 @@ h5.carttotal {
   .panel .panel-heading .btn {
     color: #ffffff;
     background: blue;
-    font-size: 5px;
+    font-size: 10px;
     padding: 7px 12px 5px;
     margin-top: 0px;
   }
   .panel .panel-heading {
-    padding: 0px 10px;
+    padding: 0px 0px;
     padding-top: 7px;
   }
   .panel .panel-body .table thead tr th {
     font-size: 6px;
   }
   .panel .panel-body .table tbody tr td {
-    font-size: 5px;
+    font-size: 8px;
+    max-width: 138px;
   }
   .panel .panel-body .table .user_icon {
     width: 30px;
@@ -4937,14 +4938,15 @@ h5.carttotal {
     display: none;
   }
   .hrcart {
-    font-size: 12px;
+    font-size: 15px;
     border-bottom: 1px solid rgba($color: #fff, $alpha: 0.2);
   }
   h5.carttotal {
     text-align: right;
-    font-size: 7px;
+    font-size: 10px;
     font-weight: 300;
     margin-left: 5px;
+    padding: 0px 10px;
   }
 }
 
@@ -4970,6 +4972,7 @@ a.btn.btn-outline-primary.btn-qty {
   padding: 0.05rem 0.5em;
   font-size: 0.6rem;
   font-weight: 700;
+  box-shadow: -1px -1px 1px black;
 }
 .cart_margin {
   margin: 0 5px;
@@ -5114,10 +5117,8 @@ a.proInfo_arrow_home {
   left: 181px;
   top: 5px;
   font-size: 35px;
-  color: #8db8f6;
-  &:hover {
-    color: white;
-  }
+  color: $icon;
+
 }
 a.pro_arrow.home_arrow {
   left: 160px;
@@ -5197,7 +5198,7 @@ span.new_icon {
 }
 @media (max-width: 576px) {
   h4.hr {
-    font-size: 12px;
+    font-size: 16px;
   }
   span.new_icon,
   span.sale_icon {
@@ -5283,7 +5284,7 @@ span.new_icon {
     font-size: 4px;
   }
   .price {
-    font-size: 6px;
+    font-size: 10px;
   }
   .searchR .card:hover .CT1 {
     font-size: 6px;
@@ -5457,7 +5458,7 @@ span.new_icon {
     flex-direction: column;
   }
   h4.title {
-    padding: 15px 0 0 0 !important;
+    padding: 15px 10px 0 0 !important;
     margin: 0 !important;
   }
   .btn_group.txal {
@@ -5467,13 +5468,14 @@ span.new_icon {
     margin-left: 0 !important;
   }
   h5.carttotal {
-    font-size: 4px;
+    font-size: 10px;
+    padding: 0px 10px;
   }
   hr.carthr {
     margin: 7px 0 13px 0;
   }
   .cart_container .pro_arrow {
-    left: 55px;
+    left: 15px !important;
     top: 8px;
   }
   section#js-header {
@@ -5508,7 +5510,6 @@ span.new_icon {
 .first_row {
   display: flex;
   justify-content: space-between;
-  align-items: center;
 }
 .location_container a.pro_arrow {
   top: 155px;
@@ -5624,9 +5625,7 @@ a#downloadLink {
   color: $links;
   font-size: 20px;
 }
-:hover {
-  color: $linksHover;
-}
+
 a#lightboxTrigger2 {
   position: absolute;
   right: 85px;
@@ -5634,9 +5633,7 @@ a#lightboxTrigger2 {
   color: $links;
   font-size: 20px;
 }
-:hover {
-  color: $linksHover;
-}
+
 
 .currentLink_container {
   display: -ms-flexbox;
@@ -5692,7 +5689,7 @@ tfoot,
 th,
 thead,
 tr {
-  background-color: $main1 !important;
+  background-color: transparent !important;
 }
 
 @media (min-width: 990px) {
@@ -5723,9 +5720,7 @@ tr {
 .img-holder.holder_product {
   margin-top: 100px;
 }
-button.navbar-toggler {
-  border: 1px solid white;
-}
+
 i.fa-solid.fa-bars {
   color: white;
 }
@@ -5978,6 +5973,9 @@ i.fas.fa-heart.love {
 }
 
 @media (max-width: 576px) {
+  .box3 .box-heading3{
+    padding: 10px 32px 10px 17px;
+  }
   .splide__slide{
     width: calc(45%) !important;
     margin: 0 5px 35px 0px !important;
@@ -6035,4 +6033,21 @@ right: -20px;
   top: -1px !important;
   font-size: 12px !important;
 }
+}
+.cart_container .pro_arrow{
+  left: 158px;
+}
+.txt_shadow{
+  text-shadow: -1px -1px 3px black;
+  color: $icon;
+  &:hover{
+    text-shadow: 1px 1px 3px rgba(0, 0 ,0 , 1.75);   
+    color: $links
+  }
+}
+.bx_shadow{
+  box-shadow: -1px -1px 3px black;
+  &:hover{
+    box-shadow: inset 1px 1px 3px black;
+  }
 }

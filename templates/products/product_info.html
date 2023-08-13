@@ -12,8 +12,8 @@
 
           <div class="col-12 col-lg-6 P_IMG info_sec">
 
-            <a href="{% url 'pro_child' pro_id=pchild.product_id %}" class="proInfo_arrow"><i class="fas fa-arrow-left"></i></a>
-            <a href="{% url 'index' %}" class="proInfo_arrow_home"><i class="fas fa-home"></i></a>
+            <a href="{% url 'pro_child' pro_id=pchild.product_id %}" class="proInfo_arrow txt_shadow"><i class="fas fa-arrow-left"></i></a>
+            <a href="{% url 'index' %}" class="proInfo_arrow_home txt_shadow"><i class="fas fa-home "></i></a>
 
             {% include 'includes/_alerts.html'%} 
 
@@ -143,10 +143,10 @@
   <hr>
               
                 <div class="fav-cart">
-                  <button type="button" class="btn btn-primary text-white mr-2"   data-bs-toggle="modal" data-bs-target="#exampleModal">إضاقه إلى العربه</button>
+                  <button type="button" class="btn btn-primary text-white mr-2 bx_shadow"   data-bs-toggle="modal" data-bs-target="#exampleModal">إضاقه إلى العربه</button>
                   
                 
-                  <a class="favorite-btn btn btn-primary product_info_love" data-pro-id="{{ pchild.product.id }}" data-chi-id="{{ pchild.id }}">
+                  <a class="favorite-btn btn btn-primary product_info_love bx_shadow" data-pro-id="{{ pchild.product.id }}" data-chi-id="{{ pchild.id }}">
                     <i {% if request.user.is_authenticated and pchild in request.user.userprofile.product_favorites.all %} class="fas fa-heart love" {% else %}class="fas fa-heart "{% endif %}></i>
                   </a>
       

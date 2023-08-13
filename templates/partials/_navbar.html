@@ -4,7 +4,7 @@
     <nav class="navbar navbar-expand-lg navbar-light navStats" id="myNavPar">
       <div class="container-fluid">
         <a class="navbar-brand" href="{% url 'index' %}"><img id="myNav" style="height: 10%;" src="{% static 'img/iconPng.png'%}" alt="https://scontent.fcai19-3.fna.fbcdn.net/v/t1.0-9/90920033_2946051038954751_1350012425629335552_n.jpg?_nc_cat=100&_nc_sid=85a577&_nc_ohc=JN4VbDodgoUAX_ZRgcF&_nc_oc=AQl0tMJ-2zuo78tLT2ZID2ZA-OfVrvRzdZxI9I-KRvVVD6ouFUR4p2azbQUxqvMeNc0&_nc_ht=scontent.fcai19-3.fna&oh=d7e632b737a30b5ffe57ae640e412c31&oe=5F888927"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler bx_shadow" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <i class="fa-solid fa-bars"></i>
         </button>
         <div class="collapse navbar-collapse " id="navbarNavDropdown">
@@ -129,10 +129,10 @@
           </ul>
           <form class="d-flex nav_form" action="{% url 'search_result' %}" id="my_form">
             <input  name="searchname" class="form-control me-2" type="search" placeholder="ابحث عن منتج هنا" aria-label="Search">
-            <a class="btn searchBtn" href="javascript:{}" onclick="document.getElementById('my_form').submit(); return false;">
+            <a class="btn searchBtn bx_shadow" href="javascript:{}" onclick="document.getElementById('my_form').submit(); return false;">
               <i class='fas fa-search'></i>
             </a>
-                <a href="{% url 'cart'%}" class="btn btn2 cartBtn" type="submit">
+                <a href="{% url 'cart'%}" class="btn btn2 cartBtn bx_shadow" type="submit">
                   <i class="fas fa-shopping-cart"></i>
                   {% if not request.user.is_authenticated or request.user.is_anonymous %}
                   <div class="not-auth">
@@ -151,8 +151,8 @@
         </div>
         
       </div>
-          <a href="{% url 'cart'%}" class="btn btn2 mob-cartBtn" type="submit">
-            <i class="fas fa-shopping-cart"></i>
+          <a href="{% url 'cart'%}" class="btn btn2 mob-cartBtn bx_shadow" type="submit">
+            <i class="fas fa-shopping-cart "></i>
             {% if not request.user.is_authenticated or request.user.is_anonymous %}
             <div class="not-auth">
                   <span>not-auth</span>
