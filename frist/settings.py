@@ -99,11 +99,11 @@ STATICFILE_FINDERS = (
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'elhegazedb',
-        'USER': 'postgres',
-        'PASSWORD': '275757',
-        'HOST': 'localhost',
+         'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'elhegazyDB',
+        'USER': 'm7mod',
+        'PASSWORD': '2351970321',
+        'HOST': 'elhegazydb.c773b6wa4rxs.us-west-2.rds.amazonaws.com',
         'PORT': '5432',
     }
 }
