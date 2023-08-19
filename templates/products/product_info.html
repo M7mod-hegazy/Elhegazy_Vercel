@@ -193,14 +193,93 @@
                 <input type="hidden" name="father" value="{{pchild.product.id}}">
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btnclose">Close</button>
-              <button class="btn btn-primary" onclick="addtocart()">تأكيد</button>
+              <button type="button" class="btn btn-secondary bx_shadow" data-bs-dismiss="modal" id="btnclose">Close</button>
+              <button class="btn btn-primary bx_shadow" onclick="addtocart()">تأكيد</button>
             </div>
           </div>
         </div>
       </div>
     </form> 
+    <h4 class="hr"><span>:منتجات مشابهة </span></h4>
+
+    <section class="splide spi3" id="spi3" aria-label="Splide Basic HTML Example" >
+      <span class="sale_icon related">Related !!</span>
     
+      <div class="splide__track new__track">
+        <ul class="splide__list">
+          {% if related_children %}
+    
+          {% for child2 in related_children|slice:':6' %}
+          <li class="splide__slide new__splide">
+           <div class="searchR">
+               <div class="card" style="width: 18rem;">
+                   <img src="{{ child2.photo.url }}" class="card-img-top" alt="...">
+                   <div class="child_cart index_cart">
+                    <div class="badge_content">
+                      <div class="square"></div>
+                      <div class="tri"></div>
+                    </div> 
+                    <div class="content">
+                      <a href="{% url 'product_info' chi_id=child2.id pro_id=child2.product_id%}" >
+                          <i class="fas fa-cart-plus"></i>                 
+                      </a>
+                    </div>
+                  </div> 
+                  <div class="child_heart index_heart">
+                    <div class="badge_content">
+                      <div class="square"></div>
+                      <div class="tri"></div>
+                    </div>  
+                    <div class="content">
+                      <!-- Update the anchor tag to use data attributes -->
+                    <a class="favorite-btn" data-pro-id="{{ child2.product.id }}" data-chi-id="{{ child2.id }}">
+                      <i {% if request.user.is_authenticated and child2 in request.user.userprofile.product_favorites.all %} class="fas fa-heart love" {% else %}class="fas fa-heart"{% endif %}></i>
+                    </a>
+    
+                   </div>
+                  </div> 
+                   {% if child2.oldPrice %}
+                  <div class="sale index_sale">
+                    <div class="rope"></div>
+                    <div class="content">
+                        <h2>Sale!!</h2>
+                    </div>
+                  </div>               {% endif %}
+                   <div class="card-body">
+                     <h5 class="card-title">{{ child2.name }}</h5>
+                     <div class="card-hover">
+                        <div class="card-text CT2"> <span class="price"><span class="price">{{ child2.price }} جم</span><span class="latestPrice2">
+                         {% if child2.oldPrice %}
+                         {{ child2.oldPrice}}جم
+                         {% endif %}
+                         </span>
+                        </div> 
+                       <div class="card-text CT1">code: <span>{{ child2.code }}</span></div>
+                     </div>    
+                     <a href="{% url 'product_info' chi_id=child2.id pro_id=child2.product_id%}" class="NEWbtn">
+                       <span></span>
+                       <span></span>
+                       <span></span>
+                       <span></span>
+                       تفاصيل
+                     </a>
+                   </div>
+                 </div>      
+           </div>
+
+          {% endfor %}
+
+          {% else %}
+          <h3 class="mt-5 mb-5">لا يوجد نتائج</h3>
+          {% endif %}
+         </li>	
+        
+        </ul>
+      </div>
+
+    </section>
+   <div class="related_link"> <a href="{% url 'pro_child' pro_id=related_children.last.product.id %}" class="btn btn-primary text-white mr-2 bx_shadow">عرض المزيد</a></div>
+   
 
       <!-- end product_info -->
 <script>

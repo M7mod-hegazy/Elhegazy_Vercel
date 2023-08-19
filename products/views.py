@@ -1,3 +1,4 @@
+from math import ceil, floor
 from multiprocessing import context
 from os import name
 from pickle import NONE
@@ -13,6 +14,9 @@ from django.contrib.postgres.search import SearchVector
 import qrcode
 from django.utils import timezone
 from django.http import JsonResponse
+from django.db.models import Q
+from django.db.models import Min, Max
+
 
 
 
@@ -44,7 +48,63 @@ def products(request):
 
 
 def pro_child(request, pro_id):
-    chil = Child.objects.all().filter(product__pk=pro_id, is_active = True)
+    chil_count = 0
+    price_from = None
+    price_to = None
+    sort_param = None
+    sort_param = request.GET.get('sort')
+    price_from = request.GET.get('searchPriceFrom')
+    price_to = request.GET.get('searchPriceTo')
+    chil = Child.objects.all().filter(product__pk=pro_id, is_active=True)
+    max_price = Child.objects.filter(product__pk=pro_id, is_active=True).aggregate(max_price=Max('price'))['max_price']
+    min_price = Child.objects.filter(product__pk=pro_id, is_active=True).aggregate(min_price=Min('price'))['min_price']
+    if ('AtoZ' in request.GET):
+        sort_param = 'AtoZ'
+        chil = chil.order_by('name')
+    elif ('ZtoA' in request.GET): 
+        sort_param = 'ZtoA' 
+        chil = chil.order_by('-name')
+    elif ('priceUP' in request.GET): 
+        sort_param = 'priceUP' 
+        chil = chil.order_by('price')
+    elif ('priceDown' in request.GET): 
+        sort_param = 'priceDown' 
+        chil = chil.order_by('-price')
+    elif ('dateUP' in request.GET):  
+        sort_param = 'dateUP'
+        chil = chil.order_by('publish_date')
+    elif ('dateDown' in request.GET): 
+        sort_param = 'dateDown' 
+        chil = chil.order_by('-publish_date') 
+    elif sort_param == 'AtoZ':
+        chil = chil.order_by('name')
+    elif sort_param == 'ZtoA':
+        chil = chil.order_by('-name')
+    elif sort_param == 'priceUP':
+        chil = chil.order_by('price')
+    elif sort_param == 'priceDown':
+        chil = chil.order_by('-price')
+    elif sort_param == 'dateUP':
+        chil = chil.order_by('publish_date')
+    elif sort_param == 'dateDown':
+        chil = chil.order_by('-publish_date')            
+    # Apply price range filtering
+
+    
+    if "searchPriceFrom" in request.GET and "searchPriceTo" in request.GET:
+        price_from = request.GET['searchPriceFrom']
+        price_to = request.GET['searchPriceTo']
+
+        if price_from and price_to:
+            if price_from.isdigit() and price_to.isdigit():
+                chil = chil.filter(price__gte=price_from,  price__lte=price_to)
+
+    # Filtering by child name if searchChildName is provided
+    search_child_name = request.GET.get('searchChildName')
+    if search_child_name:
+        chil = chil.filter(Q(name__icontains=search_child_name))
+
+    chil_count = chil.count    
     pchild = get_object_or_404(Product, pk=pro_id)
     product = Product.objects.all().prefetch_related('childs')
     p = Paginator(chil, 12)
@@ -55,8 +115,14 @@ def pro_child(request, pro_id):
         'pchild': get_object_or_404(Product, pk=pro_id),
         'products': Product.objects.all(),
         'chil': Child.objects.all(),
-        'prol': prol,
-        'nums': nums
+        'prol': prol, 
+        'nums': nums,
+        'price_from':price_from,
+        'price_To':price_to,
+        'max_price': ceil(max_price),
+        'min_price': floor(min_price),
+        'chil_count': chil_count,
+        'sort_param': sort_param
 
     }
     if request.user.is_authenticated and not request.user.is_anonymous:
@@ -74,45 +140,55 @@ def pro_child(request, pro_id):
                 'pchild': get_object_or_404(Product, pk=pro_id),
                 'products': Product.objects.all(),
                 'chil': Child.objects.all(),
+                'sort_param': sort_param,
+                'price_from':price_from,
+                'price_To':price_to,
                 'prol': prol,
+                'max_price': ceil(max_price),
+                'min_price': floor(min_price),
+                'chil_count': chil_count,
                 'nums': nums
             }
 
     return render(request, 'products/pro_child.html',  prochild)
 
 
-
 def product_info(request, pro_id, chi_id):
     pchild = get_object_or_404(Child, product__pk=pro_id, pk=chi_id)
+    related_children = Child.objects.filter(
+        Q(product__pk=pro_id) & ~Q(pk=chi_id)
+    )
     pro5 = Product.objects.all()
+
     if request.user.is_authenticated and not request.user.is_anonymous:
         userprofile = UserProfile.objects.get(user=request.user)
-        if Order.objects.all().filter(user=request.user, is_finished=False):
+        if Order.objects.filter(user=request.user, is_finished=False).exists():
             order = Order.objects.get(user=request.user, is_finished=False)
-            orderdetails = OrderDetails.objects.all().filter(order=order)
-            prototal = 0
-            for prosup in orderdetails:
-                prototal += prosup.quantity
+            orderdetails = OrderDetails.objects.filter(order=order)
+            prototal = sum(prosup.quantity for prosup in orderdetails)
             return render(request, 'products/product_info.html', context={
                 'pchild': pchild,
                 'userprofile': userprofile,
                 'order': order,
                 'prototal': prototal,
                 'products': pro5,
+                'related_children': related_children,
             })
         else:
             return render(request, 'products/product_info.html', context={
-                'pchild': pchild,'products': pro5,
+                'pchild': pchild,
+                'products': pro5,
+                'related_children': related_children,
             })
     else:
         return render(request, 'products/product_info.html', context={
-            'pchild': pchild,'products': pro5,
+            'pchild': pchild,
+            'products': pro5,
+            'related_children': related_children,
         })
 
 
-
 def search_result(request):
-    
     pro2 = Child.objects.all()
     pro5 = Product.objects.all()
     name = None
@@ -121,70 +197,49 @@ def search_result(request):
     seens = None
     p = None
     page = None
-    prol=  None
+    prol = None
     query_string = None
 
-    search_vector = SearchVector('name', 'code', 'details')
-    if ('searchname' in request.GET) and request.GET['searchname'].strip():
+    if 'searchname' in request.GET and request.GET['searchname'].strip():
         query_string = request.GET.get('searchname')
-        seens = Child.objects.annotate(search=search_vector).filter(search=query_string, is_active = True)
+        search_query = Q(name__icontains=query_string) | Q(code__icontains=query_string) | Q(details__icontains=query_string)
+        seens = Child.objects.filter(search_query, is_active=True)
+        
         page = request.GET.get('page')
-        paginator = Paginator(seens,12)
+        paginator = Paginator(seens, 12)
         try:  
             p = paginator.page(page)
         except PageNotAnInteger:
             p = paginator.page(1)
         except EmptyPage:
             p = paginator.page(paginator.num_pages)
+        
         prol = seens.count()
-        if request.user.is_authenticated and not request.user.is_anonymous:
-            if Order.objects.all().filter(user=request.user, is_finished=False):
-                order = Order.objects.get(user=request.user, is_finished=False)
-                orderdetails = OrderDetails.objects.all().filter(order=order)
-                prototal = 0
-                for prosup in orderdetails:
-                    prototal += prosup.quantity
-        
-  
-            context3 = {
-                'order': order,
-                'name': name,
-                'code': code,
-                'details':details,
-                'products2': pro2,
-                'products': pro5,
-                'prol': prol,
-                'p':p,
-                'seens': seens, 
-                'prototal': prototal,
-                'query_string': query_string
-            }
-        else:   
-          context3 = {
+
+        context3 = {
             'name': name,
             'code': code,
-            'details':details,
+            'details': details,
             'products2': pro2,
             'products': pro5,
             'prol': prol,
-            'p':p,
-            'seens': seens, 
+            'p': p,
+            'seens': seens,
             'query_string': query_string
-           
-        } 
+        }
     else:   
-          context3 = {
+        context3 = {
             'name': name,
             'code': code,
-            'details':details,
+            'details': details,
             'products2': pro2,
             'products': pro5,
             'prol': prol,
-            'p':p,
+            'p': p,
             'seens': seens, 
             'query_string': query_string
-        } 
-        
+        }
+
     # if request.user.is_authenticated and not request.user.is_anonymous:
     #     if Order.objects.all().filter(user=request.user, is_finished=False):
     #         order = Order.objects.get(user=request.user, is_finished=False)
@@ -203,7 +258,8 @@ def search_result(request):
     #             'prol': prol,
     #             'seens': seens,
     #             'query_string': query_string
-    #         }
+    #         }    
+
     return render(request, 'products/search_result.html', context3)
 
 

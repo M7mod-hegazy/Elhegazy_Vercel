@@ -19,10 +19,13 @@ from django.core.paginator import Paginator
 
 def signin(request):
     product = Product.objects.all()
-    context = {
-       'product': product
-    }
+  
+    if request.user.is_authenticated and not request.user.is_anonymous:
+       
+        return redirect('/')
+ 
     if request.method == 'POST' and 'btnlogin' in request.POST:
+        
         username = request.POST['username']
         password = request.POST['password1']
         user = auth.authenticate(username=username, password=password)
@@ -32,13 +35,10 @@ def signin(request):
                 request.session.set_expiry(0)
             auth.login(request, user)  
         else:            
-            messages.error(request, 'خطأ في اسم المسخدم او البريد الإلكتروني')
+            messages.error(request, 'خطأ في اسم المستخدم أو كلمة المرور')
         return redirect('signin')
-    elif request.user.is_authenticated and not request.user.is_anonymous :
-        return redirect('/')
         
-    else:
-        return render(request, 'accounts/signin.html', context)
+    return render(request, 'accounts/signin.html', {'products': product})
 
 
 def signup(request):

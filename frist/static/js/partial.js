@@ -247,25 +247,39 @@ function showLink() {
 }
 
 
-
   ///////////////////////////////////////////////////////////////////////
 /////////////// no code before here /////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////
-var splide = new Splide( '.splide.spi2', {
-  type   : 'loop',
-  perPage: 4,
-  focus  : 'center',
-  autoplay: true,
-} ).mount();
-var splide = new Splide('.splide.spi1', {
-  type: 'loop',
-  perPage: 4,
-  focus: 'center',
-  autoplay: true,
+
+document.addEventListener('DOMContentLoaded', function () {
+   // Initialize Splide for spi3
+   new Splide('#spi3', {
+    type: 'loop',
+    perPage: 4,
+    focus: 'center',
+    autoplay: true,
 }).mount();
+});
+  // Initialize Splide for spi1
+  new Splide('.splide.spi1', {
+      type: 'loop',
+      perPage: 4,
+      focus: 'center',
+      autoplay: true,
+  }).mount();
+
+  // Initialize Splide for spi2
+  new Splide('.splide.spi2', {
+      type: 'loop',
+      perPage: 4,
+      focus: 'center',
+      autoplay: true,
+  }).mount();
+
 
 
 // Mount the carousel
 ///////////////////////////////////////////////////////////////////////
 /////////////// code after this /////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////
+
