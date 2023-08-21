@@ -6,6 +6,8 @@ from .models import Order, OrderDetails, Payment
 from django.utils import timezone
 import re
 from django.http import JsonResponse
+from accounts.models import UserProfile
+
 
 
 # Create your views here.
@@ -58,6 +60,13 @@ def cart(request):
         'products': Product.objects.all()
     }
     if request.user.is_authenticated and not request.user.is_anonymous:
+        userInfo = UserProfile.objects.get(user=request.user)
+        pro = userInfo.product_favorites.all()
+        context = {
+                'prol_fav':pro,
+                'prol_count':pro.count,
+                'products': Product.objects.all(),
+            }    
         if Order.objects.all().filter(user=request.user, is_finished=False):
             order = Order.objects.get(user=request.user, is_finished=False)
             orderdetails = OrderDetails.objects.all().filter(order=order)
@@ -68,6 +77,8 @@ def cart(request):
             for prosup in orderdetails:
                 prototal += prosup.quantity
             context = {
+                'prol_fav':pro,
+                'prol_count':pro.count,
                 'order': order,
                 'orderdetails': orderdetails,
                 'total': total,
@@ -75,6 +86,7 @@ def cart(request):
                 'products': Product.objects.all(),
 
             }
+       
     return render(request, 'orders/cart.html', context)
 
 
@@ -182,6 +194,13 @@ def payment(request):
         print(request.POST)
         if ship_phone and ship_address:
                 if request.user.is_authenticated and not request.user.is_anonymous :
+                    userInfo = UserProfile.objects.get(user=request.user)
+                    pro = userInfo.product_favorites.all()
+                    context = {
+                            'prol_fav':pro,
+                            'prol_count':pro.count,                               
+                            'products': Product.objects.all()  
+                            } 
                     patt = "^01[0-2]\d{1,8}$"
                     if re.match(patt, ship_phone):
                         if Order.objects.all().filter(user=request.user, is_finished=False):
@@ -194,6 +213,8 @@ def payment(request):
                             messages.success(request, 'تم تنفيز طلبك بنجاح')
 
                             context = {
+                                'prol_fav':pro,
+                                'prol_count':pro.count,
                                 'ship_address': ship_address,
                                 'ship_phone': ship_phone,
                                 'is_added': is_added,
@@ -201,6 +222,7 @@ def payment(request):
                                 'is_finished': True,
                                 'products': Product.objects.all()
                             }
+                            
                     else:
                         messages.error(request, 'تحقق من رقم التلفون')
                         
@@ -210,6 +232,12 @@ def payment(request):
         
 
         if request.user.is_authenticated and not request.user.is_anonymous:
+            userInfo = UserProfile.objects.get(user=request.user)
+            pro = userInfo.product_favorites.all()
+            context = {
+                            'prol_fav':pro,
+                            'prol_count':pro.count,    
+                    } 
             if Order.objects.all().filter(user=request.user, is_finished=False):
                 order = Order.objects.get(user=request.user, is_finished=False)
                 orderdetails = OrderDetails.objects.all().filter(order=order)
@@ -218,6 +246,8 @@ def payment(request):
                 for prosup in orderdetails:
                     prototal += prosup.quantity
                 context = {
+                    'prol_fav':pro,
+                    'prol_count':pro.count,
                     'is_finished': False,
                     'is_added': False,
                     'order': order,
@@ -231,6 +261,8 @@ def payment(request):
     else:
         # هنا العرض قبل الضغط على الدفع
         if request.user.is_authenticated and not request.user.is_anonymous:
+            userInfo = UserProfile.objects.get(user=request.user)
+            pro = userInfo.product_favorites.all()
             if Order.objects.all().filter(user=request.user, is_finished=False):
                 order = Order.objects.get(user=request.user, is_finished=False)
                 orderdetails = OrderDetails.objects.all().filter(order=order)
@@ -242,6 +274,8 @@ def payment(request):
                 for prosup in orderdetails:
                     prototal += prosup.quantity
                 context = {
+                    'prol_fav':pro,
+                    'prol_count':pro.count,
                     'order': order,
                     'orderdetails': orderdetails,
                     'prototal': prototal,
@@ -256,6 +290,8 @@ def show_orders(request):
     context = {'products': Product.objects.all()}
     all_orders = None
     if request.user.is_authenticated and not request.user.is_anonymous:
+        userInfo = UserProfile.objects.get(user=request.user)
+        pro = userInfo.product_favorites.all()
         all_orders = Order.objects.all().filter(user=request.user)
         if all_orders:
             for x in all_orders:
@@ -267,18 +303,27 @@ def show_orders(request):
                     total += sup.price * sup.quantity
                 x.total = total
                 x.items_count = orderdetails.count
+                context = {
+                'prol_fav':pro,
+                'prol_count':pro.count,                
+                'all_orders': all_orders,
+                'products': Product.objects.all(),
+                'total': total
+                }
         if Order.objects.all().filter(user=request.user, is_finished=False):
             order = Order.objects.get(user=request.user, is_finished=False)
             orderdetails = OrderDetails.objects.all().filter(order=order)
             prototal = 0
             for prosup in orderdetails:
                 prototal += prosup.quantity
-    context = {
-        'order': order,
-        'prototal': prototal,
-        'all_orders': all_orders,
-        'products': Product.objects.all(),
-        'total': total
+            context = {
+                'prol_fav':pro,
+                'prol_count':pro.count,
+                'order': order,
+                'prototal': prototal,
+                'all_orders': all_orders,
+                'products': Product.objects.all(),
+                'total': total
 
-    }
+            }
     return render(request, 'orders/show_orders.html', context)

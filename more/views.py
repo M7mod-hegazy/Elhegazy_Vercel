@@ -5,6 +5,8 @@ from django.http import HttpResponse
 from products.models import Product
 from more.models import Work
 from orders.models import Order, OrderDetails
+from accounts.models import UserProfile
+
 
 
 # Import Pagination Stuff
@@ -20,13 +22,24 @@ def location(request):
 
       }
       if request.user.is_authenticated and not request.user.is_anonymous:
+        userInfo = UserProfile.objects.get(user=request.user)
+        pro = userInfo.product_favorites.all()
+        context = {
+              'prol_fav':pro,
+              'prol_count':pro.count, 
+              'products': Product.objects.all()
+           }
         if Order.objects.all().filter(user=request.user, is_finished=False):
+            userInfo = UserProfile.objects.get(user=request.user)
+            pro = userInfo.product_favorites.all()
             order = Order.objects.get(user=request.user, is_finished=False)
             orderdetails = OrderDetails.objects.all().filter(order=order)
             prototal = 0
             for prosup in orderdetails:
                 prototal += prosup.quantity
             context = {
+              'prol_fav':pro,
+              'prol_count':pro.count,
               'order': order,
               'prototal': prototal, 
               'products': Product.objects.all()
@@ -50,13 +63,27 @@ def works(request):
      'nums':nums
     }
     if request.user.is_authenticated and not request.user.is_anonymous:
+        userInfo = UserProfile.objects.get(user=request.user)
+        pro = userInfo.product_favorites.all()
+        context = {
+              'prol_fav':pro,
+              'prol_count':pro.count,
+              'products':products,
+              'work':work,
+              'workl':workl,
+              'nums':nums
+            }
         if Order.objects.all().filter(user=request.user, is_finished=False):
+            userInfo = UserProfile.objects.get(user=request.user)
+            pro = userInfo.product_favorites.all()
             order = Order.objects.get(user=request.user, is_finished=False)
             orderdetails = OrderDetails.objects.all().filter(order=order)
             prototal = 0
             for prosup in orderdetails:
                 prototal += prosup.quantity
             context = {
+              'prol_fav':pro,
+              'prol_count':pro.count,
               'order': order,
               'prototal': prototal, 
               'products':products,

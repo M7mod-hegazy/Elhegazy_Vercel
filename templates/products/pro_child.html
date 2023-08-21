@@ -152,7 +152,7 @@
 
         <a id="downloadLink" href="{% url 'generate_qr_code2' pro_id=pchild.pk  %}" download="{{ pchild.code }}.jpg" class="download-link" ><i class="fa-solid fa-download"></i></a>
 
-        <div class="currentLink_container">
+        <div class="currentLink_container link_pro">
           <p id="currentLink" class="currentLink" ></p>
           <i class="fa-solid fa-copy" id="copyIcon" class="copyIcon" onclick="copyCurrentLink()"></i>
         </div>
@@ -163,44 +163,47 @@
   <div class="row filterSortRow">
 
 
-    <div class="col-12 col-md-7 col-lg-7">
+    <div class="col-12 col-md-7 col-lg-6  filter_col">
       <div class="filter_address">
         
-        <div>: تصفيه حسب </div>
-        <i class="fa-solid fa-filter"></i>
+
+        <button id="toggleButton" class="btn btn-primary bx_shadow col-11">تصفيه      <i class="filter-icon fa-solid fa-filter"></i>
+          <i class="close-icon fa-solid fa-times" style="display: none;"></i></button>
+
+        
       </div>
         <form method="GET" id="searchForm" class="filter_form">  
             <input type="hidden" name="sort" value="{{ sort_param }}">
-          
-          <div class="filter_group">
-            <input class="filter_input" name="searchPriceFrom" id="searchPriceFrom" placeholder=" "  type="number" value="{% if 'searchPriceFrom' in request.GET %}{{ request.GET.searchPriceFrom }}{% else %}{{ min_price }}{% endif %}">
-            <label class="filter_label" for="searchPriceFrom">من</label>
+            <input type="hidden" name="searchPriceFrom" id="searchPriceFromInput" value="{% if 'searchPriceFrom' in request.GET %}{{ request.GET.searchPriceFrom }}{% else %}{{ min_price }}{% endif %}">
+            <input type="hidden" name="searchPriceTo" id="searchPriceToInput"  value="{% if 'searchPriceTo' in request.GET %}{{ request.GET.searchPriceTo }}{% else %}{{ max_price }}{% endif %}">
 
-          </div>   
-          <span class="price">جنيه</span> 
-   
-          <div class="filter_group">
-            <input class="filter_input" name="searchPriceTo" id="searchPriceTo" placeholder=" "  type="number" value="{% if 'searchPriceTo' in request.GET %}{{ request.GET.searchPriceTo }}{% else %}{{ max_price }}{% endif %}">
-            <label class="filter_label" for="searchPriceTo">إلى</label>
+            <div class="row filter_row">
+                <div class="pri_add">:تصفيه حسب السعر</div> 
 
-          </div>  
-          <span class="price">جنيه</span>  
-  
-          <div class="filter_group">
-            <input class="filter_input" name="searchChildName" id="searchChildName" placeholder=" "  type="text" value="{% if 'searchChildName' in request.GET %}{{ request.GET.searchChildName }}{% endif %}">
-            <label class="filter_label" for="searchChildName">اسم المنتج</label>
+               
+                <div class="filter_group rng col-12 col-md-6 col-lg-6">
+                  <input type="text" id="priceSlider">                
+                </div>
+                
+                <span class="INF2 pri"></span>
 
-          </div>    
-
-            <button type="submit" class="btn btn-primary bx_shadow" id="searchButton">بحث</button>
+                <div class="pri_add">:تصفيه حسب الإسم</div> 
+                <div class="filter_group col-12  asd">
+                  <input class="filter_input" name="searchChildName" id="searchChildName" placeholder="الكل"  type="text" value="{% if 'searchChildName' in request.GET %}{{ request.GET.searchChildName }}{% endif %}">
+                  <label class="filter_label" for="searchChildName">اسم المنتج</label>
+                </div>    
+                <div class="col-12" >
+                  <button type="submit" class="btn btn-primary bx_shadow col-10 col-md-6 col-lg-6" id="searchButton">بحث</button>
+                </div>
+              </div>  
         </form>
     </div>  
 
 
     <div class="col-6 col-md-3 col-lg-3 filter_count">
-      {{chil_count}} : تم العثور على
+      <span class=" border border-primary rounded p-1 m-1">{{chil_count}}</span> : تم العثور على
     </div>
-    <div class="col-6 col-md-2 col-lg-2">
+    <div class="col-6 col-md-2 col-lg-3 ">
       <div class="sort_address">
         
         <div>: ترتيب حسب </div>
@@ -217,7 +220,7 @@
                 {% if not sort_param or sort_param == 'None' %}الإفتراضي{% endif %}
             </button>
             <ul class="dropdown-menu" aria-labelledby="sortDropdown">
-                <li><a class="dropdown-item {% if not sort_param or sort_param == 'None' %}active{% endif %}" href="{% url 'pro_child' pro_id=pchild.id %}?searchChildName={{ request.GET.searchChildName }}&searchPriceFrom={{ price_from }}&searchPriceTo={{ price_To }}">الإفتراضي</a></li>
+                <li><a class="dropdown-item  {% if not sort_param or sort_param == 'None' %}active{% endif %}" href="{% url 'pro_child' pro_id=pchild.id %}?searchChildName={{ request.GET.searchChildName }}&searchPriceFrom={{ price_from }}&searchPriceTo={{ price_To }}">الإفتراضي</a></li>
                 <li><a class="dropdown-item {% if sort_param == 'AtoZ' %}active{% endif %}" href="{% url 'pro_child' pro_id=pchild.id %}?sort=AtoZ&searchChildName={{ request.GET.searchChildName }}&searchPriceFrom={{ price_from|default:min_price }}&searchPriceTo={{ price_To|default:max_price }}">من أ الى ى</a></li>
                 <li><a class="dropdown-item {% if sort_param == 'ZtoA' %}active{% endif %}" href="{% url 'pro_child' pro_id=pchild.id %}?sort=ZtoA&searchChildName={{ request.GET.searchChildName }}&searchPriceFrom={{ price_from|default:min_price }}&searchPriceTo={{ price_To|default:max_price }}">من ى الى أ</a></li>
                 <li><a class="dropdown-item {% if sort_param == 'priceUP' %}active{% endif %}" href="{% url 'pro_child' pro_id=pchild.id %}?sort=priceUP&searchChildName={{ request.GET.searchChildName }}&searchPriceFrom={{ price_from|default:min_price }}&searchPriceTo={{ price_To|default:max_price }}">الأقل سعر أولا</a></li>
@@ -319,15 +322,15 @@
     <ul class="pagination justify-content-center P">
             
       {% if prol.has_previous %}
-        <li class="page-item"><a class="page-link" href="?page=1{% if request.GET.sort %}&sort={{ request.GET.sort }}{% endif %}{% if request.GET.searchChildName %}&searchChildName={{ request.GET.searchChildName }}{% endif %}{% if request.GET.searchPriceFrom %}&searchPriceFrom={{ request.GET.searchPriceFrom }}{% endif %}{% if request.GET.searchPriceTo %}&searchPriceTo={{ request.GET.searchPriceTo }}{% endif %}"><i class="fa-solid fa-angles-left"></i></a></li>
-        <li class="page-item"><a class="page-link" href="?page={{ prol.previous_page_number }}{% if request.GET.sort %}&sort={{ request.GET.sort }}{% endif %}{% if request.GET.searchChildName %}&searchChildName={{ request.GET.searchChildName }}{% endif %}{% if request.GET.searchPriceFrom %}&searchPriceFrom={{ request.GET.searchPriceFrom }}{% endif %}{% if request.GET.searchPriceTo %}&searchPriceTo={{ request.GET.searchPriceTo }}{% endif %}"><i class="fa-solid fa-angle-left"></i></a></li>
+        <li class="page-item"><a class="page-link bx_shadow" href="?page=1{% if request.GET.sort %}&sort={{ request.GET.sort }}{% endif %}{% if request.GET.searchChildName %}&searchChildName={{ request.GET.searchChildName }}{% endif %}{% if request.GET.searchPriceFrom %}&searchPriceFrom={{ request.GET.searchPriceFrom }}{% endif %}{% if request.GET.searchPriceTo %}&searchPriceTo={{ request.GET.searchPriceTo }}{% endif %}"><i class="fa-solid fa-angles-left"></i></a></li>
+        <li class="page-item"><a class="page-link bx_shadow" href="?page={{ prol.previous_page_number }}{% if request.GET.sort %}&sort={{ request.GET.sort }}{% endif %}{% if request.GET.searchChildName %}&searchChildName={{ request.GET.searchChildName }}{% endif %}{% if request.GET.searchPriceFrom %}&searchPriceFrom={{ request.GET.searchPriceFrom }}{% endif %}{% if request.GET.searchPriceTo %}&searchPriceTo={{ request.GET.searchPriceTo }}{% endif %}"><i class="fa-solid fa-angle-left"></i></a></li>
       {% endif %}
         
       <li class="page-item disabled"><a href="#" class="page-link">صفحه {{ prol.number }} من {{ prol.paginator.num_pages }}</a></li>
   
       {% if prol.has_next %}
-        <li class="page-item"><a class="page-link" href="?page={{ prol.next_page_number }}{% if request.GET.sort %}&sort={{ request.GET.sort }}{% endif %}{% if request.GET.searchChildName %}&searchChildName={{ request.GET.searchChildName }}{% endif %}{% if request.GET.searchPriceFrom %}&searchPriceFrom={{ request.GET.searchPriceFrom }}{% endif %}{% if request.GET.searchPriceTo %}&searchPriceTo={{ request.GET.searchPriceTo }}{% endif %}"><i class="fa-solid fa-angle-right"></i></a></li>
-        <li class="page-item"><a class="page-link" href="?page={{ prol.paginator.num_pages }}{% if request.GET.sort %}&sort={{ request.GET.sort }}{% endif %}{% if request.GET.searchChildName %}&searchChildName={{ request.GET.searchChildName }}{% endif %}{% if request.GET.searchPriceFrom %}&searchPriceFrom={{ request.GET.searchPriceFrom }}{% endif %}{% if request.GET.searchPriceTo %}&searchPriceTo={{ request.GET.searchPriceTo }}{% endif %}"><i class="fa-solid fa-angles-right"></i></a></li>
+        <li class="page-item "><a class="page-link bx_shadow" href="?page={{ prol.next_page_number }}{% if request.GET.sort %}&sort={{ request.GET.sort }}{% endif %}{% if request.GET.searchChildName %}&searchChildName={{ request.GET.searchChildName }}{% endif %}{% if request.GET.searchPriceFrom %}&searchPriceFrom={{ request.GET.searchPriceFrom }}{% endif %}{% if request.GET.searchPriceTo %}&searchPriceTo={{ request.GET.searchPriceTo }}{% endif %}"><i class="fa-solid fa-angle-right"></i></a></li>
+        <li class="page-item"><a class="page-link bx_shadow" href="?page={{ prol.paginator.num_pages }}{% if request.GET.sort %}&sort={{ request.GET.sort }}{% endif %}{% if request.GET.searchChildName %}&searchChildName={{ request.GET.searchChildName }}{% endif %}{% if request.GET.searchPriceFrom %}&searchPriceFrom={{ request.GET.searchPriceFrom }}{% endif %}{% if request.GET.searchPriceTo %}&searchPriceTo={{ request.GET.searchPriceTo }}{% endif %}"><i class="fa-solid fa-angles-right"></i></a></li>
       {% endif %}
     
     </ul>
@@ -336,10 +339,10 @@
 
  
 
+ 
   <script>
- 
-  </script>
- 
 
+    
+  </script>
 {% endblock %}
 

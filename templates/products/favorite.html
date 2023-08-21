@@ -4,89 +4,89 @@
 {% block content %}
 
 <!-- start search_result -->
-<di
+
 <div class="container">
 
-  <a href="{% url 'index' %}" class="pro_arrow txt_shadow"><i class="fas fa-home"></i></a>
+  <a href="{% url 'index' %}" class="pro_arrow fav_arrow txt_shadow"><i class="fas fa-home"></i></a>
 
     <div class="row about product-info searchR"> 
      <h2 class="locationTitile">قائمة المفضله </h2>
 
      {% if not request.user.is_authenticated or request.user.is_anonymous %}
      <div class="wrongcart">
-         <a href="{% url 'signin' %}">تسجيل الدخول</a><h3 class="mt-3"> يجب</h3>
+         <a href="{% url 'signin' %}"class="text-light">تسجيل الدخول</a><h3 class="mt-3"> يجب</h3>
      </div>
      {%else%}
-     {% for child in prol %}
+     {% for child in prol2 %}
 
-     <div class="col-6 col-md-3 col-lg-3 searchM">
-        
-      <div class="card" style="width: 18rem;">
-          <img src="{{ child.photo.url }}" class="card-img-top" alt="...">
-          <div class="child_cart">
-            <div class="badge_content">
-              <div class="square"></div>
-              <div class="tri"></div>
-            </div> 
-            <div class="content">
-              <a href="{% url 'product_info' chi_id=child.id pro_id=child.product_id%}" >
-                  <i class="fas fa-cart-plus"></i>              
-              </a>
-            </div>
-          </div> 
-          <div class="child_heart">
-            <div class="badge_content ">
-              <div class="square"></div>
-              <div class="tri"></div>
-            </div>  
-            <div class="content">
-              <!-- Update the anchor tag to use data attributes -->
-            <a class="favorite-btn" data-pro-id="{{ child.product.id }}" data-chi-id="{{ child.id }}">
-              <i {% if request.user.is_authenticated and child in request.user.userprofile.product_favorites.all %} class="fas fa-heart love" {% else %}class="fas fa-heart"{% endif %}></i>
-            </a>
-
+        <div class="col-6 col-md-3 col-lg-3 searchM">
             
-            </div>
-          </div> 
-          {% if child.oldPrice %}
-          <div class="sale">
-            <div class="rope"></div>
-            <div class="content">
-                <h2>Sale!!</h2>
-            </div>
-          </div> 
-          {% endif %}
-          <div class="card-body">
-            <h5 class="card-title">{{ child.name }}</h5>
-            <div class="card-hover">
-              <div class="card-text CT2"> <span class="price"><span class="price">{{ child.price }} جم</span><span class="latestPrice2">
-                {% if child.oldPrice %}
-                {{ child.oldPrice}}جم
-                {% endif %}
-             </span>
+          <div class="card" style="width: 18rem;">
+              <img src="{{ child.photo.url }}" class="card-img-top" alt="...">
+              <div class="child_cart">
+                <div class="badge_content">
+                  <div class="square"></div>
+                  <div class="tri"></div>
+                </div> 
+                <div class="content">
+                  <a href="{% url 'product_info' chi_id=child.id pro_id=child.product_id%}" >
+                      <i class="fas fa-cart-plus"></i>              
+                  </a>
+                </div>
+              </div> 
+              <div class="child_heart">
+                <div class="badge_content ">
+                  <div class="square"></div>
+                  <div class="tri"></div>
+                </div>  
+                <div class="content">
+                  <!-- Update the anchor tag to use data attributes -->
+                <a class="favorite-btn" data-pro-id="{{ child.product.id }}" data-chi-id="{{ child.id }}">
+                  <i {% if request.user.is_authenticated and child in request.user.userprofile.product_favorites.all %} class="fas fa-heart love" {% else %}class="fas fa-heart"{% endif %}></i>
+                </a>
+
+                
+                </div>
+              </div> 
+              {% if child.oldPrice %}
+              <div class="sale">
+                <div class="rope"></div>
+                <div class="content">
+                    <h2>Sale!!</h2>
+                </div>
+              </div> 
+              {% endif %}
+              <div class="card-body">
+                <h5 class="card-title">{{ child.name }}</h5>
+                <div class="card-hover">
+                  <div class="card-text CT2"> <span class="price"><span class="price">{{ child.price }} جم</span><span class="latestPrice2">
+                    {% if child.oldPrice %}
+                    {{ child.oldPrice}}جم
+                    {% endif %}
+                </span>
+                  </div>
+                    
+                  <div class="card-text CT1">code: <span>{{ child.code }}</span></div>
               </div>
                 
-              <div class="card-text CT1">code: <span>{{ child.code }}</span></div>
-            </div>
-            
-            <a href="{% url 'product_info' chi_id=child.id pro_id=child.product_id%}" class="NEWbtn">
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              تفاصيل
-            </a>
-           
+                <a href="{% url 'product_info' chi_id=child.id pro_id=child.product_id%}" class="NEWbtn">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  تفاصيل
+                </a>
+              
           </div>
         </div>      
       
-  </div>
+    </div>
      {% empty %}
 
 
-  <div class="wrongcart">
-      <a class="linkc" href="{% url 'products' %}">جميع المنتجات</a><h3 class="mt-3">لم تضيف منتجات للمفضله</h3>
-  </div>
+      <div class="wrongcart">
+          <a class="linkc" href="{% url 'products' %}">جميع المنتجات</a><h3 class="mt-3">لم تضيف منتجات للمفضله</h3>
+      </div>
 
      {% endfor %}
 
@@ -100,6 +100,26 @@
 
   </section> 
 
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center P">
+          
+      {% if prol2.has_previous %}
+        <li class="page-item"><a class="page-link bx_shadow" href="?page=1">&#11164&#11164</a></li>
+        <li class="page-item"><a class="page-link bx_shadow" href="?page={{ prol2.previous_page_number }}">&#11164</a></li>
+        
+      {% endif %}
+      
+      <li class="page-item disabled"><a href="#" class="page-link">صفحه {{ prol2.number }} من {{ prol2.paginator.num_pages }}</a></li>
+
+      
+      
+      {% if prol2.has_next %}
+        <li class="page-item"><a class="page-link bx_shadow" href="?page={{ prol2.next_page_number }}">&#11166</a></li>
+        <li class="page-item"><a class="page-link bx_shadow" href="?page={{ prol2.paginator.num_pages }}">&#11166&#11166</a></li>
+      {% endif %}
+  
+   </ul>
+  </nav>
   
 
 {% endblock %}

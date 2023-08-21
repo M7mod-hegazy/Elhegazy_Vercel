@@ -25,6 +25,8 @@
    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.20/fancybox/fancybox.min.css" integrity="sha512-CKzoxXyMYmvRJC/xhN3ZAN8qo4NSwYHnrGgS/cgUK80E2VgNjab71jUQgH55Vqzuw8lxUxg13xzMZuFTHxJD8A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/css/ion.rangeSlider.min.css" integrity="sha512-NWCafukXClS6fKch6bSMl/WvPzZrD1OGMf1oMAnFYXSSKZ7hgeswls+r4SdK4bFJauVwmvFf7HlMwji2TsjROA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 
     <link rel="stylesheet" href="{% static 'css/normalize.css'%}" />
     <link rel="stylesheet" href="{% static 'css/all.css'%}" />
@@ -81,6 +83,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.20/fancybox/fancybox.umd.js" integrity="sha512-IhR9I8gekUZ8WxAdepIWS2GktjbwgLWRaxNFHhEjA0XowdI/JMZuMY9/6KRGfZJFmLc5u4qj6eosU8jlHqVsfQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/js/ion.rangeSlider.min.js" integrity="sha512-kZsqvmw94Y8hyhwtWZJvDtobwQ9pLhF1DuIvcqSuracbRn6WJs1Ih+04fpH/8d1CFKysp7XA1tR0Aa2jKLTQUg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-QHQFP3WNM0"></script>
@@ -202,9 +205,43 @@
           }
            
    
-    
+         
+
+          $(document).ready(function () {
+            const priceSlider = $("#priceSlider");
+          
+            // Make sure that the Django template variables are rendered correctly
+            const minPrice = parseInt("{{ min_price }}");
+            const maxPrice = parseInt("{{ max_price }}");
+            const searchPriceFrom = parseInt("{% if 'searchPriceFrom' in request.GET %}{{ request.GET.searchPriceFrom }}{% else %}{{ min_price }}{% endif %}");
+            const searchPriceTo = parseInt("{% if 'searchPriceTo' in request.GET %}{{ request.GET.searchPriceTo }}{% else %}{{ max_price }}{% endif %}");
+          
+            priceSlider.ionRangeSlider({
+              type: "double",
+              grid: true,
+              min: minPrice,
+              max: maxPrice,
+              from: searchPriceFrom,
+              to: searchPriceTo,
+              hide_min_max: true,
+              prefix: "EGP ",
+              onChange: function (data) {
+                // Update hidden input fields with slider values
+                $("#searchPriceFromInput").val(data.from);
+                $("#searchPriceToInput").val(data.to);
+              }
+            });
+          
+            // Submit the form when the slider values change
+            priceSlider.on("change", function () {
+              $("#priceForm").submit();
+            });
+          });
+          
+          
 
 
+          
 {% comment %} 
           $(document).ready(function () {
             $('.increment-qty').click(function (e) {
@@ -338,6 +375,7 @@
   } 
              {% endcomment %}
       
+         
     </script>
   </body>
 </html>

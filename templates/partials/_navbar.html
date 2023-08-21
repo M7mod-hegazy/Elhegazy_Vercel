@@ -132,6 +132,20 @@
             <a class="btn searchBtn bx_shadow" href="javascript:{}" onclick="document.getElementById('my_form').submit(); return false;">
               <i class='fas fa-search'></i>
             </a>
+                <a href="{% url 'show_product_favorite'%}" class="btn btn2 cartBtn bx_shadow heartBtn" type="submit">
+                  <i class="fas fa-heart "></i>
+                  {% if not request.user.is_authenticated or request.user.is_anonymous %}
+                  <div class="not-auth">
+                        <span>not-auth</span>
+                  </div>
+                  {% elif prol_fav %}
+                  <span class="cart_count">{{prol_count}}</span>
+                  {% else %}
+                  <div class="not-auth">
+                    <span>not-auth</span>
+                  </div>
+                  {% endif %}
+                </a> 
                 <a href="{% url 'cart'%}" class="btn btn2 cartBtn bx_shadow" type="submit">
                   <i class="fas fa-shopping-cart"></i>
                   {% if not request.user.is_authenticated or request.user.is_anonymous %}
@@ -146,6 +160,8 @@
                   </div>
                   {% endif %}
                 </a>
+              </a> 
+              
           </form>
            
         </div>
@@ -159,6 +175,20 @@
             </div>
             {% elif order %}
             <span class="mob-cart_count">{{prototal}}</span>
+            {% else %}
+            <div class="not-auth">
+              <span>not-auth</span>
+            </div>
+            {% endif %}
+          </a> 
+          <a href="{% url 'show_product_favorite'%}" class="btn btn2 mob-cartBtn bx_shadow mob-heartBtn" type="submit">
+            <i class="fas fa-heart "></i>
+            {% if not request.user.is_authenticated or request.user.is_anonymous %}
+            <div class="not-auth">
+                  <span>not-auth</span>
+            </div>
+            {% elif prol_fav %}
+            <span class="mob-cart_count">{{prol_count}}</span>
             {% else %}
             <div class="not-auth">
               <span>not-auth</span>

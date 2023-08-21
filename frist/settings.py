@@ -99,7 +99,7 @@ STATICFILE_FINDERS = (
 
 DATABASES = {
     'default': {
-         'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'elhegazyDB',
         'USER': 'm7mod',
         'PASSWORD': '2351970321',

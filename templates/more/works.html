@@ -89,8 +89,8 @@
     <ul class="pagination justify-content-center P">
           
       {% if workl.has_previous %}
-        <li class="page-item"><a class="page-link" href="?page=1">&#11164&#11164</a></li>
-        <li class="page-item"><a class="page-link" href="?page={{ workl.previous_page_number }}">&#11164</a></li>
+        <li class="page-item"><a class="page-link bx_shadow" href="?page=1">&#11164&#11164</a></li>
+        <li class="page-item"><a class="page-link bx_shadow" href="?page={{ workl.previous_page_number }}">&#11164</a></li>
         
       {% endif %}
       
@@ -99,8 +99,8 @@
       
       
       {% if workl.has_next %}
-        <li class="page-item"><a class="page-link" href="?page={{ workl.next_page_number }}">&#11166</a></li>
-        <li class="page-item"><a class="page-link" href="?page={{ workl.paginator.num_pages }}">&#11166&#11166</a></li>
+        <li class="page-item"><a class="page-link bx_shadow" href="?page={{ workl.next_page_number }}">&#11166</a></li>
+        <li class="page-item"><a class="page-link bx_shadow" href="?page={{ workl.paginator.num_pages }}">&#11166&#11166</a></li>
       {% endif %}
   
    </ul>

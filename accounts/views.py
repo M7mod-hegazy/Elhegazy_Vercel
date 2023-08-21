@@ -21,7 +21,8 @@ def signin(request):
     product = Product.objects.all()
   
     if request.user.is_authenticated and not request.user.is_anonymous:
-       
+   
+ 
         return redirect('/')
  
     if request.method == 'POST' and 'btnlogin' in request.POST:
@@ -188,18 +189,24 @@ def profile(request):
     else:
 
         if request.user is not None:
+            
             context = {
                 'products': Product.objects.all(),
             }
             if not request.user.is_anonymous:
                 userprofile = UserProfile.objects.get(user=request.user)
+                userInfo = UserProfile.objects.get(user=request.user)
+                pro = userInfo.product_favorites.all()
                 if Order.objects.all().filter(user=request.user, is_finished=False):
+                    
                     order = Order.objects.get(user=request.user, is_finished=False)
                     orderdetails = OrderDetails.objects.all().filter(order=order)
                     prototal = 0
                     for prosup in orderdetails:
                         prototal += prosup.quantity
                     context = {
+                    'prol_fav':pro,
+                    'prol_count':pro.count,
                     'order': order,
                     'prototal': prototal,
                     'products': Product.objects.all(),
@@ -214,6 +221,8 @@ def profile(request):
                     return render(request, 'accounts/profile.html', context)
                 else:
                     context = {
+                    'prol_fav':pro,
+                    'prol_count':pro.count,
                     'products': Product.objects.all(),
                     'fname': request.user.first_name,
                     'lname': request.user.last_name,
@@ -256,11 +265,12 @@ def product_favorite(request, pro_id, chi_id):
 
 def show_product_favorite(request):
     context = None
+    pro5 = Product.objects.all()
+
     if request.user.is_authenticated and not request.user.is_anonymous:
         userInfo = UserProfile.objects.get(user=request.user)
         pro = userInfo.product_favorites.all()
-        pro5 = Product.objects.all()
-        p= Paginator(Child.objects.all(), 6)
+        p= Paginator(pro, 12)
         page = request.GET.get('page')
         prol2 = p.get_page(page)
         nums = "a" * prol2.paginator.num_pages
@@ -274,11 +284,16 @@ def show_product_favorite(request):
             context = {
             'order': order,
             'prototal': prototal,
-            'prol':pro,
+            'prol_fav':pro,
+            'prol_count':pro.count,
             'products':pro5,
+            'prol':pro,
             'prol2':prol2
             }
             return render(request, 'products/favorite.html', context)    
         else:
-            return render(request, 'products/favorite.html', {'prol':pro,'products':pro5,'prol2':prol2})    
+            return render(request, 'products/favorite.html', {'prol':pro,'products':pro5,'prol2':prol2, 'prol_count':pro.count,'prol_fav':pro,})  
+    else:
+        return render(request, 'products/favorite.html', {'products':pro5,})  
+
   

@@ -6,7 +6,7 @@
   <!-- start signup -->
 
   <div class="container payment_container">
-    <a href="{% url 'index' %}" class="pro_arrow cart_arrow"><i class="fas fa-home"></i></a>
+    <a href="{% url 'index' %}" class="pro_arrow cart_arrow txt_shadow"><i class="fas fa-home"></i></a>
 
     <div class="row sign "> 
       <h2 class="locationTitile">تأكيد الطلب</h2>
@@ -30,8 +30,11 @@
                 <div class="payment_phones">
                   <div><span>01009663365</span><i class="fas fa-phone m-2"></i></div>
                   <div><span>01025109080</span><i class="fas fa-phone m-2"></i></div>
-                  <div><span>0932716232</span><i class="fas fa-phone-rotary"></i></div>   
+                  <div><span>0932716232</span><i class="fas fa-phone m-2"></i></div>   
                 </div>
+                <h5 class="carttotal"><bdi><span class=" border border-primary rounded cart_margin p-1">{{order.id }}</span><bdi> :طلب رقم</bdi></bdi></h5>
+                <hr>
+                
               <form novalidate method="POST" style='display:none;'>
               {% else %}
               <form novalidate method="POST" id="cartForm">
@@ -44,7 +47,7 @@
                 <hr>
                 <h5 class="carttotal"><bdi><span class="price border border-primary rounded cart_margin p-1"><bdi>جم</bdi>{{total}}</span><bdi> :بمبلغ</bdi></bdi></h5>
                 <hr>
-                <a href="{% url 'cart' %}" class="btn btn-primary p-1 cart_back_btn">العوده للعربه</a>
+                <a href="{% url 'cart' %}" class="btn btn-primary p-1 cart_back_btn bx_shadow">العوده للعربه</a>
                 <hr>
 
                 <div class="form-group ">
@@ -58,7 +61,7 @@
 
                 </div>
                 <div class="paybtn">
-                   <button name="payBtn" class="btn btn-primary btn-block mt-3 mb-3" >تأكيد الطلب</button>
+                   <button name="payBtn" class="btn btn-primary btn-block mt-3 mb-3 bx_shadow" >تأكيد الطلب</button>
                 </div>
               
               {%endif%}

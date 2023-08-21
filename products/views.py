@@ -33,13 +33,22 @@ def products(request):
 
     }
     if request.user.is_authenticated and not request.user.is_anonymous:
-        if Order.objects.all().filter(user=request.user, is_finished=False):
+        userInfo = UserProfile.objects.get(user=request.user)
+        pro = userInfo.product_favorites.all()
+        context = {
+                'prol_fav':pro,
+                'prol_count':pro.count,
+                'products': Product.objects.all()
+            }
+        if Order.objects.all().filter(user=request.user, is_finished=False):    
             order = Order.objects.get(user=request.user, is_finished=False)
             orderdetails = OrderDetails.objects.all().filter(order=order)
             prototal = 0
             for prosup in orderdetails:
                 prototal += prosup.quantity
             context = {
+                'prol_fav':pro,
+                'prol_count':pro.count,
                 'order': order,
                 'prototal': prototal,
                 'products': Product.objects.all()
@@ -126,6 +135,24 @@ def pro_child(request, pro_id):
 
     }
     if request.user.is_authenticated and not request.user.is_anonymous:
+        userInfo = UserProfile.objects.get(user=request.user)
+        pro = userInfo.product_favorites.all()
+        prochild = {
+                'prol_fav':pro,
+                'prol_count':pro.count,
+                'products': Product.objects.all(),
+                'pchild': get_object_or_404(Product, pk=pro_id),
+                'products': Product.objects.all(),
+                'chil': Child.objects.all(),
+                'sort_param': sort_param,
+                'price_from':price_from,
+                'price_To':price_to,
+                'prol': prol,
+                'max_price': ceil(max_price),
+                'min_price': floor(min_price),
+                'chil_count': chil_count,
+                'nums': nums
+            }
         if Order.objects.all().filter(user=request.user, is_finished=False):
             order = Order.objects.get(user=request.user, is_finished=False)
             orderdetails = OrderDetails.objects.all().filter(order=order)
@@ -134,6 +161,8 @@ def pro_child(request, pro_id):
                 prototal += prosup.quantity
                 
             prochild = {
+                'prol_fav':pro,
+                'prol_count':pro.count,
                 'order': order,
                 'prototal': prototal,
                 'products': Product.objects.all(),
@@ -162,11 +191,16 @@ def product_info(request, pro_id, chi_id):
 
     if request.user.is_authenticated and not request.user.is_anonymous:
         userprofile = UserProfile.objects.get(user=request.user)
+        userInfo = UserProfile.objects.get(user=request.user)
+        pro = userInfo.product_favorites.all()
         if Order.objects.filter(user=request.user, is_finished=False).exists():
+            
             order = Order.objects.get(user=request.user, is_finished=False)
             orderdetails = OrderDetails.objects.filter(order=order)
             prototal = sum(prosup.quantity for prosup in orderdetails)
             return render(request, 'products/product_info.html', context={
+                'prol_fav':pro,
+                'prol_count':pro.count,
                 'pchild': pchild,
                 'userprofile': userprofile,
                 'order': order,
@@ -176,6 +210,8 @@ def product_info(request, pro_id, chi_id):
             })
         else:
             return render(request, 'products/product_info.html', context={
+                'prol_fav':pro,
+                'prol_count':pro.count,
                 'pchild': pchild,
                 'products': pro5,
                 'related_children': related_children,
@@ -200,6 +236,7 @@ def search_result(request):
     prol = None
     query_string = None
 
+    
     if 'searchname' in request.GET and request.GET['searchname'].strip():
         query_string = request.GET.get('searchname')
         search_query = Q(name__icontains=query_string) | Q(code__icontains=query_string) | Q(details__icontains=query_string)
@@ -213,52 +250,111 @@ def search_result(request):
             p = paginator.page(1)
         except EmptyPage:
             p = paginator.page(paginator.num_pages)
-        
+        context3 = {
+                'name': name,
+                'code': code,
+                'details': details,
+                'products2': pro2,
+                'products': pro5,
+                'prol': prol,
+                'p': p,
+                'seens': seens,
+                'query_string': query_string
+                }
         prol = seens.count()
+        if request.user.is_authenticated and not request.user.is_anonymous:
+            userInfo = UserProfile.objects.get(user=request.user)
+            pro = userInfo.product_favorites.all()
+            context3 = {
+                'prol_fav':pro,
+                'prol_count':pro.count,                
+                'code': code,
+                'name': name,
+                'details': details,
+                'products2': pro2,
+                'products': pro5,
+                'prol': prol,
+                'p': p,
+                'seens': seens,
+                'query_string': query_string
+                }
+            if Order.objects.all().filter(user=request.user, is_finished=False):
+                userInfo = UserProfile.objects.get(user=request.user)
+                pro = userInfo.product_favorites.all()
+                order = Order.objects.get(user=request.user, is_finished=False)
+                orderdetails = OrderDetails.objects.all().filter(order=order)
+                prototal = 0
+                for prosup in orderdetails:
+                    prototal += prosup.quantity
+                context3 = {
+                'prol_fav':pro,
+                'prol_count':pro.count,
+                'order': order,
+                'prototal': prototal, 
+                'code': code,
+                'name': name,
+                'details': details,
+                'products2': pro2,
+                'products': pro5,
+                'prol': prol,
+                'p': p,
+                'seens': seens,
+                'query_string': query_string
+                }
+    
 
-        context3 = {
-            'name': name,
-            'code': code,
-            'details': details,
-            'products2': pro2,
-            'products': pro5,
-            'prol': prol,
-            'p': p,
-            'seens': seens,
-            'query_string': query_string
-        }
     else:   
-        context3 = {
-            'name': name,
-            'code': code,
-            'details': details,
-            'products2': pro2,
-            'products': pro5,
-            'prol': prol,
-            'p': p,
-            'seens': seens, 
-            'query_string': query_string
-        }
+        if request.user.is_authenticated and not request.user.is_anonymous:
+            userInfo = UserProfile.objects.get(user=request.user)
+            pro = userInfo.product_favorites.all()
+            context3 = {
+                'prol_fav':pro,
+                'prol_count':pro.count,                
+                'code': code,
+                'name': name,
+                'details': details,
+                'products2': pro2,
+                'products': pro5,
+                'prol': prol,
+                'p': p,
+                'seens': seens,
+                'query_string': query_string
+                }
+            if Order.objects.all().filter(user=request.user, is_finished=False):
+                userInfo = UserProfile.objects.get(user=request.user)
+                pro = userInfo.product_favorites.all()
+                order = Order.objects.get(user=request.user, is_finished=False)
+                orderdetails = OrderDetails.objects.all().filter(order=order)
+                prototal = 0
+                for prosup in orderdetails:
+                    prototal += prosup.quantity
+                context3 = {
+                'prol_fav':pro,
+                'prol_count':pro.count,
+                'order': order,
+                'prototal': prototal, 
+                'name': name,
+                'code': code,
+                'details': details,
+                'products2': pro2,
+                'products': pro5,
+                'prol': prol,
+                'p': p,
+                'seens': seens,
+                'query_string': query_string
+                }
+        else:
+            return render(request, 'products/search_result.html', {
+                'name': name,
+                'code': code,
+                'details': details,
+                'products2': pro2,
+                'products': pro5,
+                'prol': prol,
+                'p': p,
+                'seens': seens,
+                } )
 
-    # if request.user.is_authenticated and not request.user.is_anonymous:
-    #     if Order.objects.all().filter(user=request.user, is_finished=False):
-    #         order = Order.objects.get(user=request.user, is_finished=False)
-    #         orderdetails = OrderDetails.objects.all().filter(order=order)
-    #         prototal = 0
-    #         for prosup in orderdetails:
-    #             prototal += prosup.quantity
-    #         context3 = {
-    #             'order': order,
-    #             'prototal': prototal,
-    #             'name': name,
-    #             'code': code,
-    #             'details': details,
-    #             'products2': pro2,
-    #             'products': pro5,
-    #             'prol': prol,
-    #             'seens': seens,
-    #             'query_string': query_string
-    #         }    
 
     return render(request, 'products/search_result.html', context3)
 

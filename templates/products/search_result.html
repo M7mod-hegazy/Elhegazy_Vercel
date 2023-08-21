@@ -126,19 +126,19 @@
     <ul class="pagination justify-content-center P">
           
       {% if p.has_previous %}
-        <li class="page-item"><a class="page-link" href="?searchname={{query_string}}&page={{ p.previous_page_number }}"><i class="fa-solid fa-angle-left"></i></a></li>
+        <li class="page-item"><a class="page-link bx_shadow" href="?searchname={{query_string}}&page={{ p.previous_page_number }}"><i class="fa-solid fa-angle-left"></i></a></li>
       {% else %}
-        <li class="page-item disabled2"><a class="page-link" href=""><i class="fa-solid fa-angle-left"></i></a></li>
+        <li class="page-item disabled2"><a class="page-link bx_shadow" href=""><i class="fa-solid fa-angle-left"></i></a></li>
       {% endif %} 
           {%for number in p.paginator.page_range%}
-            <li class="page-item"><a class="page-link" href="?searchname={{query_string}}&page={{number}}">{{number}}</a></li>
+            <li class="page-item"><a class="page-link bx_shadow" href="?searchname={{query_string}}&page={{number}}">{{number}}</a></li>
 
           {% endfor %}
       
       {% if p.has_next %}
-      <li class="page-item"><a class="page-link" href="?searchname={{query_string}}&page={{ p.next_page_number }}"><i class="fa-solid fa-angle-right"></i></a></li>
+      <li class="page-item"><a class="page-link bx_shadow" href="?searchname={{query_string}}&page={{ p.next_page_number }}"><i class="fa-solid fa-angle-right"></i></a></li>
     {% else %}
-      <li class="page-item disabled2"><a class="page-link" href=""><i class="fa-solid fa-angle-right"></i></a></li>
+      <li class="page-item disabled2"><a class="page-link bx_shadow" href=""><i class="fa-solid fa-angle-right"></i></a></li>
     {% endif %}
    </ul>
   </nav>
