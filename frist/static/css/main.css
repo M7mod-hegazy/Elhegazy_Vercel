@@ -5448,6 +5448,7 @@ li.page-item {
 }
 .infoDetails2 p {
   margin: 15px 0px 0px 0px;
+  text-align: right;
 }
 
 .container-fluid.allProduct {
