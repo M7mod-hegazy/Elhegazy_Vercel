@@ -100,13 +100,11 @@ a:hover {
 // start navbar
 nav.sticky {
   position: fixed;
-  background-color: rgba($color: $main1, $alpha: 1);
-  height: 75px;
-  transition: all 0.8s ease-in-out;
-  opacity: 0.9;
+    transition: all 0.8s ease-in-out;
+    opacity: 0.9;
 }
 nav.sticky .navbar-brand img {
-  width: 80px;
+  width: 165px;
   height: 50px;
   opacity: 0.9;
 }
@@ -126,7 +124,6 @@ nav.sticky .dropdown ul li:hover a {
 }
 
 nav.sticky .navbar-collapse {
-  background-color: rgba($color: $main1, $alpha: 1);
   width: 100%;
   text-align: center;
   opacity: 0.9;
@@ -278,8 +275,8 @@ li.nav-item {
 
 //strat 1st new hover
 .navStats {
-  background-color: rgba($color: $main1, $alpha: 1);
-}
+  background-image: linear-gradient(to bottom, #2f2af2, #152ed5, #002eb7, #002d9a, #0a297c);
+  filter: drop-shadow(0px 1px 6px black);}
 //new nav
 .nav-item .nav-link:hover {
   color: white !important;
@@ -777,8 +774,7 @@ $colors: (
 footer {
   margin-top: 45px;
   background-size: cover;
-  // background-image: $background1;
-  background-color: $main1;
+  background-image: linear-gradient(to top, #0a0866, #131087, #1d18a9, #2621cd, #2f2af2);
 }
 footer .mainFooter {
   border-top: 1px solid white;
@@ -5922,7 +5918,7 @@ i.fas.fa-heart.love {
   .child_heart .badge_content .square {
     width: 28px;
     height: 20px;
-    top: -5px;
+    top: -6px;
     right: -6px;
     box-shadow: -0.6px 3px 2px -1px #362727, 2.6px 3px 2px -1px #362727;
   }
@@ -5945,7 +5941,7 @@ i.fas.fa-heart.love {
   .child_cart .badge_content .square {
     width: 28px;
     height: 20px;
-    top: -5px;
+    top: -6px;
     right: -6px;
     box-shadow: -2.6px 3px 3px -2px #362727, -0.4px 3px 2px -1px #362727;
   }
@@ -6195,13 +6191,16 @@ input#searchPriceFrom {
 
 .filter_form_visible {
   position: relative !important;
-  display: flex;
-  justify-content: center;
-  border: 1px solid blue;
-  border-radius: 5px;
-  box-shadow: -1px -1px 4px var(--bs-primary-text-emphasis);
-  margin-top: -21px;
-  padding: 20px 0px;
+    display: flex;
+    justify-content: center;
+    border: 1px solid blue;
+    border-radius: 5px;
+    box-shadow: -1px -1px 4px var(--bs-primary-text-emphasis);
+    margin-top: -21px;
+    padding: 20px 0px;
+    OPACITY: 0.8;
+    filter: drop-shadow(2px 4px 6px black);
+    background-image: linear-gradient(to top, #06162d, #002262, #002a9a, #0029cf, #000cff);
 }
 
 .filter_row div.pri_add {
@@ -6284,6 +6283,9 @@ a.dropdown-item {
 }
 ul.dropdown-menu.show {
   background-color: rgba(45, 58, 189, 0.91);
+      opacity: 0.8;
+    background-image: linear-gradient(to top, rgb(6, 22, 45), rgb(0, 34, 98), rgb(0, 42, 154), rgb(0, 41, 207), rgb(0, 12, 255));
+    
 }
 .dropdown-item.active, .dropdown-item:active {
 

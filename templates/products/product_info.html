@@ -52,17 +52,17 @@
                     </div>
                   </div>  
                   {% endif %}
-                <div class="carousel-item active data-interval="500"">
+                <div class="carousel-item active data-interval="100"">
                   <a href="{{ pchild.photo.url }}" data-fancybox="gallery" class="img_holder">
-                   <i class="fa fa-search img_zoom child_zoom"></i>
+                   <i class="fa fa-search img_zoom child_zoom txt_shadow"></i>
                     <img src="{{ pchild.photo.url }}" class="d-block w-100" alt="...">
                   </a>  
                 </div>
 
                 {% if pchild.photo2 %}
-                  <div class="carousel-item data-interval="500"">
+                  <div class="carousel-item data-interval="100"">
                     <a href="{{ pchild.photo2.url }}" data-fancybox="gallery" class="img_holder">
-                     <i class="fa fa-search img_zoom child_zoom"></i> 
+                     <i class="fa fa-search img_zoom child_zoom txt_shadow"></i> 
                      <img src="{{ pchild.photo2.url }}" class="d-block w-100" alt="...">
                     </a> 
                   </div>
@@ -71,9 +71,9 @@
                 {%endif%}
 
                 {% if pchild.photo3 %}
-                <div class="carousel-item data-interval="500"">
+                <div class="carousel-item data-interval="100"">
                   <a href="{{ pchild.photo3.url }}" data-fancybox="gallery" class="img_holder">
-                   <i class="fa fa-search img_zoom child_zoom"></i>
+                   <i class="fa fa-search img_zoom child_zoom txt_shadow"></i>
                      <img src="{{ pchild.photo3.url }}" class="d-block w-100" alt="...">
                   </a>   
                 </div>
@@ -82,9 +82,9 @@
                 {%endif%}
 
                 {% if pchild.photo4 %}
-                <div class="carousel-item data-interval="500"">
+                <div class="carousel-item data-interval="100"">
                   <a href="{{ pchild.photo4.url }}" data-fancybox="gallery" class="img_holder">
-                   <i class="fa fa-search img_zoom child_zoom"></i>
+                   <i class="fa fa-search img_zoom child_zoom txt_shadow"></i>
                     <img src="{{ pchild.photo4.url }}" class="d-block w-100" alt="...">
                   </a>  
                 </div>
@@ -93,9 +93,9 @@
                 {%endif%}
 
                 {% if pchild.photo5 %}
-                <div class="carousel-item data-interval="500"">
+                <div class="carousel-item data-interval="100"">
                   <a href="{{ pchild.photo5.url }}" data-fancybox="gallery" class="img_holder">
-                   <i class="fa fa-search img_zoom child_zoom"></i>
+                   <i class="fa fa-search img_zoom child_zoom txt_shadow"></i>
                     <img src="{{ pchild.photo5.url }}" class="d-block w-100" alt="...">
                   </a>
                 </div>
@@ -162,10 +162,10 @@
             <img class="qrcode"  src="{% url 'generate_qr_code' pro_id=pchild.product.pk chi_id=pchild.pk %}" alt="QR Code">
 
           </a>
-          <a id="lightboxTrigger2" href="{% url 'generate_qr_code' pro_id=pchild.product.pk chi_id=pchild.pk %}" data-fancybox="image-2"><i class="fa-solid fa-expand"></i></a>
+          <a id="lightboxTrigger2" href="{% url 'generate_qr_code' pro_id=pchild.product.pk chi_id=pchild.pk %}" data-fancybox="image-2"><i class="fa-solid fa-expand txt_shadow"></i></a>
 
 
-          <a id="downloadLink" href="{% url 'generate_qr_code' pro_id=pchild.product.pk chi_id=pchild.pk %}" download="{{ pchild.name }}.jpg" class="download-link" ><i class="fa-solid fa-download"></i></a>
+          <a id="downloadLink" href="{% url 'generate_qr_code' pro_id=pchild.product.pk chi_id=pchild.pk %}" download="{{ pchild.name }}.jpg" class="download-link " ><i class="fa-solid fa-download txt_shadow"></i></a>
 
           <div class="currentLink_container">
             <p id="currentLink" class="currentLink" ></p>

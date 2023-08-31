@@ -41,7 +41,7 @@ class Child(models.Model):
     name = models.CharField(max_length=200)
     code = models.CharField(max_length=200)
     price = models.DecimalField(
-        max_digits=19, decimal_places=2, blank=True, default=1)
+        max_digits=19, decimal_places=2, blank=True, default=1) # type: ignore
     oldPrice = models.CharField(max_length=200, blank=True)
     details = models.TextField(max_length=1000, blank=True)
     photo = models.ImageField(upload_to='photos/%Y/%m/%d/',  blank=False)

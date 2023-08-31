@@ -17,19 +17,19 @@ class Order(models.Model):
     items_count = 0
 
     def __str__(self):
-        return 'User: ' + self.user.username + ', Order id: ' + str(self.id)
+        return 'User: ' + self.user.username + ', Order id: ' + str(self.id) # type: ignore
 
 
 class OrderDetails(models.Model):
     product = models.ForeignKey(Child, on_delete=models.CASCADE)
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
     price = models.DecimalField(
-        max_digits=19, decimal_places=2, blank=True, default=1)
+        max_digits=19, decimal_places=2, blank=True, default=1) # type: ignore
     code = models.CharField(max_length=200)
     quantity = models.IntegerField()
 
     def __str__(self):
-        return f'User:  {self.order.user.username}  Product:  {self.product.name} * ( {str(self.quantity)}), Order_id:  {str(self.order.id)}'
+        return f'User:  {self.order.user.username}  Product:  {self.product.name} * ( {str(self.quantity)}), Order_id:  {str(self.order.id)}' # type: ignore
 
     class Meta:
         ordering = ['-id']

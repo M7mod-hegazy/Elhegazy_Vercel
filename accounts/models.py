@@ -7,7 +7,7 @@ from products.models import Product, Child
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    product_favorites = models.ManyToManyField(Child)
+    product_favorites = models.ManyToManyField(Child, blank=True)
     address = models.CharField(max_length=100)
     tell = models.CharField(max_length=100)
 
