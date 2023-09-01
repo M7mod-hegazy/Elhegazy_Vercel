@@ -997,6 +997,7 @@ img.myLogo {
 }
 
 .product-info {
+  filter: drop-shadow(2px 2px 4px black);
   box-shadow: 1px 2px 2px #2927ec;
   margin-top: 150px !important;
   margin-bottom: 45px;
@@ -1238,6 +1239,7 @@ img.qrcode {
 }
 
 .searchR .card {
+  filter: drop-shadow(2px 2px 4px black);
   margin: 10px;
   height: 18rem;
   width: 99% !important;
@@ -1348,7 +1350,7 @@ img.qrcode {
 
 @media (max-width: 576px) {
   .searchR .card {
-    margin: 10px;
+    margin: 6px;
     height: 11rem;
     width: 99% !important;
   }
@@ -1814,8 +1816,8 @@ a.NEWbtn:hover {
 }
 @media (max-width: 699px) {
   .container {
-    padding-right: 5px;
-    padding-left: 5px;
+    padding-right: 20px;
+    padding-left: 20px;
   }
 }
 @media (min-width: 700px) and (max-width: 1599px) {
@@ -5235,14 +5237,14 @@ span.new_icon {
     font-size: 10px;
   }
   .searchR h2 {
-    font-size: 6px;
+    font-size: 12px;
   }
   a.pro_arrow {
     font-size: 25px;
     top: 13px;
   }
   a.pro_arrow.home_arrow {
-    left: 40px;
+    left: 50px;
     font-size: 25px;
   }
   span.product-button {
