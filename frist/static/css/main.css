@@ -961,6 +961,7 @@ img.myLogo {
   }
 }
 .locationing {
+  filter: drop-shadow(2px 2px 4px black);
   box-shadow: 1px 2px 2px #2927ec;
   margin-top: 150px;
   border-radius: 5px;
@@ -1659,7 +1660,7 @@ a.NEWbtn:hover {
 
 .proInfo_arrow {
   position: absolute;
-  left: 134px;
+  left: 22px;
   top: 5px;
   font-size: 35px;
   color: #8db8f6;
@@ -1816,8 +1817,8 @@ a.NEWbtn:hover {
 }
 @media (max-width: 699px) {
   .container {
-    padding-right: 20px;
-    padding-left: 20px;
+    padding-right: 5px;
+    padding-left: 5px;
   }
 }
 @media (min-width: 700px) and (max-width: 1599px) {
@@ -1835,6 +1836,12 @@ a.NEWbtn:hover {
   }
 }
 
+@media (max-width: 699px) {
+  .container.pro_child_container {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+}
 .background-absolute {
   position: absolute;
   top: 0;
@@ -4748,7 +4755,7 @@ h5.carttotal {
   }
   .panel .panel-body .table tbody tr td {
     font-size: 8px;
-    max-width: 138px;
+    max-width: 80px;
   }
   .panel .panel-body .table .user_icon {
     width: 30px;
@@ -4780,6 +4787,9 @@ h5.carttotal {
     font-weight: 300;
     margin-left: 5px;
     padding: 0px 10px;
+  }
+  h5.carttotal.payment_carttotal {
+    font-size: 15px;
   }
 }
 .wrongcart h3 {
@@ -4962,7 +4972,7 @@ div#carouselExampleIndicators {
 
 a.proInfo_arrow_home {
   position: absolute;
-  left: 181px;
+  left: 75px;
   top: 5px;
   font-size: 35px;
   color: #517af8;
@@ -5203,7 +5213,7 @@ span.new_icon {
     top: 7px;
   }
   .alert {
-    font-size: 6px;
+    font-size: 12px;
     padding: 8px 28px 8px 5px;
   }
   .alert button.btn-close {
@@ -5295,8 +5305,8 @@ span.new_icon {
     font-size: 10px;
   }
   .payment_container a.pro_arrow.cart_arrow {
-    top: 15px;
-    left: 53px;
+    top: 9px;
+    left: 12px;
   }
   .paybtn button {
     font-size: 10px;
@@ -5409,7 +5419,7 @@ p.description3 {
 }
 
 .carousel-first {
-  margin: 0px 10px 25px 0px !important;
+  margin: 0px 10px 35px 0px !important;
 }
 
 .box3 .read3 {
@@ -5455,6 +5465,7 @@ li.page-item {
 
 .container-fluid.allProduct {
   margin-top: 150px;
+  filter: drop-shadow(2px 2px 4px black);
 }
 
 .box3 .title3 {
@@ -5505,7 +5516,7 @@ a#lightboxTrigger2 {
   padding: 5px 10px !important;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   font-size: 13px;
-  width: 205px;
+  width: 200px;
   position: absolute;
   bottom: 25px;
   right: 114px;
@@ -6188,5 +6199,27 @@ ul.dropdown-menu.show {
 }
 
 .row.sign {
+  filter: drop-shadow(2px 2px 4px black);
   background-image: radial-gradient(circle at 17% 77%, rgba(17, 17, 17, 0.04) 0%, rgba(17, 17, 17, 0.04) 50%, rgba(197, 197, 197, 0.04) 50%, rgba(197, 197, 197, 0.04) 100%), radial-gradient(circle at 26% 17%, rgba(64, 64, 64, 0.04) 0%, rgba(64, 64, 64, 0.04) 50%, rgba(244, 244, 244, 0.04) 50%, rgba(244, 244, 244, 0.04) 100%), radial-gradient(circle at 44% 60%, rgba(177, 177, 177, 0.04) 0%, rgba(177, 177, 177, 0.04) 50%, rgba(187, 187, 187, 0.04) 50%, rgba(187, 187, 187, 0.04) 100%), linear-gradient(19deg, rgb(28, 117, 250), rgb(34, 2, 159));
+}
+
+.carousel-indicators {
+  bottom: -36px !important;
+}
+
+svg.pro_child_svg {
+  padding: 8px;
+  width: 2.2em;
+  height: 2.2em;
+  fill: blue;
+  border-radius: 105px;
+  background-color: #e3e3f7;
+}
+
+.prev_svg {
+  transform: scaleX(-1);
+}
+
+.pro_next_arrow {
+  margin-right: 10px;
 }/*# sourceMappingURL=main.css.map */

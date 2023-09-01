@@ -173,6 +173,7 @@ def sub_qty_ajax(request, orderdetails_id):
     else:
         return JsonResponse({'error': 'Invalid request'})
 
+
 def payment(request):
     context = {'products': Product.objects.all()}
     
@@ -194,14 +195,7 @@ def payment(request):
         print(request.POST)
         if ship_phone and ship_address:
                 if request.user.is_authenticated and not request.user.is_anonymous :
-                    userInfo = UserProfile.objects.get(user=request.user)
-                    pro = userInfo.product_favorites.all()
-                    context = {
-                            'prol_fav':pro,
-                            'prol_count':pro.count,                               
-                            'products': Product.objects.all()  
-                            } 
-                    patt = "^01[0-2]\d{1,8}$"
+                    patt = "^01[0-2,5]{1}[0-9]{8}$"
                     if re.match(patt, ship_phone):
                         if Order.objects.all().filter(user=request.user, is_finished=False):
                             order = Order.objects.get(user=request.user, is_finished=False)
@@ -210,11 +204,9 @@ def payment(request):
                             order.is_finished = True
                             order.save()
                             is_added = True
-                            messages.success(request, 'تم تنفيز طلبك بنجاح')
+                            messages.success(request, 'تم تنفيز طلبك بنجاح و بالرجاءالإتصال بنا للتأكيد مع الإحتفاظ برقم الطلب')
 
                             context = {
-                                'prol_fav':pro,
-                                'prol_count':pro.count,
                                 'ship_address': ship_address,
                                 'ship_phone': ship_phone,
                                 'is_added': is_added,
@@ -222,7 +214,6 @@ def payment(request):
                                 'is_finished': True,
                                 'products': Product.objects.all()
                             }
-                            
                     else:
                         messages.error(request, 'تحقق من رقم التلفون')
                         
@@ -232,12 +223,6 @@ def payment(request):
         
 
         if request.user.is_authenticated and not request.user.is_anonymous:
-            userInfo = UserProfile.objects.get(user=request.user)
-            pro = userInfo.product_favorites.all()
-            context = {
-                            'prol_fav':pro,
-                            'prol_count':pro.count,    
-                    } 
             if Order.objects.all().filter(user=request.user, is_finished=False):
                 order = Order.objects.get(user=request.user, is_finished=False)
                 orderdetails = OrderDetails.objects.all().filter(order=order)
@@ -246,8 +231,6 @@ def payment(request):
                 for prosup in orderdetails:
                     prototal += prosup.quantity
                 context = {
-                    'prol_fav':pro,
-                    'prol_count':pro.count,
                     'is_finished': False,
                     'is_added': False,
                     'order': order,
@@ -261,8 +244,6 @@ def payment(request):
     else:
         # هنا العرض قبل الضغط على الدفع
         if request.user.is_authenticated and not request.user.is_anonymous:
-            userInfo = UserProfile.objects.get(user=request.user)
-            pro = userInfo.product_favorites.all()
             if Order.objects.all().filter(user=request.user, is_finished=False):
                 order = Order.objects.get(user=request.user, is_finished=False)
                 orderdetails = OrderDetails.objects.all().filter(order=order)
@@ -274,8 +255,6 @@ def payment(request):
                 for prosup in orderdetails:
                     prototal += prosup.quantity
                 context = {
-                    'prol_fav':pro,
-                    'prol_count':pro.count,
                     'order': order,
                     'orderdetails': orderdetails,
                     'prototal': prototal,
