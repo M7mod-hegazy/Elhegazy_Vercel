@@ -152,11 +152,30 @@
       
                 
                 </div> 
-       
+                
+                <div class="pro_info_phones">
+                  <p>: للإستفسار تواصل معنا عبر</p>
+                  <div><span>01009663365</span><i class="fas fa-phone m-2"></i></div>
+                  <div><span>01025109080</span><i class="fas fa-phone m-2"></i></div>
+                  <div><span>0932716232</span><i class="fas fa-phone m-2"></i></div>   
+                </div>
+                
+                <div class='pro_contact_links'>
+                  <a class=' whatsapp_link btn btn-primary bx_shadow' href="https://wa.me/201064450449" target="_blank">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
+                
+                <a class='messenger_link btn btn-primary bx_shadow' href="https://m.me/elhegazi" target="_blank">
+                  <i class="fa-brands fa-facebook-messenger"></i>
+                </a>
+                </div>
+                <hr>
           </div> 
           
+        
          
         <div class="img-holder">
+     
           <a id="lightboxTrigger" href="{% url 'generate_qr_code' pro_id=pchild.product.pk chi_id=pchild.pk %}" data-fancybox="image-1">
 
             <img class="qrcode"  src="{% url 'generate_qr_code' pro_id=pchild.product.pk chi_id=pchild.pk %}" alt="QR Code">
