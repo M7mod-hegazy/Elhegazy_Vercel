@@ -36,7 +36,8 @@ ALLOWED_HOSTS = [
     'eb-env.eba-aapubfdx.us-west-2.elasticbeanstalk.com',
     'www.elhegazi.com',
     'elhegazi.com',
-    '127.0.0.1'
+    '127.0.0.1',
+    '.vercel.app'
     ]
 
 
